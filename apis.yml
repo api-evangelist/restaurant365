@@ -1,0 +1,82 @@
+aid: restaurant365
+name: Restaurant365
+description: >-
+  Restaurant365 is a cloud-based restaurant accounting, inventory, and
+  operations platform serving thousands of restaurant locations across the
+  United States. Its developer offering centers on the R365 API, which lets
+  approved third-party vendors and partners connect to a customer's R365
+  database to retrieve data and create or push records such as AP invoices and
+  general ledger entries. A complementary OData connector exposes sales,
+  transaction, location, GL account, and employee data for use in external
+  reporting and business-intelligence tools. API access is provisioned per
+  customer through R365 Support, with bearer-token authentication on every
+  request.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Restaurant
+  - Accounting
+  - Inventory
+  - Operations
+  - Invoices
+  - Reporting
+  - OData
+url: https://raw.githubusercontent.com/api-evangelist/restaurant365/refs/heads/main/apis.yml
+created: '2026-06-02'
+modified: '2026-06-02'
+specificationVersion: '0.19'
+apis:
+  - aid: restaurant365:rest-api
+    name: R365 API
+    description: >-
+      The R365 API lets approved third-party services and vendors connect to a
+      Restaurant365 customer database to retrieve data and create or push
+      records, including AP invoices and general ledger entries. Each request is
+      authenticated with a bearer token generated from an authentication
+      request. Access is provisioned per customer by contacting R365 Support to
+      enable a vendor.
+    humanURL: https://docs.restaurant365.com/docs/r365-api
+    tags:
+      - Invoices
+      - General Ledger
+      - Accounting
+    properties:
+      - type: Documentation
+        url: https://docs.restaurant365.com/docs/r365-api
+      - type: Documentation
+        url: https://docs.restaurant365.com/docs/r365-api-connector
+  - aid: restaurant365:odata-connector
+    name: Restaurant365 OData Connector
+    description: >-
+      The Restaurant365 OData connector exposes R365 data to OData-compatible
+      reporting and BI tools, with views for transactions, transaction detail,
+      company, location, GL account, and employee data. Sales data is retrieved
+      up to one month (31 days) per request, so historical pulls must be planned
+      across multiple calls.
+    humanURL: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+    baseURL: https://odata.restaurant365.net/api/v2/views/
+    tags:
+      - OData
+      - Reporting
+      - Sales
+    properties:
+      - type: Documentation
+        url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+common:
+  - type: Website
+    url: https://www.restaurant365.com
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api
+  - type: Pricing
+    url: https://www.restaurant365.com/pricing/
+  - type: Blog
+    url: https://www.restaurant365.com/blog/
+  - type: GitHubOrganization
+    url: https://github.com/restaurant365
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/restaurant365-cloud-erp-for-restaurants
+  - type: LLMsTxt
+    url: https://docs.restaurant365.com/llms.txt
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
