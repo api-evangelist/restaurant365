@@ -1,0 +1,282 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Restaurant365"
+  description: >-
+    Unified vocabulary for Restaurant365, mapping the operational dimension of
+    the R365 API (transactional writes for AP invoices, GL-coded invoices, and
+    journal entries) and the OData connector (read-only reporting views) to the
+    capability dimension of Naftiko REST and MCP exposers.
+  created: "2026-06-03"
+  modified: "2026-06-03"
+
+operational:
+  apis:
+    - name: "R365 API"
+      namespace: "r365-api"
+      version: "v1"
+      baseUrl: "https://{customerHost}.restaurant365.com"
+      status: active
+    - name: "Restaurant365 OData Connector"
+      namespace: "odata-connector"
+      version: "v2"
+      baseUrl: "https://odata.restaurant365.net/api/v2/views"
+      status: active
+
+  resources:
+    - name: "ap-invoices"
+      api: "r365-api"
+      actions: [create]
+    - name: "ap-invoices-gl"
+      api: "r365-api"
+      actions: [create]
+    - name: "journal-entries"
+      api: "r365-api"
+      actions: [create]
+    - name: "companies"
+      api: "odata-connector"
+      actions: [list]
+    - name: "locations"
+      api: "odata-connector"
+      actions: [list]
+    - name: "gl-accounts"
+      api: "odata-connector"
+      actions: [list]
+    - name: "items"
+      api: "odata-connector"
+      actions: [list]
+    - name: "job-titles"
+      api: "odata-connector"
+      actions: [list]
+    - name: "employees"
+      api: "odata-connector"
+      actions: [list]
+    - name: "pos-employees"
+      api: "odata-connector"
+      actions: [list]
+    - name: "labor-detail"
+      api: "odata-connector"
+      actions: [list]
+    - name: "payroll-summary"
+      api: "odata-connector"
+      actions: [list]
+    - name: "transactions"
+      api: "odata-connector"
+      actions: [list]
+    - name: "transaction-detail"
+      api: "odata-connector"
+      actions: [list]
+    - name: "sales-employee"
+      api: "odata-connector"
+      actions: [list]
+    - name: "sales-detail"
+      api: "odata-connector"
+      actions: [list]
+    - name: "sales-payment"
+      api: "odata-connector"
+      actions: [list]
+    - name: "deleted-entities"
+      api: "odata-connector"
+      actions: [list]
+
+  actions:
+    - name: authenticate
+      method: POST
+      pattern: write
+    - name: create
+      method: POST
+      pattern: write
+    - name: list
+      method: GET
+      pattern: query
+
+  schemas:
+    accounting:
+      - APInvoice
+      - APInvoiceGL
+      - JournalEntry
+      - GLAccount
+      - Transaction
+      - TransactionDetail
+    sales:
+      - SalesEmployee
+      - SalesDetail
+      - SalesPayment
+    reference:
+      - Company
+      - Location
+      - Item
+      - JobTitle
+    labor:
+      - Employee
+      - POSEmployee
+      - LaborDetail
+      - PayrollSummary
+    audit:
+      - EntityDeleted
+
+  parameters:
+    pagination:
+      - $top
+      - $skip
+    filters:
+      - $filter
+      - $orderby
+      - $select
+    identifiers:
+      - transactionId
+      - salesId
+      - glAccountId
+      - employeeId
+      - locationId
+
+  enums:
+    documentTypes:
+      - AP Invoice
+      - AP Credit Memo
+    serviceTypes:
+      - Dine In
+      - Takeout
+      - Delivery
+    dayParts:
+      - Breakfast
+      - Lunch
+      - Dinner
+
+  authentication:
+    - scheme: bearer
+      api: "r365-api"
+      description: "Bearer token obtained from the Authenticate operation."
+    - scheme: basic
+      api: "odata-connector"
+      description: "Domain\\Username with R365 password."
+
+capability:
+  workflows:
+    - name: "R365 API — Authentication"
+      file: "capabilities/r365-api-authentication.yaml"
+      apis: ["r365-api"]
+      tools: 1
+      personas: ["Integration Developer"]
+      domains: ["Authentication"]
+    - name: "R365 API — AP Invoices"
+      file: "capabilities/r365-api-ap-invoices.yaml"
+      apis: ["r365-api"]
+      tools: 1
+      personas: ["AP Clerk", "Vendor Integration"]
+      domains: ["Accounts Payable"]
+    - name: "R365 API — General Ledger"
+      file: "capabilities/r365-api-general-ledger.yaml"
+      apis: ["r365-api"]
+      tools: 2
+      personas: ["Controller", "Accountant"]
+      domains: ["General Ledger"]
+    - name: "OData Connector — Reference Data"
+      file: "capabilities/odata-connector-reference-data.yaml"
+      apis: ["odata-connector"]
+      tools: 5
+      personas: ["BI Analyst"]
+      domains: ["Reference Data"]
+    - name: "OData Connector — Labor"
+      file: "capabilities/odata-connector-labor.yaml"
+      apis: ["odata-connector"]
+      tools: 4
+      personas: ["BI Analyst", "Payroll Administrator"]
+      domains: ["Labor"]
+    - name: "OData Connector — Transactions"
+      file: "capabilities/odata-connector-transactions.yaml"
+      apis: ["odata-connector"]
+      tools: 2
+      personas: ["Controller", "BI Analyst"]
+      domains: ["Accounting"]
+    - name: "OData Connector — Sales"
+      file: "capabilities/odata-connector-sales.yaml"
+      apis: ["odata-connector"]
+      tools: 3
+      personas: ["BI Analyst", "Operations Manager"]
+      domains: ["Sales"]
+    - name: "OData Connector — Audit"
+      file: "capabilities/odata-connector-audit.yaml"
+      apis: ["odata-connector"]
+      tools: 1
+      personas: ["BI Analyst"]
+      domains: ["Audit"]
+    - name: "OData Connector — Metadata"
+      file: "capabilities/odata-connector-metadata.yaml"
+      apis: ["odata-connector"]
+      tools: 1
+      personas: ["Integration Developer"]
+      domains: ["Metadata"]
+
+  personas:
+    - id: integration-developer
+      name: "Integration Developer"
+      description: "Builds and maintains R365 integrations and reporting pipelines."
+      workflows: ["R365 API — Authentication", "OData Connector — Metadata"]
+    - id: ap-clerk
+      name: "AP Clerk"
+      description: "Submits vendor invoices into Restaurant365."
+      workflows: ["R365 API — AP Invoices"]
+    - id: controller
+      name: "Controller"
+      description: "Owns GL accuracy, journal entries, and financial reporting."
+      workflows: ["R365 API — General Ledger", "OData Connector — Transactions"]
+    - id: bi-analyst
+      name: "BI Analyst"
+      description: "Pulls R365 data into external reporting and BI tools."
+      workflows:
+        - "OData Connector — Reference Data"
+        - "OData Connector — Labor"
+        - "OData Connector — Sales"
+        - "OData Connector — Audit"
+
+  domains:
+    - Authentication
+    - Accounts Payable
+    - General Ledger
+    - Accounting
+    - Reference Data
+    - Labor
+    - Sales
+    - Audit
+    - Metadata
+
+  namespaces:
+    - consumed: "r365-api-ap-invoices"
+      rest: "r365-api-ap-invoices-rest"
+      mcp: "r365-api-ap-invoices-mcp"
+      ports: { rest: 8080, mcp: 9090 }
+    - consumed: "odata-connector-transactions"
+      rest: "odata-connector-transactions-rest"
+      mcp: "odata-connector-transactions-mcp"
+      ports: { rest: 8080, mcp: 9090 }
+
+  binds:
+    - key: R365_USERNAME
+      workflows: ["R365 API — Authentication"]
+    - key: R365_PASSWORD
+      workflows: ["R365 API — Authentication"]
+    - key: R365_BEARER_TOKEN
+      workflows: ["R365 API — AP Invoices", "R365 API — General Ledger"]
+    - key: R365_ODATA_USERNAME
+      workflows: ["OData Connector — Reference Data", "OData Connector — Labor", "OData Connector — Transactions", "OData Connector — Sales", "OData Connector — Audit", "OData Connector — Metadata"]
+    - key: R365_ODATA_PASSWORD
+      workflows: ["OData Connector — Reference Data", "OData Connector — Labor", "OData Connector — Transactions", "OData Connector — Sales", "OData Connector — Audit", "OData Connector — Metadata"]
+
+crossReference:
+  - resource: "ap-invoices"
+    operations: ["createApInvoices"]
+    workflows: ["R365 API — AP Invoices"]
+    personas: ["AP Clerk", "Vendor Integration"]
+  - resource: "journal-entries"
+    operations: ["createJournalEntries"]
+    workflows: ["R365 API — General Ledger"]
+    personas: ["Controller"]
+  - resource: "transactions"
+    operations: ["listTransactions", "listTransactionDetail"]
+    workflows: ["OData Connector — Transactions"]
+    personas: ["Controller", "BI Analyst"]
+  - resource: "sales-employee"
+    operations: ["listSalesEmployee", "listSalesDetail", "listSalesPayment"]
+    workflows: ["OData Connector — Sales"]
+    personas: ["BI Analyst", "Operations Manager"]

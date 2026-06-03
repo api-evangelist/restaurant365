@@ -1,0 +1,392 @@
+openapi: 3.1.0
+info:
+  title: R365 API
+  description: >-
+    The R365 API lets approved third-party services and vendors connect to a
+    Restaurant365 customer database to retrieve data and push records, including
+    accounts payable (AP) invoices and general ledger (GL) entries. Each request
+    is authenticated with a bearer token obtained from the Authenticate
+    operation. Access is provisioned per customer by contacting R365 Support to
+    enable a vendor. All paths are served from the customer's unique R365
+    database host.
+  version: v1
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: Proprietary
+servers:
+  - url: https://{customerHost}.restaurant365.com
+    description: Customer-specific Restaurant365 database host
+    variables:
+      customerHost:
+        default: yourcompany
+        description: The unique customer subdomain assigned by Restaurant365
+tags:
+  - name: Authentication
+    description: Obtain a bearer token for subsequent requests
+  - name: AP Invoices
+    description: Create accounts payable invoices in the customer database
+  - name: General Ledger
+    description: Create AP invoices by GL account and journal entries
+paths:
+  /APIv1/Authenticate:
+    post:
+      operationId: authenticate
+      summary: Authenticate And Obtain Bearer Token
+      description: >-
+        Exchange an R365 username and password for a bearer token that must be
+        sent in the Authorization header on all subsequent API requests.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthenticationRequest'
+      responses:
+        '200':
+          description: Authentication succeeded; bearer token returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthenticationResponse'
+        '401':
+          description: Invalid credentials
+  /APIv1/APInvoices:
+    post:
+      operationId: createApInvoices
+      summary: Create AP Invoices
+      description: >-
+        Create one or more accounts payable invoices in the customer database
+        using vendor and product (item) level detail. Vendor name and retailer
+        store number must match values configured in the customer's R365
+        database.
+      tags:
+        - AP Invoices
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/APInvoice'
+      responses:
+        '200':
+          description: Processing result with successes and failures
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessingResult'
+        '401':
+          description: Missing or invalid bearer token
+  /APIv1/APInvoicesGL:
+    post:
+      operationId: createApInvoicesGl
+      summary: Create AP Invoices By GL Account
+      description: >-
+        Create one or more accounts payable invoices or AP credit memos using GL
+        account level detail rather than item detail. Use this when invoices
+        should be coded directly to general ledger accounts.
+      tags:
+        - General Ledger
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/APInvoiceGL'
+      responses:
+        '200':
+          description: Processing result with successes and failures
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessingResult'
+        '401':
+          description: Missing or invalid bearer token
+  /APIv1/JournalEntries:
+    post:
+      operationId: createJournalEntries
+      summary: Create Journal Entries
+      description: >-
+        Create one or more general ledger journal entries. Debits and credits
+        must balance across the lines of each journal entry. Payroll journal
+        entries require the payroll-specific fields.
+      tags:
+        - General Ledger
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/JournalEntry'
+      responses:
+        '200':
+          description: Processing result with successes and failures
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessingResult'
+        '401':
+          description: Missing or invalid bearer token
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token returned by the Authenticate operation
+  schemas:
+    AuthenticationRequest:
+      type: object
+      required:
+        - UserName
+        - Password
+      properties:
+        UserName:
+          type: string
+          description: R365 username
+        Password:
+          type: string
+          description: R365 password
+    AuthenticationResponse:
+      type: object
+      properties:
+        SessionId:
+          type: string
+          description: Identifier for the authenticated session
+        UserName:
+          type: string
+          description: Authenticated R365 username
+        BearerToken:
+          type: string
+          description: Bearer token to send in the Authorization header
+        ResponseStatus:
+          type: object
+          description: Response status object; empty on success
+    APInvoice:
+      type: object
+      required:
+        - Vendor_Name
+        - Retailer_Store_Number
+        - Invoice_Date
+      properties:
+        BatchId:
+          type: string
+          description: Optional batch identifier grouping records
+        userId:
+          type: string
+          description: Optional user identifier for the submitting user
+        Vendor_Name:
+          type: string
+          description: Vendor name as configured in the customer's R365 database
+        Retailer_Store_Number:
+          type: string
+          description: Retailer store number for the location
+        Invoice_Date:
+          type: string
+          description: Invoice date in MM/DD/YYYY format
+        Invoice_Due_Date:
+          type: string
+          description: Invoice due date in MM/DD/YYYY format
+        Invoice_Number:
+          type: string
+          description: Vendor invoice number
+        Invoice_Amount:
+          type: number
+          description: Total invoice amount
+        Image_URL:
+          type: string
+          format: uri
+          description: URL of the invoice image
+        Product_Number:
+          type: string
+          description: Vendor item (product) number
+        Quantity:
+          type: number
+          description: Quantity of the item
+        Invoice_Line_Item_Cost:
+          type: number
+          description: Per-unit cost of the line item
+        Extended_Price:
+          type: number
+          description: Extended price for the line item
+        Product_Description:
+          type: string
+          description: Description of the item
+        Unit_Of_Measure:
+          type: string
+          description: Unit of measure; must match an R365 UOFM value
+        Split_Case:
+          type: boolean
+          description: Whether the case is split
+    APInvoiceGL:
+      type: object
+      required:
+        - Type
+        - Vendor
+        - Date
+        - GL_Date
+        - Location
+        - Number
+        - Amount
+        - Detail_Account
+        - Detail_Amount
+        - Detail_Location
+      properties:
+        BatchId:
+          type: string
+          description: Optional batch identifier grouping records
+        userId:
+          type: string
+          description: Optional user identifier for the submitting user
+        Type:
+          type: string
+          description: Document type
+          enum:
+            - AP Invoice
+            - AP Credit Memo
+        Comment:
+          type: string
+          description: Header-level comment
+        Vendor:
+          type: string
+          description: Vendor name as configured in R365
+        Date:
+          type: string
+          description: Document date in MM/DD/YYYY format
+        GL_Date:
+          type: string
+          description: General ledger posting date in MM/DD/YYYY format
+        Due_Date:
+          type: string
+          description: Due date; defaults to Date if blank
+        Location:
+          type: string
+          description: Location name or number
+        Number:
+          type: string
+          description: Document number
+        Amount:
+          type: number
+          description: Total document amount
+        Payment_Terms:
+          type: string
+          description: Payment terms
+        Detail_Account:
+          type: string
+          description: GL account name or number for the detail line
+        Detail_Amount:
+          type: number
+          description: Amount for the detail line
+        Detail_Comment:
+          type: string
+          description: Comment for the detail line
+        Detail_Location:
+          type: string
+          description: Location for the detail line
+        Image_URL:
+          type: string
+          format: uri
+          description: URL of the document image
+        IsPaid:
+          type: boolean
+          description: Whether the document is already paid
+        Paid_Account:
+          type: string
+          description: GL account number used when the document is paid
+    JournalEntry:
+      type: object
+      required:
+        - Date
+        - JELocation
+        - Account
+        - Debit
+        - Credit
+        - DetailLocation
+      properties:
+        BatchId:
+          type: string
+          description: Optional batch identifier grouping records
+        userId:
+          type: string
+          description: Optional user identifier for the submitting user
+        JENumber:
+          type: string
+          description: Journal entry number; auto-generated if omitted
+        Date:
+          type: string
+          description: Journal entry date
+        JEComment:
+          type: string
+          description: Journal entry comment
+        JELocation:
+          type: string
+          description: Journal entry header location
+        Account:
+          type: string
+          description: GL account for the line
+        Debit:
+          type: number
+          description: Debit amount; debits must balance credits
+        Credit:
+          type: number
+          description: Credit amount; credits must balance debits
+        DetailLocation:
+          type: string
+          description: Location for the detail line
+        PayrollJournalEntry:
+          type: boolean
+          description: Whether this is a payroll journal entry
+        PayrollStartDate:
+          type: string
+          description: Payroll period start date; required for payroll entries
+        PayrollEndDate:
+          type: string
+          description: Payroll period end date; required for payroll entries
+    ProcessingResult:
+      type: object
+      description: Result envelope returned by record-creation operations
+      properties:
+        errors:
+          type: array
+          description: Request-level errors
+          items:
+            type: object
+            properties:
+              reason:
+                type: string
+              solution:
+                type: string
+        success:
+          type: array
+          description: Count of records successfully processed
+          items:
+            type: object
+            properties:
+              Count:
+                type: integer
+        failures:
+          type: array
+          description: Records that failed processing
+          items:
+            type: object
+            properties:
+              record:
+                type: string
+              reason:
+                type: string
+              solution:
+                type: string

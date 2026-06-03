@@ -1,0 +1,95 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "Restaurant365 OData Connector — Audit"
+  description: >-
+    Audit — Audit. 1 operation. Lead operation: List Deleted Entities.
+    Self-contained Naftiko capability covering one Restaurant365 business surface.
+  tags:
+    - Restaurant365
+    - OData Connector
+    - Audit
+  created: "2026-06-03"
+  modified: "2026-06-03"
+
+binds:
+  - namespace: env
+    keys:
+      R365_ODATA_USERNAME: R365_ODATA_USERNAME
+      R365_ODATA_PASSWORD: R365_ODATA_PASSWORD
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "odata-connector-audit"
+      baseUri: "https://odata.restaurant365.net/api/v2/views"
+      description: "Restaurant365 OData Connector — Audit business capability. Self-contained, no shared references."
+      authentication:
+        type: basic
+        username: "{{env.R365_ODATA_USERNAME}}"
+        password: "{{env.R365_ODATA_PASSWORD}}"
+      resources:
+        - name: "entity-deleted"
+          path: "/EntityDeleted"
+          operations:
+            - name: "listEntityDeleted"
+              method: GET
+              description: "Retrieve a list of records deleted from the system."
+              inputParameters:
+                - name: "$filter"
+                  in: query
+                  type: string
+                  required: false
+                  description: "OData filter expression."
+                - name: "$top"
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum results to return."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "odata-connector-audit-rest"
+      port: 8080
+      description: "REST adapter for Restaurant365 OData Connector — Audit. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/deleted-entities"
+          name: "deleted-entities"
+          description: "REST surface for deleted entity records."
+          operations:
+            - method: GET
+              name: "listEntityDeleted"
+              description: "Retrieve a list of records deleted from the system."
+              call: "odata-connector-audit.listEntityDeleted"
+              with:
+                "$filter": "rest.filter"
+                "$top": "rest.top"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "odata-connector-audit-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for Restaurant365 OData Connector — Audit. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "list-deleted-entities"
+          description: "Retrieve a list of records deleted from the system."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "odata-connector-audit.listEntityDeleted"
+          with:
+            "$filter": "tools.filter"
+            "$top": "tools.top"
+          outputParameters:
+            - type: object
+              mapping: "$."

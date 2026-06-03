@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/restaurant365/main/json-schema/r365-api-journal-entry-schema.json",
+  "title": "JournalEntry",
+  "description": "A general ledger journal entry line submitted to the R365 API. Debits and credits must balance across the entry.",
+  "type": "object",
+  "required": ["Date", "JELocation", "Account", "Debit", "Credit", "DetailLocation"],
+  "properties": {
+    "BatchId": { "type": "string", "description": "Optional batch identifier grouping records." },
+    "userId": { "type": "string", "description": "Optional submitting user identifier." },
+    "JENumber": { "type": "string", "description": "Journal entry number; auto-generated if omitted." },
+    "Date": { "type": "string", "description": "Journal entry date." },
+    "JEComment": { "type": "string", "description": "Journal entry comment." },
+    "JELocation": { "type": "string", "description": "Journal entry header location." },
+    "Account": { "type": "string", "description": "GL account for the line." },
+    "Debit": { "type": "number", "description": "Debit amount; debits must balance credits." },
+    "Credit": { "type": "number", "description": "Credit amount; credits must balance debits." },
+    "DetailLocation": { "type": "string", "description": "Location for the detail line." },
+    "PayrollJournalEntry": { "type": "boolean", "description": "Whether this is a payroll journal entry." },
+    "PayrollStartDate": { "type": "string", "description": "Payroll period start date; required for payroll entries." },
+    "PayrollEndDate": { "type": "string", "description": "Payroll period end date; required for payroll entries." }
+  }
+}

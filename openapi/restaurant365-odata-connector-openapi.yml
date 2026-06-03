@@ -1,0 +1,812 @@
+openapi: 3.1.0
+info:
+  title: Restaurant365 OData Connector
+  description: >-
+    The Restaurant365 OData connector exposes R365 data to OData-compatible
+    reporting and business-intelligence tools through read-only views for
+    companies, locations, GL accounts, items, employees, labor, transactions,
+    and sales. Authentication uses Domain\Username (the company subdomain and
+    R365 username) with the R365 password. Most views support the standard
+    OData query options $filter, $orderby, $select, $skip, and $top. Sales views
+    (SalesEmployee, SalesDetail, SalesPayment) do not support $select or $count
+    and are limited to a 31-day date range per request.
+  version: v2
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: Proprietary
+servers:
+  - url: https://odata.restaurant365.net/api/v2/views
+    description: Restaurant365 OData v2 views endpoint
+tags:
+  - name: Metadata
+    description: OData service metadata
+  - name: Reference Data
+    description: Companies, locations, GL accounts, items, and job titles
+  - name: Labor
+    description: Employees, labor detail, payroll, and POS employees
+  - name: Transactions
+    description: Financial transactions and transaction detail
+  - name: Sales
+    description: Sales ticket headers, detail, and payments
+  - name: Audit
+    description: Deleted entity tracking
+components:
+  parameters:
+    filter:
+      name: $filter
+      in: query
+      required: false
+      description: Boolean expression used to filter results
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      required: false
+      description: Property to sort by; append desc for descending order
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      required: false
+      description: Comma-separated list of properties to return
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      required: false
+      description: Number of results to skip
+      schema:
+        type: integer
+    top:
+      name: $top
+      in: query
+      required: false
+      description: Maximum number of results to return
+      schema:
+        type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Domain\Username with R365 password
+  schemas:
+    Company:
+      type: object
+      properties:
+        companyId: { type: string, format: uuid }
+        name: { type: string }
+        companyNumber: { type: string }
+        comment: { type: string }
+        createdBy: { type: string }
+        createdOn: { type: string, format: date-time }
+        modifiedBy: { type: string }
+        modifiedOn: { type: string, format: date-time }
+    Location:
+      type: object
+      properties:
+        locationId: { type: string, format: uuid }
+        name: { type: string }
+        locationNumber: { type: string }
+        legalEntityId: { type: string, format: uuid }
+        legalEntityNumber: { type: string }
+        legalEntityName: { type: string }
+        attribute1Id: { type: string, format: uuid }
+        attribute1Number: { type: string }
+        attribute1Name: { type: string }
+        attribute2Id: { type: string, format: uuid }
+        attribute2Number: { type: string }
+        attribute2Name: { type: string }
+        createdBy: { type: string }
+        createdOn: { type: string, format: date-time }
+        modifiedBy: { type: string }
+        modifiedOn: { type: string, format: date-time }
+    GLAccount:
+      type: object
+      properties:
+        glAccountId: { type: string, format: uuid }
+        glAccountAutoId: { type: integer, format: int64 }
+        locationNumber: { type: string }
+        locationName: { type: string }
+        locationId: { type: string, format: uuid }
+        legalEntityNumber: { type: string }
+        legalEntityName: { type: string }
+        legalEntityId: { type: string, format: uuid }
+        attribute1Number: { type: string }
+        attribute1Name: { type: string }
+        attribute1Id: { type: string, format: uuid }
+        attribute2Number: { type: string }
+        attribute2Name: { type: string }
+        attribute2Id: { type: string, format: uuid }
+        name: { type: string }
+        glAccountNumber: { type: string }
+        glTypeClass: { type: integer }
+        glType: { type: string }
+        operationalCategory: { type: string }
+        createdBy: { type: string }
+        createdOn: { type: string, format: date-time }
+        modifiedBy: { type: string }
+        modifiedOn: { type: string, format: date-time }
+    Item:
+      type: object
+      properties:
+        itemId: { type: string, format: uuid }
+        name: { type: string }
+        itemNumber: { type: string }
+        category1: { type: string }
+        category2: { type: string }
+        category3: { type: string }
+        createdBy: { type: string }
+        createdOn: { type: string, format: date-time }
+        modifiedBy: { type: string }
+        modifiedOn: { type: string, format: date-time }
+    JobTitle:
+      type: object
+      properties:
+        jobTitleId: { type: string, format: uuid }
+        name: { type: string }
+        description: { type: string }
+        jobCode: { type: string }
+        payRate: { type: number }
+        payRate_Base: { type: number }
+        posid: { type: string }
+        glAccount_Id: { type: string, format: uuid }
+        location_Id: { type: string, format: uuid }
+        rating: { type: integer }
+        excludeFromSchedule: { type: boolean }
+        excludeFromPOSImport: { type: boolean }
+        createdBy: { type: string }
+        createdOn: { type: string, format: date-time }
+        modifiedBy: { type: string }
+        modifiedOn: { type: string, format: date-time }
+    Employee:
+      type: object
+      properties:
+        employeeId: { type: string, format: uuid }
+        fullName: { type: string }
+        firstName: { type: string }
+        middleName: { type: string }
+        lastName: { type: string }
+        address1: { type: string }
+        address2: { type: string }
+        city: { type: string }
+        state: { type: string }
+        zipCode: { type: string }
+        email: { type: string, format: email }
+        phoneNumber: { type: string }
+        mobilePhone: { type: string }
+        allowTextMessaging: { type: boolean }
+        birthday: { type: string, format: date-time }
+        birthdayDay: { type: integer }
+        birthdayMonth: { type: integer }
+        hireDate: { type: string, format: date-time }
+        multipleLocations: { type: integer }
+        payrollID: { type: string }
+        posid: { type: string }
+        employeeLink: { type: string, format: uuid }
+        primaryLocation_id: { type: string, format: uuid }
+        inactive: { type: boolean }
+        createdBy: { type: string }
+        createdOn: { type: string, format: date-time }
+        modifiedBy: { type: string }
+        modifiedOn: { type: string, format: date-time }
+    POSEmployee:
+      type: object
+      properties:
+        posEmployeeId: { type: string, format: uuid }
+        fullName: { type: string }
+        posid: { type: string }
+        location_id: { type: string, format: uuid }
+        employee_id: { type: string, format: uuid }
+        createdBy: { type: string }
+        createdOn: { type: string, format: date-time }
+        modifiedBy: { type: string }
+        modifiedOn: { type: string, format: date-time }
+    LaborDetail:
+      type: object
+      properties:
+        laborId: { type: string, format: uuid }
+        labor: { type: string }
+        dateWorked: { type: string, format: date-time }
+        startTime: { type: string, format: date-time }
+        endTime: { type: string, format: date-time }
+        hours: { type: number }
+        payRate: { type: number }
+        payrate_Base: { type: number }
+        payrollStatus: { type: integer }
+        total: { type: number }
+        total_Base: { type: number }
+        employee_ID: { type: string, format: uuid }
+        r365Employee_ID: { type: string, format: uuid }
+        employeeJobTitle_ID: { type: string, format: uuid }
+        jobTitle_ID: { type: string, format: uuid }
+        location_ID: { type: string, format: uuid }
+        cateringEvent: { type: string, format: uuid }
+        tipDeclaredAmount: { type: number }
+        employee: { type: string }
+        payrollID: { type: string }
+        jobTitle: { type: string }
+        location: { type: string }
+        dailySalesSummaryId: { type: string, format: uuid }
+        createdBy: { type: string }
+        createdOn: { type: string, format: date-time }
+        modifiedBy: { type: string }
+        modifiedOn: { type: string, format: date-time }
+    PayrollSummary:
+      type: object
+      properties:
+        employeeID: { type: string, format: uuid }
+        payrollID: { type: string }
+        location: { type: string }
+        locationNumber: { type: string }
+        jobCode: { type: string }
+        payRate: { type: number }
+        regularHours: { type: number }
+        overtimeHours: { type: number }
+        doubleOvertime: { type: number }
+        breakPenalty: { type: number }
+        grossReceipts: { type: number }
+        splitShiftPenalty: { type: number }
+        chargeTips: { type: number }
+        declaredTips: { type: number }
+        percentageOfSales: { type: number }
+        percent: { type: number }
+        payrollStart: { type: string, format: date-time }
+        payrollEnd: { type: string, format: date-time }
+    Transaction:
+      type: object
+      properties:
+        transactionId: { type: string, format: uuid }
+        locationId: { type: string, format: uuid }
+        locationName: { type: string }
+        date: { type: string, format: date-time }
+        transactionNumber: { type: string }
+        name: { type: string }
+        type: { type: string }
+        companyId: { type: string, format: uuid }
+        rowVersion: { type: integer, format: int64 }
+        isApproved: { type: boolean }
+        isTemplate: { type: boolean }
+        createdOn: { type: string, format: date-time }
+        modifiedOn: { type: string, format: date-time }
+        createdBy: { type: string }
+        modifiedBy: { type: string }
+    TransactionDetail:
+      type: object
+      properties:
+        transactionDetailId: { type: string, format: uuid }
+        transactionDetailAutoId: { type: integer, format: int64 }
+        transactionId: { type: string, format: uuid }
+        locationId: { type: string, format: uuid }
+        glAccountId: { type: string, format: uuid }
+        itemId: { type: string, format: uuid }
+        credit: { type: number }
+        debit: { type: number }
+        amount: { type: number }
+        quantity: { type: number }
+        previousCountTotal: { type: number }
+        adjustment: { type: number }
+        unitOfMeasureName: { type: string }
+        bankReconciliation: { type: string }
+        bankDeposit: { type: string }
+        comment: { type: string }
+        rowType: { type: string }
+        rowVersion: { type: integer, format: int64 }
+        createdOn: { type: string, format: date-time }
+        modifiedOn: { type: string, format: date-time }
+        createdBy: { type: string }
+        modifiedBy: { type: string }
+    SalesEmployee:
+      type: object
+      properties:
+        salesId: { type: string, format: uuid }
+        receiptNumber: { type: string }
+        checkNumber: { type: string }
+        comment: { type: string }
+        date: { type: string, format: date-time }
+        dayOfWeek: { type: string }
+        dayPart: { type: string }
+        netSales: { type: number }
+        grossSales: { type: number }
+        numberofGuests: { type: integer }
+        orderHour: { type: integer }
+        salesAmount: { type: number }
+        taxAmount: { type: number }
+        tipAmount: { type: number }
+        totalAmount: { type: number }
+        totalPayment: { type: number }
+        void: { type: boolean }
+        server: { type: string }
+        location: { type: string, format: uuid }
+        serviceType: { type: string }
+        dailySalesSummaryId: { type: string, format: uuid }
+        createdOn: { type: string, format: date-time }
+        modifiedOn: { type: string, format: date-time }
+        createdBy: { type: string }
+        modifiedBy: { type: string }
+    SalesDetail:
+      type: object
+      properties:
+        salesdetailID: { type: string, format: uuid }
+        menuitem: { type: string }
+        amount: { type: number }
+        customerPOSText: { type: string }
+        date: { type: string, format: date-time }
+        quantity: { type: number }
+        void: { type: boolean }
+        company: { type: string, format: uuid }
+        location: { type: string, format: uuid }
+        salesID: { type: string, format: uuid }
+        salesAccount: { type: string }
+        category: { type: string }
+        houseAccountTransaction: { type: string, format: uuid }
+        transactionDetailID: { type: string, format: uuid }
+        cateringEvent: { type: string, format: uuid }
+        menuItemId: { type: integer, format: int64 }
+        dailySalesSummaryId: { type: string, format: uuid }
+        createdOn: { type: string, format: date-time }
+        modifiedOn: { type: string, format: date-time }
+        createdBy: { type: string }
+        modifiedBy: { type: string }
+    SalesPayment:
+      type: object
+      properties:
+        salespaymentId: { type: string, format: uuid }
+        name: { type: string }
+        amount: { type: number }
+        comment: { type: string }
+        customerPOSText: { type: string }
+        date: { type: string, format: date-time }
+        isException: { type: boolean }
+        missingreceipt: { type: boolean }
+        company: { type: string, format: uuid }
+        location: { type: string, format: uuid }
+        paymenttype: { type: string }
+        paymentGroup: { type: string }
+        salesID: { type: string, format: uuid }
+        houseAccountTransaction: { type: string, format: uuid }
+        transactionDetailID: { type: string, format: uuid }
+        cateringEvent: { type: string, format: uuid }
+        exclude: { type: boolean }
+        dailySalesSummaryId: { type: string, format: uuid }
+        createdOn: { type: string, format: date-time }
+        modifiedOn: { type: string, format: date-time }
+        createdBy: { type: string }
+        modifiedBy: { type: string }
+    EntityDeleted:
+      type: object
+      properties:
+        entityDeletedId: { type: integer }
+        entityId: { type: string, format: uuid }
+        entityName: { type: string }
+        deletedOn: { type: string, format: date-time }
+        rowVersion: { type: integer, format: int64 }
+paths:
+  /$metadata:
+    get:
+      operationId: getMetadata
+      summary: Get OData Service Metadata
+      description: Retrieve the OData EDMX metadata document describing all views and their properties.
+      tags:
+        - Metadata
+      security:
+        - basicAuth: []
+      responses:
+        '200':
+          description: OData metadata document (EDMX/XML)
+          content:
+            application/xml:
+              schema:
+                type: string
+  /Company:
+    get:
+      operationId: listCompanies
+      summary: List Companies
+      description: List all companies (vendors) in the customer database.
+      tags:
+        - Reference Data
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of companies
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Company'
+  /Location:
+    get:
+      operationId: listLocations
+      summary: List Locations
+      description: List all locations in the customer database.
+      tags:
+        - Reference Data
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of locations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Location'
+  /GLAccount:
+    get:
+      operationId: listGlAccounts
+      summary: List GL Accounts
+      description: List all general ledger accounts with details.
+      tags:
+        - Reference Data
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of GL accounts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/GLAccount'
+  /Item:
+    get:
+      operationId: listItems
+      summary: List Items
+      description: List all items with categorization.
+      tags:
+        - Reference Data
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Item'
+  /JobTitle:
+    get:
+      operationId: listJobTitles
+      summary: List Job Titles
+      description: List all job titles with details.
+      tags:
+        - Reference Data
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of job titles
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/JobTitle'
+  /Employee:
+    get:
+      operationId: listEmployees
+      summary: List Employees
+      description: List all employees with basic information.
+      tags:
+        - Labor
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of employees
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Employee'
+  /POSEmployee:
+    get:
+      operationId: listPosEmployees
+      summary: List POS Employees
+      description: Retrieve the data mapping between R365 and POS employee records.
+      tags:
+        - Labor
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of POS employee mappings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/POSEmployee'
+  /LaborDetail:
+    get:
+      operationId: listLaborDetail
+      summary: List Labor Detail
+      description: Retrieve employee punch time details, including clock in and clock out.
+      tags:
+        - Labor
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of labor detail records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LaborDetail'
+  /PayrollSummary:
+    get:
+      operationId: listPayrollSummary
+      summary: List Payroll Summary
+      description: Retrieve a list of labor records summarized for payroll.
+      tags:
+        - Labor
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of payroll summary records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PayrollSummary'
+  /Transaction:
+    get:
+      operationId: listTransactions
+      summary: List Transactions
+      description: Retrieve a list of financial transactions.
+      tags:
+        - Transactions
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of transactions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Transaction'
+  /TransactionDetail:
+    get:
+      operationId: listTransactionDetail
+      summary: List Transaction Detail
+      description: Retrieve financial transaction details at the item level.
+      tags:
+        - Transactions
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of transaction detail records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TransactionDetail'
+  /SalesEmployee:
+    get:
+      operationId: listSalesEmployee
+      summary: List Sales Employee Tickets
+      description: >-
+        Retrieve sales ticket header data. This view does not support $select or
+        $count and is limited to a 31-day date range per request.
+      tags:
+        - Sales
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of sales ticket headers
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SalesEmployee'
+  /SalesDetail:
+    get:
+      operationId: listSalesDetail
+      summary: List Sales Detail
+      description: >-
+        Retrieve sales ticket line items. This view does not support $select or
+        $count and is limited to a 31-day date range per request.
+      tags:
+        - Sales
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of sales line items
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SalesDetail'
+  /SalesPayment:
+    get:
+      operationId: listSalesPayment
+      summary: List Sales Payments
+      description: >-
+        Retrieve sales payment data. This view does not support $select or
+        $count and is limited to a 31-day date range per request.
+      tags:
+        - Sales
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of sales payments
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/SalesPayment'
+  /EntityDeleted:
+    get:
+      operationId: listEntityDeleted
+      summary: List Deleted Entities
+      description: Retrieve a list of records deleted from the system.
+      tags:
+        - Audit
+      security:
+        - basicAuth: []
+      parameters:
+        - $ref: '#/components/parameters/filter'
+        - $ref: '#/components/parameters/orderby'
+        - $ref: '#/components/parameters/select'
+        - $ref: '#/components/parameters/skip'
+        - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of deleted entity records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EntityDeleted'

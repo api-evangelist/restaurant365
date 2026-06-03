@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/restaurant365/main/json-structure/r365-api-journal-entry-structure.json",
+  "name": "JournalEntry",
+  "description": "A general ledger journal entry line submitted to the R365 API. Debits and credits must balance across the entry.",
+  "type": "object",
+  "properties": {
+    "BatchId": { "type": "string" },
+    "userId": { "type": "string" },
+    "JENumber": { "type": "string" },
+    "Date": { "type": "string" },
+    "JEComment": { "type": "string" },
+    "JELocation": { "type": "string" },
+    "Account": { "type": "string" },
+    "Debit": { "type": "double" },
+    "Credit": { "type": "double" },
+    "DetailLocation": { "type": "string" },
+    "PayrollJournalEntry": { "type": "boolean" },
+    "PayrollStartDate": { "type": "string" },
+    "PayrollEndDate": { "type": "string" }
+  },
+  "required": ["Date", "JELocation", "Account", "Debit", "Credit", "DetailLocation"]
+}

@@ -7,10 +7,10 @@ description: >-
   approved third-party vendors and partners connect to a customer's R365
   database to retrieve data and create or push records such as AP invoices and
   general ledger entries. A complementary OData connector exposes sales,
-  transaction, location, GL account, and employee data for use in external
-  reporting and business-intelligence tools. API access is provisioned per
-  customer through R365 Support, with bearer-token authentication on every
-  request.
+  transaction, location, GL account, employee, and labor data for use in
+  external reporting and business-intelligence tools. API access is provisioned
+  per customer through R365 Support, with bearer-token authentication on the
+  R365 API and Domain\Username basic authentication on the OData connector.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -23,7 +23,7 @@ tags:
   - OData
 url: https://raw.githubusercontent.com/api-evangelist/restaurant365/refs/heads/main/apis.yml
 created: '2026-06-02'
-modified: '2026-06-02'
+modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
   - aid: restaurant365:rest-api
@@ -31,11 +31,13 @@ apis:
     description: >-
       The R365 API lets approved third-party services and vendors connect to a
       Restaurant365 customer database to retrieve data and create or push
-      records, including AP invoices and general ledger entries. Each request is
-      authenticated with a bearer token generated from an authentication
-      request. Access is provisioned per customer by contacting R365 Support to
-      enable a vendor.
+      records, including AP invoices, GL-coded AP invoices, and general ledger
+      journal entries. A username and password are first exchanged at
+      /APIv1/Authenticate for a bearer token, which is then sent on every
+      subsequent request. Access is provisioned per customer by contacting R365
+      Support to enable a vendor.
     humanURL: https://docs.restaurant365.com/docs/r365-api
+    baseURL: https://yourcompany.restaurant365.com
     tags:
       - Invoices
       - General Ledger
@@ -45,14 +47,44 @@ apis:
         url: https://docs.restaurant365.com/docs/r365-api
       - type: Documentation
         url: https://docs.restaurant365.com/docs/r365-api-connector
+      - type: OpenAPI
+        url: openapi/restaurant365-r365-api-openapi.yml
+      - type: Authentication
+        url: https://docs.restaurant365.com/docs/r365-api-connector
+      - type: JSONSchema
+        url: json-schema/r365-api-ap-invoice-schema.json
+      - type: JSONSchema
+        url: json-schema/r365-api-journal-entry-schema.json
+      - type: JSONStructure
+        url: json-structure/r365-api-ap-invoice-structure.json
+      - type: JSONStructure
+        url: json-structure/r365-api-journal-entry-structure.json
+      - type: JSONLD
+        url: json-ld/restaurant365-r365-api-context.jsonld
+      - type: Example
+        url: examples/r365-api-authenticate-example.json
+      - type: Example
+        url: examples/r365-api-create-ap-invoices-example.json
+      - type: Example
+        url: examples/r365-api-create-ap-invoices-gl-example.json
+      - type: Example
+        url: examples/r365-api-create-journal-entries-example.json
+      - type: NaftikoCapability
+        url: capabilities/r365-api-authentication.yaml
+      - type: NaftikoCapability
+        url: capabilities/r365-api-ap-invoices.yaml
+      - type: NaftikoCapability
+        url: capabilities/r365-api-general-ledger.yaml
   - aid: restaurant365:odata-connector
     name: Restaurant365 OData Connector
     description: >-
       The Restaurant365 OData connector exposes R365 data to OData-compatible
-      reporting and BI tools, with views for transactions, transaction detail,
-      company, location, GL account, and employee data. Sales data is retrieved
-      up to one month (31 days) per request, so historical pulls must be planned
-      across multiple calls.
+      reporting and BI tools through read-only views for companies, locations,
+      GL accounts, items, job titles, employees, POS employees, labor detail,
+      payroll summary, transactions, transaction detail, sales, and deleted
+      entities. Most views support $filter, $orderby, $select, $skip, and $top.
+      Sales views are limited to a 31-day date range per request and do not
+      support $select or $count.
     humanURL: https://docs.restaurant365.com/docs/restaurant365-odata-connector
     baseURL: https://odata.restaurant365.net/api/v2/views/
     tags:
@@ -62,6 +94,40 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+      - type: OpenAPI
+        url: openapi/restaurant365-odata-connector-openapi.yml
+      - type: Authentication
+        url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+      - type: JSONSchema
+        url: json-schema/odata-connector-transaction-schema.json
+      - type: JSONSchema
+        url: json-schema/odata-connector-sales-employee-schema.json
+      - type: JSONSchema
+        url: json-schema/odata-connector-gl-account-schema.json
+      - type: JSONSchema
+        url: json-schema/odata-connector-employee-schema.json
+      - type: JSONStructure
+        url: json-structure/odata-connector-transaction-structure.json
+      - type: JSONStructure
+        url: json-structure/odata-connector-sales-employee-structure.json
+      - type: JSONLD
+        url: json-ld/restaurant365-odata-connector-context.jsonld
+      - type: Example
+        url: examples/odata-connector-list-transactions-example.json
+      - type: Example
+        url: examples/odata-connector-list-sales-employee-example.json
+      - type: NaftikoCapability
+        url: capabilities/odata-connector-metadata.yaml
+      - type: NaftikoCapability
+        url: capabilities/odata-connector-reference-data.yaml
+      - type: NaftikoCapability
+        url: capabilities/odata-connector-labor.yaml
+      - type: NaftikoCapability
+        url: capabilities/odata-connector-transactions.yaml
+      - type: NaftikoCapability
+        url: capabilities/odata-connector-sales.yaml
+      - type: NaftikoCapability
+        url: capabilities/odata-connector-audit.yaml
 common:
   - type: Website
     url: https://www.restaurant365.com
@@ -69,6 +135,14 @@ common:
     url: https://docs.restaurant365.com/docs/r365-api
   - type: Pricing
     url: https://www.restaurant365.com/pricing/
+  - type: Plans
+    url: plans/restaurant365-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/restaurant365-rate-limits.yml
+  - type: SpectralRules
+    url: rules/restaurant365-rules.yml
+  - type: Vocabulary
+    url: vocabulary/restaurant365-vocabulary.yml
   - type: Blog
     url: https://www.restaurant365.com/blog/
   - type: GitHubOrganization
@@ -77,6 +151,36 @@ common:
     url: https://www.linkedin.com/company/restaurant365-cloud-erp-for-restaurants
   - type: LLMsTxt
     url: https://docs.restaurant365.com/llms.txt
+  - type: Features
+    data:
+      - name: AP Invoice Automation
+        description: Push vendor AP invoices into the customer database with item or GL-account detail.
+      - name: General Ledger Posting
+        description: Create balanced journal entries and GL-coded AP invoices via the R365 API.
+      - name: OData Reporting Views
+        description: Read-only OData views for transactions, sales, labor, and reference data.
+      - name: Incremental Sync
+        description: rowVersion property supports pulling only records changed since the last sync.
+      - name: Audit Tracking
+        description: EntityDeleted view exposes records removed from the system for audit reconciliation.
+  - type: UseCases
+    data:
+      - name: Vendor Invoice Integration
+        description: Suppliers push electronic invoices directly into a restaurant's R365 ledger.
+      - name: BI And Reporting
+        description: Pull sales, labor, and financial data into external BI and reporting tools via OData.
+      - name: Payroll Export
+        description: Extract labor detail and payroll summary data for downstream payroll processing.
+      - name: Data Warehouse Replication
+        description: Replicate transactions and sales into a warehouse using date-range chunked pulls.
+  - type: Integrations
+    data:
+      - name: Excel
+        description: Connect to OData views through the Excel OData feed and R365 Excel plug-in.
+      - name: Business Intelligence Tools
+        description: Any OData-compatible BI/reporting tool can consume the OData connector views.
+      - name: POS Systems
+        description: POSEmployee and sales views map R365 records to point-of-sale data.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

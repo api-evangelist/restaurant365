@@ -1,0 +1,84 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "R365 API — Authentication"
+  description: >-
+    Authentication — Authentication. 1 operation. Lead operation: Authenticate And Obtain Bearer Token.
+    Self-contained Naftiko capability covering one Restaurant365 business surface.
+  tags:
+    - Restaurant365
+    - R365 API
+    - Authentication
+  created: "2026-06-03"
+  modified: "2026-06-03"
+
+binds:
+  - namespace: env
+    keys:
+      R365_USERNAME: R365_USERNAME
+      R365_PASSWORD: R365_PASSWORD
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "r365-api-authentication"
+      baseUri: "https://yourcompany.restaurant365.com"
+      description: "R365 API — Authentication business capability. Self-contained, no shared references."
+      resources:
+        - name: "authenticate"
+          path: "/APIv1/Authenticate"
+          operations:
+            - name: "authenticate"
+              method: POST
+              description: "Exchange R365 username and password for a bearer token."
+              inputParameters:
+                - name: "body"
+                  in: body
+                  type: object
+                  required: true
+                  description: "Authentication request with UserName and Password."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "r365-api-authentication-rest"
+      port: 8080
+      description: "REST adapter for R365 API — Authentication. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/authenticate"
+          name: "authenticate"
+          description: "REST surface for authentication."
+          operations:
+            - method: POST
+              name: "authenticate"
+              description: "Exchange R365 username and password for a bearer token."
+              call: "r365-api-authentication.authenticate"
+              with:
+                "body": "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "r365-api-authentication-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for R365 API — Authentication. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "authenticate"
+          description: "Exchange R365 username and password for a bearer token."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "r365-api-authentication.authenticate"
+          with:
+            "body": "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."

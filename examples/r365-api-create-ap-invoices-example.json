@@ -1,0 +1,37 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://yourcompany.restaurant365.com/APIv1/APInvoices",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.bearer.token",
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+        "BatchId": "2026-06-03-A",
+        "Vendor_Name": "Sysco Foods",
+        "Retailer_Store_Number": "1042",
+        "Invoice_Date": "06/02/2026",
+        "Invoice_Due_Date": "07/02/2026",
+        "Invoice_Number": "INV-558213",
+        "Invoice_Amount": 482.55,
+        "Product_Number": "SYS-44120",
+        "Quantity": 6,
+        "Invoice_Line_Item_Cost": 80.43,
+        "Extended_Price": 482.55,
+        "Product_Description": "Ground Beef 80/20 - 10lb",
+        "Unit_Of_Measure": "Case",
+        "Split_Case": false
+      }
+    ]
+  },
+  "response": {
+    "errors": [],
+    "success": [
+      {
+        "Count": 1
+      }
+    ],
+    "failures": []
+  }
+}

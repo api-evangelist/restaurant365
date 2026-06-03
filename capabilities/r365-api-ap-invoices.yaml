@@ -1,0 +1,86 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "R365 API — AP Invoices"
+  description: >-
+    Accounts Payable — AP Invoices. 1 operation. Lead operation: Create AP Invoices.
+    Self-contained Naftiko capability covering one Restaurant365 business surface.
+  tags:
+    - Restaurant365
+    - R365 API
+    - AP Invoices
+  created: "2026-06-03"
+  modified: "2026-06-03"
+
+binds:
+  - namespace: env
+    keys:
+      R365_BEARER_TOKEN: R365_BEARER_TOKEN
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "r365-api-ap-invoices"
+      baseUri: "https://yourcompany.restaurant365.com"
+      description: "R365 API — AP Invoices business capability. Self-contained, no shared references."
+      authentication:
+        type: bearer
+        token: "{{env.R365_BEARER_TOKEN}}"
+      resources:
+        - name: "ap-invoices"
+          path: "/APIv1/APInvoices"
+          operations:
+            - name: "createApInvoices"
+              method: POST
+              description: "Create one or more AP invoices with vendor and item-level detail."
+              inputParameters:
+                - name: "body"
+                  in: body
+                  type: array
+                  required: true
+                  description: "Array of AP invoice records."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "r365-api-ap-invoices-rest"
+      port: 8080
+      description: "REST adapter for R365 API — AP Invoices. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/ap-invoices"
+          name: "ap-invoices"
+          description: "REST surface for AP invoices."
+          operations:
+            - method: POST
+              name: "createApInvoices"
+              description: "Create one or more AP invoices with vendor and item-level detail."
+              call: "r365-api-ap-invoices.createApInvoices"
+              with:
+                "body": "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "r365-api-ap-invoices-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for R365 API — AP Invoices. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "create-ap-invoices"
+          description: "Create one or more AP invoices with vendor and item-level detail."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "r365-api-ap-invoices.createApInvoices"
+          with:
+            "body": "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."

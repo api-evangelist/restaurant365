@@ -1,0 +1,128 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "R365 API — General Ledger"
+  description: >-
+    General Ledger — General Ledger. 2 operations. Lead operation: Create AP Invoices By GL Account.
+    Self-contained Naftiko capability covering one Restaurant365 business surface.
+  tags:
+    - Restaurant365
+    - R365 API
+    - General Ledger
+  created: "2026-06-03"
+  modified: "2026-06-03"
+
+binds:
+  - namespace: env
+    keys:
+      R365_BEARER_TOKEN: R365_BEARER_TOKEN
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "r365-api-general-ledger"
+      baseUri: "https://yourcompany.restaurant365.com"
+      description: "R365 API — General Ledger business capability. Self-contained, no shared references."
+      authentication:
+        type: bearer
+        token: "{{env.R365_BEARER_TOKEN}}"
+      resources:
+        - name: "ap-invoices-gl"
+          path: "/APIv1/APInvoicesGL"
+          operations:
+            - name: "createApInvoicesGl"
+              method: POST
+              description: "Create AP invoices or credit memos coded by GL account."
+              inputParameters:
+                - name: "body"
+                  in: body
+                  type: array
+                  required: true
+                  description: "Array of GL-coded AP invoice records."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: "journal-entries"
+          path: "/APIv1/JournalEntries"
+          operations:
+            - name: "createJournalEntries"
+              method: POST
+              description: "Create balanced general ledger journal entries."
+              inputParameters:
+                - name: "body"
+                  in: body
+                  type: array
+                  required: true
+                  description: "Array of journal entry lines; debits and credits must balance."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "r365-api-general-ledger-rest"
+      port: 8080
+      description: "REST adapter for R365 API — General Ledger. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/ap-invoices-gl"
+          name: "ap-invoices-gl"
+          description: "REST surface for GL-coded AP invoices."
+          operations:
+            - method: POST
+              name: "createApInvoicesGl"
+              description: "Create AP invoices or credit memos coded by GL account."
+              call: "r365-api-general-ledger.createApInvoicesGl"
+              with:
+                "body": "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: "/v1/journal-entries"
+          name: "journal-entries"
+          description: "REST surface for journal entries."
+          operations:
+            - method: POST
+              name: "createJournalEntries"
+              description: "Create balanced general ledger journal entries."
+              call: "r365-api-general-ledger.createJournalEntries"
+              with:
+                "body": "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "r365-api-general-ledger-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for R365 API — General Ledger. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "create-ap-invoices-gl"
+          description: "Create AP invoices or credit memos coded by GL account."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "r365-api-general-ledger.createApInvoicesGl"
+          with:
+            "body": "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "create-journal-entries"
+          description: "Create balanced general ledger journal entries."
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: "r365-api-general-ledger.createJournalEntries"
+          with:
+            "body": "tools.body"
+          outputParameters:
+            - type: object
+              mapping: "$."

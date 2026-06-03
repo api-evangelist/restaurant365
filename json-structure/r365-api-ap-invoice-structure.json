@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/restaurant365/main/json-structure/r365-api-ap-invoice-structure.json",
+  "name": "APInvoice",
+  "description": "An accounts payable invoice line submitted to the R365 API with vendor and item-level detail.",
+  "type": "object",
+  "properties": {
+    "BatchId": { "type": "string" },
+    "userId": { "type": "string" },
+    "Vendor_Name": { "type": "string" },
+    "Retailer_Store_Number": { "type": "string" },
+    "Invoice_Date": { "type": "string" },
+    "Invoice_Due_Date": { "type": "string" },
+    "Invoice_Number": { "type": "string" },
+    "Invoice_Amount": { "type": "double" },
+    "Image_URL": { "type": "uri" },
+    "Product_Number": { "type": "string" },
+    "Quantity": { "type": "double" },
+    "Invoice_Line_Item_Cost": { "type": "double" },
+    "Extended_Price": { "type": "double" },
+    "Product_Description": { "type": "string" },
+    "Unit_Of_Measure": { "type": "string" },
+    "Split_Case": { "type": "boolean" }
+  },
+  "required": ["Vendor_Name", "Retailer_Store_Number", "Invoice_Date"]
+}

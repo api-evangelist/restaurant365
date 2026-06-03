@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/restaurant365/main/json-schema/odata-connector-employee-schema.json",
+  "title": "Employee",
+  "description": "An employee record exposed by the Restaurant365 OData connector Employee view.",
+  "type": "object",
+  "properties": {
+    "employeeId": { "type": "string", "format": "uuid" },
+    "fullName": { "type": "string" },
+    "firstName": { "type": "string" },
+    "middleName": { "type": "string" },
+    "lastName": { "type": "string" },
+    "address1": { "type": "string" },
+    "address2": { "type": "string" },
+    "city": { "type": "string" },
+    "state": { "type": "string" },
+    "zipCode": { "type": "string" },
+    "email": { "type": "string", "format": "email" },
+    "phoneNumber": { "type": "string" },
+    "mobilePhone": { "type": "string" },
+    "hireDate": { "type": "string", "format": "date-time" },
+    "payrollID": { "type": "string" },
+    "posid": { "type": "string" },
+    "primaryLocation_id": { "type": "string", "format": "uuid" },
+    "inactive": { "type": "boolean" },
+    "createdBy": { "type": "string" },
+    "createdOn": { "type": "string", "format": "date-time" },
+    "modifiedBy": { "type": "string" },
+    "modifiedOn": { "type": "string", "format": "date-time" }
+  }
+}

@@ -1,0 +1,68 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Restaurant365
+providerId: restaurant365
+created: '2026-06-03'
+modified: '2026-06-03'
+reconciled: false
+tags:
+  - Rate Limiting
+  - OData
+  - Reporting
+  - Accounting
+description: >-
+  Restaurant365 does not publish numeric per-second or per-minute request rate
+  limits for the R365 API or OData connector. The documented constraints are
+  data-volume limits enforced on the OData connector's sales views: sales data
+  (SalesEmployee, SalesDetail, SalesPayment) is limited to a 31-day date range
+  per request, and several high-volume sales endpoints are deliberately throttled
+  to prevent pulling excessive data in a single call. Access is provisioned per
+  customer through R365 Support, so effective ceilings are account-scoped. The
+  recommended pattern is to retrieve header records (Transaction or SalesEmployee)
+  and then query details by ID, using the rowVersion property for incremental
+  pulls.
+sources:
+  - https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - https://docs.restaurant365.com/docs/r365-api-connector
+responseCodes:
+  dateRangeExceeded: 400
+  throttled: 429
+limits:
+  - name: OData sales views date range
+    scope: account/service
+    metric: varies
+    limit: '31-day maximum date range per request on SalesEmployee, SalesDetail, and SalesPayment'
+    notes: >-
+      Exceeding the range returns "The filter exceeds the date limit of 31 days,
+      please limit your date range and try again." Historical pulls must be
+      chunked across multiple requests.
+  - name: OData high-volume sales throttling
+    scope: account/service
+    metric: varies
+    limit: 'documented throttling on high-volume sales endpoints; no published numeric rate'
+    notes: >-
+      Sales endpoints are intentionally throttled to limit data pulled per call.
+      SalesEmployee, SalesDetail, and SalesPayment also do not support $select or
+      $count.
+  - name: R365 API request rate
+    scope: account
+    metric: varies
+    limit: 'no published numeric rate limit; account-provisioned via R365 Support'
+policies:
+  - name: Incremental extraction
+    description: >-
+      Use the rowVersion property to pull only records changed since the last
+      sync rather than re-pulling full data sets.
+  - name: Header-then-detail pattern
+    description: >-
+      Query header views (Transaction, SalesEmployee) for IDs first, then query
+      detail views by those IDs to avoid hitting volume throttles.
+  - name: Date-range chunking
+    description: >-
+      Split historical sales pulls into consecutive 31-day windows to stay within
+      the documented date-range limit.
+  - name: Access provisioning
+    description: >-
+      API and OData access is enabled per customer/vendor by R365 Support;
+      effective limits are account-scoped rather than publicly published.

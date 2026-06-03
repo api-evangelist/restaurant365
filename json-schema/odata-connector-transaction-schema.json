@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/restaurant365/main/json-schema/odata-connector-transaction-schema.json",
+  "title": "Transaction",
+  "description": "A financial transaction exposed by the Restaurant365 OData connector Transaction view.",
+  "type": "object",
+  "properties": {
+    "transactionId": { "type": "string", "format": "uuid" },
+    "locationId": { "type": "string", "format": "uuid" },
+    "locationName": { "type": "string" },
+    "date": { "type": "string", "format": "date-time" },
+    "transactionNumber": { "type": "string" },
+    "name": { "type": "string" },
+    "type": { "type": "string" },
+    "companyId": { "type": "string", "format": "uuid" },
+    "rowVersion": { "type": "integer", "format": "int64" },
+    "isApproved": { "type": "boolean" },
+    "isTemplate": { "type": "boolean" },
+    "createdOn": { "type": "string", "format": "date-time" },
+    "modifiedOn": { "type": "string", "format": "date-time" },
+    "createdBy": { "type": "string" },
+    "modifiedBy": { "type": "string" }
+  }
+}

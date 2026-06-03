@@ -1,0 +1,47 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://odata.restaurant365.net/api/v2/views/Transaction?$filter=date ge 2026-05-01T00:00:00Z&$orderby=date desc&$top=2",
+    "headers": {
+      "Authorization": "Basic <base64(domain\\username:password)>"
+    }
+  },
+  "response": {
+    "value": [
+      {
+        "transactionId": "b1d2e3f4-5a6b-7c8d-9e0f-1a2b3c4d5e6f",
+        "locationId": "a0b1c2d3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+        "locationName": "Downtown 01",
+        "date": "2026-05-30T00:00:00Z",
+        "transactionNumber": "AP-00231",
+        "name": "Sysco Foods",
+        "type": "AP Invoice",
+        "companyId": "c1c2c3c4-d5d6-e7e8-f9f0-a1a2a3a4a5a6",
+        "rowVersion": 884512,
+        "isApproved": true,
+        "isTemplate": false,
+        "createdOn": "2026-05-30T14:22:10Z",
+        "modifiedOn": "2026-05-30T14:25:01Z",
+        "createdBy": "ap.clerk",
+        "modifiedBy": "ap.clerk"
+      },
+      {
+        "transactionId": "c2d3e4f5-6a7b-8c9d-0e1f-2a3b4c5d6e7f",
+        "locationId": "a0b1c2d3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+        "locationName": "Downtown 01",
+        "date": "2026-05-29T00:00:00Z",
+        "transactionNumber": "JE-1000",
+        "name": "Reclassify catering revenue",
+        "type": "Journal Entry",
+        "companyId": "c1c2c3c4-d5d6-e7e8-f9f0-a1a2a3a4a5a6",
+        "rowVersion": 884498,
+        "isApproved": true,
+        "isTemplate": false,
+        "createdOn": "2026-05-29T09:10:00Z",
+        "modifiedOn": "2026-05-29T09:10:00Z",
+        "createdBy": "controller",
+        "modifiedBy": "controller"
+      }
+    ]
+  }
+}

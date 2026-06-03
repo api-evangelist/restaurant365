@@ -1,0 +1,40 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://odata.restaurant365.net/api/v2/views/SalesEmployee?$filter=date ge 2026-05-01T00:00:00Z and date le 2026-05-31T00:00:00Z&$top=1",
+    "headers": {
+      "Authorization": "Basic <base64(domain\\username:password)>"
+    },
+    "notes": "SalesEmployee is limited to a 31-day date range per request and does not support $select or $count."
+  },
+  "response": {
+    "value": [
+      {
+        "salesId": "d3e4f5a6-7b8c-9d0e-1f2a-3b4c5d6e7f80",
+        "receiptNumber": "R-558201",
+        "checkNumber": "112",
+        "date": "2026-05-15T18:42:00Z",
+        "dayOfWeek": "Thursday",
+        "dayPart": "Dinner",
+        "netSales": 84.50,
+        "grossSales": 92.30,
+        "numberofGuests": 3,
+        "orderHour": 18,
+        "salesAmount": 84.50,
+        "taxAmount": 7.80,
+        "tipAmount": 16.90,
+        "totalAmount": 109.20,
+        "totalPayment": 109.20,
+        "void": false,
+        "server": "Jordan M.",
+        "location": "a0b1c2d3-4e5f-6a7b-8c9d-0e1f2a3b4c5d",
+        "serviceType": "Dine In",
+        "dailySalesSummaryId": "e4f5a6b7-8c9d-0e1f-2a3b-4c5d6e7f8091",
+        "createdOn": "2026-05-15T18:45:00Z",
+        "modifiedOn": "2026-05-15T18:45:00Z",
+        "createdBy": "pos.import",
+        "modifiedBy": "pos.import"
+      }
+    ]
+  }
+}

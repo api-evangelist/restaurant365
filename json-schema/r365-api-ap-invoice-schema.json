@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/restaurant365/main/json-schema/r365-api-ap-invoice-schema.json",
+  "title": "APInvoice",
+  "description": "An accounts payable invoice line submitted to the R365 API with vendor and item-level detail.",
+  "type": "object",
+  "required": ["Vendor_Name", "Retailer_Store_Number", "Invoice_Date"],
+  "properties": {
+    "BatchId": { "type": "string", "description": "Optional batch identifier grouping records." },
+    "userId": { "type": "string", "description": "Optional submitting user identifier." },
+    "Vendor_Name": { "type": "string", "description": "Vendor name as configured in R365." },
+    "Retailer_Store_Number": { "type": "string", "description": "Retailer store number for the location." },
+    "Invoice_Date": { "type": "string", "description": "Invoice date in MM/DD/YYYY format." },
+    "Invoice_Due_Date": { "type": "string", "description": "Invoice due date in MM/DD/YYYY format." },
+    "Invoice_Number": { "type": "string", "description": "Vendor invoice number." },
+    "Invoice_Amount": { "type": "number", "description": "Total invoice amount." },
+    "Image_URL": { "type": "string", "format": "uri", "description": "URL of the invoice image." },
+    "Product_Number": { "type": "string", "description": "Vendor item (product) number." },
+    "Quantity": { "type": "number", "description": "Quantity of the item." },
+    "Invoice_Line_Item_Cost": { "type": "number", "description": "Per-unit cost of the line item." },
+    "Extended_Price": { "type": "number", "description": "Extended price for the line item." },
+    "Product_Description": { "type": "string", "description": "Description of the item." },
+    "Unit_Of_Measure": { "type": "string", "description": "Unit of measure; must match an R365 UOFM value." },
+    "Split_Case": { "type": "boolean", "description": "Whether the case is split." }
+  }
+}

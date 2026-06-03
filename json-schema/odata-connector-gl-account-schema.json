@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/restaurant365/main/json-schema/odata-connector-gl-account-schema.json",
+  "title": "GLAccount",
+  "description": "A general ledger account exposed by the Restaurant365 OData connector GLAccount view.",
+  "type": "object",
+  "properties": {
+    "glAccountId": { "type": "string", "format": "uuid" },
+    "glAccountAutoId": { "type": "integer", "format": "int64" },
+    "locationNumber": { "type": "string" },
+    "locationName": { "type": "string" },
+    "locationId": { "type": "string", "format": "uuid" },
+    "legalEntityNumber": { "type": "string" },
+    "legalEntityName": { "type": "string" },
+    "legalEntityId": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "glAccountNumber": { "type": "string" },
+    "glTypeClass": { "type": "integer" },
+    "glType": { "type": "string" },
+    "operationalCategory": { "type": "string" },
+    "createdBy": { "type": "string" },
+    "createdOn": { "type": "string", "format": "date-time" },
+    "modifiedBy": { "type": "string" },
+    "modifiedOn": { "type": "string", "format": "date-time" }
+  }
+}

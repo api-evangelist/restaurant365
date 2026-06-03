@@ -1,0 +1,39 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://yourcompany.restaurant365.com/APIv1/APInvoicesGL",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.bearer.token",
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+        "BatchId": "2026-06-03-GL",
+        "Type": "AP Invoice",
+        "Comment": "Monthly equipment lease",
+        "Vendor": "Restaurant Supply Co",
+        "Date": "06/01/2026",
+        "GL_Date": "06/01/2026",
+        "Due_Date": "06/30/2026",
+        "Location": "Downtown 01",
+        "Number": "RSC-9921",
+        "Amount": 1250.00,
+        "Payment_Terms": "Net 30",
+        "Detail_Account": "6400 - Equipment Lease",
+        "Detail_Amount": 1250.00,
+        "Detail_Comment": "Walk-in cooler lease",
+        "Detail_Location": "Downtown 01",
+        "IsPaid": false
+      }
+    ]
+  },
+  "response": {
+    "errors": [],
+    "success": [
+      {
+        "Count": 1
+      }
+    ],
+    "failures": []
+  }
+}

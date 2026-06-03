@@ -1,0 +1,107 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Restaurant365
+providerId: restaurant365
+created: '2026-06-03'
+modified: '2026-06-03'
+reconciled: false
+tags:
+  - Restaurant
+  - Accounting
+  - Operations
+  - Subscription
+description: >-
+  Restaurant365 is priced as a per-location monthly subscription across tiered
+  product packages (Core, Essential, Professional), with separate add-on modules
+  for workforce/payroll and supply chain. Published per-location list prices vary
+  by billing frequency and promotion; enterprise and multi-location pricing is
+  custom and quoted by sales. API access (the R365 API and OData connector) is
+  not separately metered or sold — it is provisioned per customer through R365
+  Support for accounts on an eligible subscription. Prices below reflect publicly
+  reported figures and should be reconciled against the live pricing page and a
+  sales quote.
+sources:
+  - https://www.restaurant365.com/pricing/
+  - https://www.restaurant365.com/pricing-plans/
+plans:
+  - id: restaurant365-core
+    name: Core
+    type: subscription
+    description: Entry restaurant accounting and operations package.
+    entries:
+      - label: Per Location Subscription
+        name: per_location_subscription
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: US
+        unit: '1'
+        price: '$249/location/month'
+        userMultiplied: false
+    elements:
+      - name: Restaurant Accounting
+      - name: Bank Reconciliation
+      - name: Standard Reporting
+  - id: restaurant365-essential
+    name: Essential
+    type: subscription
+    description: Accounting plus expanded operations and inventory.
+    entries:
+      - label: Per Location Subscription
+        name: per_location_subscription
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: US
+        unit: '1'
+        price: '$369/location/month'
+        userMultiplied: false
+    elements:
+      - name: Restaurant Accounting
+      - name: Inventory Management
+      - name: Vendor And AP Automation
+      - name: Operational Reporting
+  - id: restaurant365-professional
+    name: Professional
+    type: subscription
+    description: Full accounting, inventory, and operations with advanced reporting.
+    entries:
+      - label: Per Location Subscription
+        name: per_location_subscription
+        type: subscription
+        metric: month
+        limit: -1
+        timeFrame: month
+        geo: US
+        unit: '1'
+        price: '$459/location/month'
+        userMultiplied: false
+    elements:
+      - name: Restaurant Accounting
+      - name: Advanced Inventory
+      - name: Scheduling And Catalog
+      - name: Advanced Reporting And Dashboards
+      - name: R365 API And OData Connector Access
+  - id: restaurant365-enterprise
+    name: Enterprise / Custom
+    type: enterprise
+    description: Custom multi-location and enterprise pricing quoted by sales, including workforce and supply chain add-ons.
+    entries:
+      - label: Custom Quote
+        name: custom_quote
+        type: subscription
+        metric: varies
+        limit: -1
+        timeFrame: month
+        geo: US
+        unit: '1'
+        price: custom
+        userMultiplied: false
+    elements:
+      - name: All Professional Features
+      - name: Workforce And Payroll Add-On
+      - name: Supply Chain Add-On
+      - name: Dedicated Implementation

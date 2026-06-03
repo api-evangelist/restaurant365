@@ -1,0 +1,43 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://yourcompany.restaurant365.com/APIv1/JournalEntries",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.bearer.token",
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+        "BatchId": "JE-2026-06",
+        "JENumber": "JE-1001",
+        "Date": "06/01/2026",
+        "JEComment": "Reclassify catering revenue",
+        "JELocation": "Downtown 01",
+        "Account": "4100 - Catering Revenue",
+        "Debit": 0.00,
+        "Credit": 850.00,
+        "DetailLocation": "Downtown 01"
+      },
+      {
+        "BatchId": "JE-2026-06",
+        "JENumber": "JE-1001",
+        "Date": "06/01/2026",
+        "JEComment": "Reclassify catering revenue",
+        "JELocation": "Downtown 01",
+        "Account": "4000 - Food Revenue",
+        "Debit": 850.00,
+        "Credit": 0.00,
+        "DetailLocation": "Downtown 01"
+      }
+    ]
+  },
+  "response": {
+    "errors": [],
+    "success": [
+      {
+        "Count": 1
+      }
+    ],
+    "failures": []
+  }
+}

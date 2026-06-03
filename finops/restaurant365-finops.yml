@@ -1,0 +1,74 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Restaurant365
+providerId: restaurant365
+created: '2026-06-03'
+modified: '2026-06-03'
+reconciled: false
+tags:
+  - FinOps
+  - FOCUS
+  - Restaurant
+  - Accounting
+  - Subscription
+description: >-
+  FOCUS-aligned FinOps for Restaurant365: a per-location tiered SaaS subscription
+  for restaurant accounting, inventory, and operations, with custom enterprise
+  quotes and add-on modules. API and OData access is bundled into the subscription
+  rather than separately metered.
+sources:
+  - https://www.restaurant365.com/pricing/
+  - https://docs.restaurant365.com/docs/r365-api-connector
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Restaurant365
+serviceCategory: Restaurant Management Software
+billingModel:
+  pricingCategory: Tiered Subscription
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Purchase
+    - Usage
+    - Tax
+focusColumns:
+  ServiceName: Restaurant365
+  ServiceCategory: Restaurant Management Software
+  ChargeCategory: Purchase
+  PricingUnit: Location-Month
+  BillingCurrency: USD
+  PricingCategory: Committed
+  CommitmentDiscountCategory: Subscription
+meters:
+  - name: per_location_subscription
+    label: Per-Location Subscription
+    description: Monthly subscription charged per restaurant location based on the chosen tier.
+    pricingUnit: Location-Month
+    chargeCategory: Purchase
+    focusChargeFrequency: Recurring
+  - name: add_on_modules
+    label: Add-On Modules
+    description: Workforce/payroll and supply chain modules added to a base subscription.
+    pricingUnit: Location-Month
+    chargeCategory: Purchase
+    focusChargeFrequency: Recurring
+  - name: api_odata_access
+    label: API And OData Access
+    description: R365 API and OData connector access provisioned with the subscription; not separately metered.
+    pricingUnit: Bundled
+    chargeCategory: Usage
+    focusChargeFrequency: Bundled
+principles:
+  - name: Teams need to collaborate
+    description: Finance, operations, and IT teams share the per-location subscription cost and align on which locations and modules are active.
+  - name: Decisions are driven by business value
+    description: Tier and add-on selection (Core vs Essential vs Professional) is driven by the operational value each location needs.
+  - name: Everyone takes ownership of their usage
+    description: Location managers own the modules and seats activated for their sites, keeping the per-location bill aligned to actual use.
+  - name: FinOps data should be accessible and timely
+    description: Subscription and module charges are billed monthly per location, giving multi-unit operators a timely view of cost per site.

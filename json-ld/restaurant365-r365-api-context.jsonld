@@ -1,0 +1,37 @@
+{
+  "@context": {
+    "r365": "https://raw.githubusercontent.com/api-evangelist/restaurant365/main/json-ld/restaurant365-r365-api-context.jsonld#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "APInvoice": "r365:APInvoice",
+    "APInvoiceGL": "r365:APInvoiceGL",
+    "JournalEntry": "r365:JournalEntry",
+
+    "Vendor_Name": { "@id": "r365:vendorName", "@type": "xsd:string" },
+    "Vendor": { "@id": "r365:vendorName", "@type": "xsd:string" },
+    "Retailer_Store_Number": { "@id": "r365:retailerStoreNumber", "@type": "xsd:string" },
+    "Invoice_Date": { "@id": "r365:invoiceDate", "@type": "xsd:string" },
+    "Invoice_Due_Date": { "@id": "r365:invoiceDueDate", "@type": "xsd:string" },
+    "Invoice_Number": { "@id": "r365:invoiceNumber", "@type": "xsd:string" },
+    "Number": { "@id": "r365:documentNumber", "@type": "xsd:string" },
+    "Invoice_Amount": { "@id": "schema:price", "@type": "xsd:decimal" },
+    "Amount": { "@id": "schema:price", "@type": "xsd:decimal" },
+    "Image_URL": { "@id": "schema:image", "@type": "xsd:anyURI" },
+    "Product_Number": { "@id": "r365:productNumber", "@type": "xsd:string" },
+    "Product_Description": { "@id": "schema:description", "@type": "xsd:string" },
+    "Quantity": { "@id": "r365:quantity", "@type": "xsd:decimal" },
+    "Unit_Of_Measure": { "@id": "r365:unitOfMeasure", "@type": "xsd:string" },
+    "Location": { "@id": "r365:location", "@type": "xsd:string" },
+    "Detail_Account": { "@id": "r365:glAccount", "@type": "xsd:string" },
+    "Account": { "@id": "r365:glAccount", "@type": "xsd:string" },
+    "Debit": { "@id": "r365:debit", "@type": "xsd:decimal" },
+    "Credit": { "@id": "r365:credit", "@type": "xsd:decimal" },
+    "Date": { "@id": "dcterms:date", "@type": "xsd:string" },
+    "GL_Date": { "@id": "r365:glDate", "@type": "xsd:string" },
+    "JELocation": { "@id": "r365:location", "@type": "xsd:string" },
+    "BatchId": { "@id": "r365:batchId", "@type": "xsd:string" },
+    "Type": { "@id": "dcterms:type", "@type": "xsd:string" }
+  }
+}
