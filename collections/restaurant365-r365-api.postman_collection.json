@@ -1,0 +1,749 @@
+{
+  "item": [
+    {
+      "id": "99dea0b7-9ecc-40d7-a28e-23afd217ae12",
+      "name": "Authentication",
+      "description": {
+        "content": "Obtain a bearer token for subsequent requests",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f996eff-7e3c-4340-8692-63b7b7124631",
+          "name": "Authenticate And Obtain Bearer Token",
+          "request": {
+            "name": "Authenticate And Obtain Bearer Token",
+            "description": {
+              "content": "Exchange an R365 username and password for a bearer token that must be sent in the Authorization header on all subsequent API requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "APIv1",
+                "Authenticate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The unique customer subdomain assigned by Restaurant365",
+                  "type": "any",
+                  "value": "{{customerHost}}",
+                  "key": "customerHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f72808cb-929b-4315-84e3-1cf34bc34525",
+              "name": "Authentication succeeded; bearer token returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "Authenticate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique customer subdomain assigned by Restaurant365",
+                      "type": "any",
+                      "value": "{{customerHost}}",
+                      "key": "customerHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"SessionId\": \"string\",\n  \"UserName\": \"string\",\n  \"BearerToken\": \"string\",\n  \"ResponseStatus\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3a4b82a-ff91-43e8-88f8-ee60d5f5f401",
+              "name": "Invalid credentials",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "Authenticate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique customer subdomain assigned by Restaurant365",
+                      "type": "any",
+                      "value": "{{customerHost}}",
+                      "key": "customerHost"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"UserName\": \"<string>\",\n  \"Password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2ddb33a1-2a4f-427d-9e92-c51d8868777e",
+      "name": "AP Invoices",
+      "description": {
+        "content": "Create accounts payable invoices in the customer database",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7d309444-c72d-4c71-bb84-0d87ccb6beda",
+          "name": "Create AP Invoices",
+          "request": {
+            "name": "Create AP Invoices",
+            "description": {
+              "content": "Create one or more accounts payable invoices in the customer database using vendor and product (item) level detail. Vendor name and retailer store number must match values configured in the customer's R365 database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "APIv1",
+                "APInvoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The unique customer subdomain assigned by Restaurant365",
+                  "type": "any",
+                  "value": "{{customerHost}}",
+                  "key": "customerHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"Vendor_Name\": \"<string>\",\n    \"Retailer_Store_Number\": \"<string>\",\n    \"Invoice_Date\": \"<string>\",\n    \"BatchId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"Invoice_Due_Date\": \"<string>\",\n    \"Invoice_Number\": \"<string>\",\n    \"Invoice_Amount\": \"<number>\",\n    \"Image_URL\": \"<uri>\",\n    \"Product_Number\": \"<string>\",\n    \"Quantity\": \"<number>\",\n    \"Invoice_Line_Item_Cost\": \"<number>\",\n    \"Extended_Price\": \"<number>\",\n    \"Product_Description\": \"<string>\",\n    \"Unit_Of_Measure\": \"<string>\",\n    \"Split_Case\": \"<boolean>\"\n  },\n  {\n    \"Vendor_Name\": \"<string>\",\n    \"Retailer_Store_Number\": \"<string>\",\n    \"Invoice_Date\": \"<string>\",\n    \"BatchId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"Invoice_Due_Date\": \"<string>\",\n    \"Invoice_Number\": \"<string>\",\n    \"Invoice_Amount\": \"<number>\",\n    \"Image_URL\": \"<uri>\",\n    \"Product_Number\": \"<string>\",\n    \"Quantity\": \"<number>\",\n    \"Invoice_Line_Item_Cost\": \"<number>\",\n    \"Extended_Price\": \"<number>\",\n    \"Product_Description\": \"<string>\",\n    \"Unit_Of_Measure\": \"<string>\",\n    \"Split_Case\": \"<boolean>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5487633-3510-4de2-9391-3deefeb177aa",
+              "name": "Processing result with successes and failures",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "APInvoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique customer subdomain assigned by Restaurant365",
+                      "type": "any",
+                      "value": "{{customerHost}}",
+                      "key": "customerHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"Vendor_Name\": \"string\",\n    \"Retailer_Store_Number\": \"string\",\n    \"Invoice_Date\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Invoice_Due_Date\": \"string\",\n    \"Invoice_Number\": \"string\",\n    \"Invoice_Amount\": 8951.161247881004,\n    \"Image_URL\": \"http://PydHXIDgkGwpPqBeHPQHBGmR.rehqNeCAhcFHaDLC7hIvlHc.IT,rilmlREQk2,U6Jm8o6+sx\",\n    \"Product_Number\": \"string\",\n    \"Quantity\": 9259.376823115757,\n    \"Invoice_Line_Item_Cost\": 1719.3437137205192,\n    \"Extended_Price\": 8777.285224304498,\n    \"Product_Description\": \"string\",\n    \"Unit_Of_Measure\": \"string\",\n    \"Split_Case\": true\n  },\n  {\n    \"Vendor_Name\": \"string\",\n    \"Retailer_Store_Number\": \"string\",\n    \"Invoice_Date\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Invoice_Due_Date\": \"string\",\n    \"Invoice_Number\": \"string\",\n    \"Invoice_Amount\": 1517.4256335094383,\n    \"Image_URL\": \"http://eRN.sciniUkifXFr-2CIGmy7pwXDkaWH8bNx+t3+5JU-qIycTDiiHoP0VB.Sr0\",\n    \"Product_Number\": \"string\",\n    \"Quantity\": 4456.284619271489,\n    \"Invoice_Line_Item_Cost\": 9821.842754896817,\n    \"Extended_Price\": 1634.3016030648848,\n    \"Product_Description\": \"string\",\n    \"Unit_Of_Measure\": \"string\",\n    \"Split_Case\": true\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    },\n    {\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    }\n  ],\n  \"success\": [\n    {\n      \"Count\": 1122\n    },\n    {\n      \"Count\": 8797\n    }\n  ],\n  \"failures\": [\n    {\n      \"record\": \"string\",\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    },\n    {\n      \"record\": \"string\",\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0d41d51-14a7-46ba-b233-db32064511c5",
+              "name": "Missing or invalid bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "APInvoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique customer subdomain assigned by Restaurant365",
+                      "type": "any",
+                      "value": "{{customerHost}}",
+                      "key": "customerHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"Vendor_Name\": \"string\",\n    \"Retailer_Store_Number\": \"string\",\n    \"Invoice_Date\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Invoice_Due_Date\": \"string\",\n    \"Invoice_Number\": \"string\",\n    \"Invoice_Amount\": 8951.161247881004,\n    \"Image_URL\": \"http://PydHXIDgkGwpPqBeHPQHBGmR.rehqNeCAhcFHaDLC7hIvlHc.IT,rilmlREQk2,U6Jm8o6+sx\",\n    \"Product_Number\": \"string\",\n    \"Quantity\": 9259.376823115757,\n    \"Invoice_Line_Item_Cost\": 1719.3437137205192,\n    \"Extended_Price\": 8777.285224304498,\n    \"Product_Description\": \"string\",\n    \"Unit_Of_Measure\": \"string\",\n    \"Split_Case\": true\n  },\n  {\n    \"Vendor_Name\": \"string\",\n    \"Retailer_Store_Number\": \"string\",\n    \"Invoice_Date\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Invoice_Due_Date\": \"string\",\n    \"Invoice_Number\": \"string\",\n    \"Invoice_Amount\": 1517.4256335094383,\n    \"Image_URL\": \"http://eRN.sciniUkifXFr-2CIGmy7pwXDkaWH8bNx+t3+5JU-qIycTDiiHoP0VB.Sr0\",\n    \"Product_Number\": \"string\",\n    \"Quantity\": 4456.284619271489,\n    \"Invoice_Line_Item_Cost\": 9821.842754896817,\n    \"Extended_Price\": 1634.3016030648848,\n    \"Product_Description\": \"string\",\n    \"Unit_Of_Measure\": \"string\",\n    \"Split_Case\": true\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "91b15364-8ea0-4c86-95c4-91c806b2c951",
+      "name": "General Ledger",
+      "description": {
+        "content": "Create AP invoices by GL account and journal entries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c66edbb-6905-4764-8b64-88004350a208",
+          "name": "Create AP Invoices By GL Account",
+          "request": {
+            "name": "Create AP Invoices By GL Account",
+            "description": {
+              "content": "Create one or more accounts payable invoices or AP credit memos using GL account level detail rather than item detail. Use this when invoices should be coded directly to general ledger accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "APIv1",
+                "APInvoicesGL"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The unique customer subdomain assigned by Restaurant365",
+                  "type": "any",
+                  "value": "{{customerHost}}",
+                  "key": "customerHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"Type\": \"<string>\",\n    \"Vendor\": \"<string>\",\n    \"Date\": \"<string>\",\n    \"GL_Date\": \"<string>\",\n    \"Location\": \"<string>\",\n    \"Number\": \"<string>\",\n    \"Amount\": \"<number>\",\n    \"Detail_Account\": \"<string>\",\n    \"Detail_Amount\": \"<number>\",\n    \"Detail_Location\": \"<string>\",\n    \"BatchId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"Comment\": \"<string>\",\n    \"Due_Date\": \"<string>\",\n    \"Payment_Terms\": \"<string>\",\n    \"Detail_Comment\": \"<string>\",\n    \"Image_URL\": \"<uri>\",\n    \"IsPaid\": \"<boolean>\",\n    \"Paid_Account\": \"<string>\"\n  },\n  {\n    \"Type\": \"<string>\",\n    \"Vendor\": \"<string>\",\n    \"Date\": \"<string>\",\n    \"GL_Date\": \"<string>\",\n    \"Location\": \"<string>\",\n    \"Number\": \"<string>\",\n    \"Amount\": \"<number>\",\n    \"Detail_Account\": \"<string>\",\n    \"Detail_Amount\": \"<number>\",\n    \"Detail_Location\": \"<string>\",\n    \"BatchId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"Comment\": \"<string>\",\n    \"Due_Date\": \"<string>\",\n    \"Payment_Terms\": \"<string>\",\n    \"Detail_Comment\": \"<string>\",\n    \"Image_URL\": \"<uri>\",\n    \"IsPaid\": \"<boolean>\",\n    \"Paid_Account\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b71f5907-0baa-4baa-9322-2229eefe4a52",
+              "name": "Processing result with successes and failures",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "APInvoicesGL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique customer subdomain assigned by Restaurant365",
+                      "type": "any",
+                      "value": "{{customerHost}}",
+                      "key": "customerHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"Type\": \"AP Invoice\",\n    \"Vendor\": \"string\",\n    \"Date\": \"string\",\n    \"GL_Date\": \"string\",\n    \"Location\": \"string\",\n    \"Number\": \"string\",\n    \"Amount\": 6067.794290664145,\n    \"Detail_Account\": \"string\",\n    \"Detail_Amount\": 7285.442231879721,\n    \"Detail_Location\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Comment\": \"string\",\n    \"Due_Date\": \"string\",\n    \"Payment_Terms\": \"string\",\n    \"Detail_Comment\": \"string\",\n    \"Image_URL\": \"https://EvdziJQQeuirmDzlrjOkZpBYZp.izbd3N3dbm,WtiTAyxHHVuYMJfV-ez4Mknu,r,6zN\",\n    \"IsPaid\": false,\n    \"Paid_Account\": \"string\"\n  },\n  {\n    \"Type\": \"AP Credit Memo\",\n    \"Vendor\": \"string\",\n    \"Date\": \"string\",\n    \"GL_Date\": \"string\",\n    \"Location\": \"string\",\n    \"Number\": \"string\",\n    \"Amount\": 5667.227902156144,\n    \"Detail_Account\": \"string\",\n    \"Detail_Amount\": 2214.440922447146,\n    \"Detail_Location\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Comment\": \"string\",\n    \"Due_Date\": \"string\",\n    \"Payment_Terms\": \"string\",\n    \"Detail_Comment\": \"string\",\n    \"Image_URL\": \"https://EwqfJLgWRJuNaSXOurSsTlGCQW.nkxo-w-6F9kT6,BgK7aBtcFMhmuq+pt-ZTtwNx7ext7HL\",\n    \"IsPaid\": false,\n    \"Paid_Account\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    },\n    {\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    }\n  ],\n  \"success\": [\n    {\n      \"Count\": 1122\n    },\n    {\n      \"Count\": 8797\n    }\n  ],\n  \"failures\": [\n    {\n      \"record\": \"string\",\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    },\n    {\n      \"record\": \"string\",\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6e570eb1-9aaf-47f9-a0c5-6c85a1a5a85d",
+              "name": "Missing or invalid bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "APInvoicesGL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique customer subdomain assigned by Restaurant365",
+                      "type": "any",
+                      "value": "{{customerHost}}",
+                      "key": "customerHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"Type\": \"AP Invoice\",\n    \"Vendor\": \"string\",\n    \"Date\": \"string\",\n    \"GL_Date\": \"string\",\n    \"Location\": \"string\",\n    \"Number\": \"string\",\n    \"Amount\": 6067.794290664145,\n    \"Detail_Account\": \"string\",\n    \"Detail_Amount\": 7285.442231879721,\n    \"Detail_Location\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Comment\": \"string\",\n    \"Due_Date\": \"string\",\n    \"Payment_Terms\": \"string\",\n    \"Detail_Comment\": \"string\",\n    \"Image_URL\": \"https://EvdziJQQeuirmDzlrjOkZpBYZp.izbd3N3dbm,WtiTAyxHHVuYMJfV-ez4Mknu,r,6zN\",\n    \"IsPaid\": false,\n    \"Paid_Account\": \"string\"\n  },\n  {\n    \"Type\": \"AP Credit Memo\",\n    \"Vendor\": \"string\",\n    \"Date\": \"string\",\n    \"GL_Date\": \"string\",\n    \"Location\": \"string\",\n    \"Number\": \"string\",\n    \"Amount\": 5667.227902156144,\n    \"Detail_Account\": \"string\",\n    \"Detail_Amount\": 2214.440922447146,\n    \"Detail_Location\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Comment\": \"string\",\n    \"Due_Date\": \"string\",\n    \"Payment_Terms\": \"string\",\n    \"Detail_Comment\": \"string\",\n    \"Image_URL\": \"https://EwqfJLgWRJuNaSXOurSsTlGCQW.nkxo-w-6F9kT6,BgK7aBtcFMhmuq+pt-ZTtwNx7ext7HL\",\n    \"IsPaid\": false,\n    \"Paid_Account\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1113f6e5-b59f-4ec8-b645-5c7ffc8c19ef",
+          "name": "Create Journal Entries",
+          "request": {
+            "name": "Create Journal Entries",
+            "description": {
+              "content": "Create one or more general ledger journal entries. Debits and credits must balance across the lines of each journal entry. Payroll journal entries require the payroll-specific fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "APIv1",
+                "JournalEntries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The unique customer subdomain assigned by Restaurant365",
+                  "type": "any",
+                  "value": "{{customerHost}}",
+                  "key": "customerHost"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"Date\": \"<string>\",\n    \"JELocation\": \"<string>\",\n    \"Account\": \"<string>\",\n    \"Debit\": \"<number>\",\n    \"Credit\": \"<number>\",\n    \"DetailLocation\": \"<string>\",\n    \"BatchId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"JENumber\": \"<string>\",\n    \"JEComment\": \"<string>\",\n    \"PayrollJournalEntry\": \"<boolean>\",\n    \"PayrollStartDate\": \"<string>\",\n    \"PayrollEndDate\": \"<string>\"\n  },\n  {\n    \"Date\": \"<string>\",\n    \"JELocation\": \"<string>\",\n    \"Account\": \"<string>\",\n    \"Debit\": \"<number>\",\n    \"Credit\": \"<number>\",\n    \"DetailLocation\": \"<string>\",\n    \"BatchId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"JENumber\": \"<string>\",\n    \"JEComment\": \"<string>\",\n    \"PayrollJournalEntry\": \"<boolean>\",\n    \"PayrollStartDate\": \"<string>\",\n    \"PayrollEndDate\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ac057bd4-95d0-48e3-b6d1-fdb5a0703d78",
+              "name": "Processing result with successes and failures",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "JournalEntries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique customer subdomain assigned by Restaurant365",
+                      "type": "any",
+                      "value": "{{customerHost}}",
+                      "key": "customerHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"Date\": \"string\",\n    \"JELocation\": \"string\",\n    \"Account\": \"string\",\n    \"Debit\": 6587.183949922119,\n    \"Credit\": 5806.795805738595,\n    \"DetailLocation\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"JENumber\": \"string\",\n    \"JEComment\": \"string\",\n    \"PayrollJournalEntry\": true,\n    \"PayrollStartDate\": \"string\",\n    \"PayrollEndDate\": \"string\"\n  },\n  {\n    \"Date\": \"string\",\n    \"JELocation\": \"string\",\n    \"Account\": \"string\",\n    \"Debit\": 5879.358644162495,\n    \"Credit\": 2305.4332493421425,\n    \"DetailLocation\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"JENumber\": \"string\",\n    \"JEComment\": \"string\",\n    \"PayrollJournalEntry\": true,\n    \"PayrollStartDate\": \"string\",\n    \"PayrollEndDate\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    },\n    {\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    }\n  ],\n  \"success\": [\n    {\n      \"Count\": 1122\n    },\n    {\n      \"Count\": 8797\n    }\n  ],\n  \"failures\": [\n    {\n      \"record\": \"string\",\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    },\n    {\n      \"record\": \"string\",\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ca601e5-f705-4f96-8a21-a9f286142cb1",
+              "name": "Missing or invalid bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "JournalEntries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The unique customer subdomain assigned by Restaurant365",
+                      "type": "any",
+                      "value": "{{customerHost}}",
+                      "key": "customerHost"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"Date\": \"string\",\n    \"JELocation\": \"string\",\n    \"Account\": \"string\",\n    \"Debit\": 6587.183949922119,\n    \"Credit\": 5806.795805738595,\n    \"DetailLocation\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"JENumber\": \"string\",\n    \"JEComment\": \"string\",\n    \"PayrollJournalEntry\": true,\n    \"PayrollStartDate\": \"string\",\n    \"PayrollEndDate\": \"string\"\n  },\n  {\n    \"Date\": \"string\",\n    \"JELocation\": \"string\",\n    \"Account\": \"string\",\n    \"Debit\": 5879.358644162495,\n    \"Credit\": 2305.4332493421425,\n    \"DetailLocation\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"JENumber\": \"string\",\n    \"JEComment\": \"string\",\n    \"PayrollJournalEntry\": true,\n    \"PayrollStartDate\": \"string\",\n    \"PayrollEndDate\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The unique customer subdomain assigned by Restaurant365",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "yourcompany",
+      "key": "customerHost"
+    },
+    {
+      "type": "string",
+      "value": "https://{{customerHost}}.restaurant365.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1116a104-3c9a-4d39-be95-d49bd00be3f2",
+    "name": "R365 API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The R365 API lets approved third-party services and vendors connect to a Restaurant365 customer database to retrieve data and push records, including accounts payable (AP) invoices and general ledger (GL) entries. Each request is authenticated with a bearer token obtained from the Authenticate operation. Access is provisioned per customer by contacting R365 Support to enable a vendor. All paths are served from the customer's unique R365 database host.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

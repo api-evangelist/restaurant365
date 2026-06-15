@@ -1,16 +1,13 @@
 aid: restaurant365
 name: Restaurant365
 description: >-
-  Restaurant365 is a cloud-based restaurant accounting, inventory, and
-  operations platform serving thousands of restaurant locations across the
-  United States. Its developer offering centers on the R365 API, which lets
-  approved third-party vendors and partners connect to a customer's R365
-  database to retrieve data and create or push records such as AP invoices and
-  general ledger entries. A complementary OData connector exposes sales,
-  transaction, location, GL account, employee, and labor data for use in
-  external reporting and business-intelligence tools. API access is provisioned
-  per customer through R365 Support, with bearer-token authentication on the
-  R365 API and Domain\Username basic authentication on the OData connector.
+  Restaurant365 is a cloud-based restaurant accounting, inventory, and operations platform serving thousands of
+  restaurant locations across the United States. Its developer offering centers on the R365 API, which lets approved
+  third-party vendors and partners connect to a customer's R365 database to retrieve data and create or push records
+  such as AP invoices and general ledger entries. A complementary OData connector exposes sales, transaction, location,
+  GL account, employee, and labor data for use in external reporting and business-intelligence tools. API access is
+  provisioned per customer through R365 Support, with bearer-token authentication on the R365 API and Domain\Username
+  basic authentication on the OData connector.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -29,13 +26,10 @@ apis:
   - aid: restaurant365:rest-api
     name: R365 API
     description: >-
-      The R365 API lets approved third-party services and vendors connect to a
-      Restaurant365 customer database to retrieve data and create or push
-      records, including AP invoices, GL-coded AP invoices, and general ledger
-      journal entries. A username and password are first exchanged at
-      /APIv1/Authenticate for a bearer token, which is then sent on every
-      subsequent request. Access is provisioned per customer by contacting R365
-      Support to enable a vendor.
+      The R365 API lets approved third-party services and vendors connect to a Restaurant365 customer database to
+      retrieve data and create or push records, including AP invoices, GL-coded AP invoices, and general ledger journal
+      entries. A username and password are first exchanged at /APIv1/Authenticate for a bearer token, which is then sent
+      on every subsequent request. Access is provisioned per customer by contacting R365 Support to enable a vendor.
     humanURL: https://docs.restaurant365.com/docs/r365-api
     baseURL: https://yourcompany.restaurant365.com
     tags:
@@ -69,22 +63,14 @@ apis:
         url: examples/r365-api-create-ap-invoices-gl-example.json
       - type: Example
         url: examples/r365-api-create-journal-entries-example.json
-      - type: NaftikoCapability
-        url: capabilities/r365-api-authentication.yaml
-      - type: NaftikoCapability
-        url: capabilities/r365-api-ap-invoices.yaml
-      - type: NaftikoCapability
-        url: capabilities/r365-api-general-ledger.yaml
   - aid: restaurant365:odata-connector
     name: Restaurant365 OData Connector
     description: >-
-      The Restaurant365 OData connector exposes R365 data to OData-compatible
-      reporting and BI tools through read-only views for companies, locations,
-      GL accounts, items, job titles, employees, POS employees, labor detail,
-      payroll summary, transactions, transaction detail, sales, and deleted
-      entities. Most views support $filter, $orderby, $select, $skip, and $top.
-      Sales views are limited to a 31-day date range per request and do not
-      support $select or $count.
+      The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and BI tools through read-only
+      views for companies, locations, GL accounts, items, job titles, employees, POS employees, labor detail, payroll
+      summary, transactions, transaction detail, sales, and deleted entities. Most views support $filter, $orderby,
+      $select, $skip, and $top. Sales views are limited to a 31-day date range per request and do not support $select or
+      $count.
     humanURL: https://docs.restaurant365.com/docs/restaurant365-odata-connector
     baseURL: https://odata.restaurant365.net/api/v2/views/
     tags:
@@ -116,18 +102,6 @@ apis:
         url: examples/odata-connector-list-transactions-example.json
       - type: Example
         url: examples/odata-connector-list-sales-employee-example.json
-      - type: NaftikoCapability
-        url: capabilities/odata-connector-metadata.yaml
-      - type: NaftikoCapability
-        url: capabilities/odata-connector-reference-data.yaml
-      - type: NaftikoCapability
-        url: capabilities/odata-connector-labor.yaml
-      - type: NaftikoCapability
-        url: capabilities/odata-connector-transactions.yaml
-      - type: NaftikoCapability
-        url: capabilities/odata-connector-sales.yaml
-      - type: NaftikoCapability
-        url: capabilities/odata-connector-audit.yaml
 common:
   - type: Website
     url: https://www.restaurant365.com

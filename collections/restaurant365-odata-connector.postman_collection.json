@@ -1,0 +1,2277 @@
+{
+  "item": [
+    {
+      "id": "9eb0e3b3-0544-45c4-85ac-a99f31c8f35b",
+      "name": "Metadata",
+      "description": {
+        "content": "OData service metadata",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48b9fe40-0c0e-46ad-8432-69794f20910e",
+          "name": "Get OData Service Metadata",
+          "request": {
+            "name": "Get OData Service Metadata",
+            "description": {
+              "content": "Retrieve the OData EDMX metadata document describing all views and their properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "$metadata"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/xml"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4d152c67-6a94-4056-b546-22dde8244f9d",
+              "name": "OData metadata document (EDMX/XML)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "$metadata"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/xml"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/xml"
+                }
+              ],
+              "body": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<element>(string)</element>",
+              "cookie": [],
+              "_postman_previewlanguage": "xml"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "6cd00750-1117-45d7-9fd9-015b475f174a",
+      "name": "Reference Data",
+      "description": {
+        "content": "Companies, locations, GL accounts, items, and job titles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9322cb7c-183f-4596-acc7-ecd6ef94e06d",
+          "name": "List Companies",
+          "request": {
+            "name": "List Companies",
+            "description": {
+              "content": "List all companies (vendors) in the customer database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Company"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0c7f8429-43c4-4619-8616-232f78ac7533",
+              "name": "A collection of companies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"companyId\": \"3ffd9622-bb1c-e76c-8029-16fca7d3fd15\",\n      \"name\": \"string\",\n      \"companyNumber\": \"string\",\n      \"comment\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1970-09-19T04:37:12.382Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1974-11-13T13:38:50.021Z\"\n    },\n    {\n      \"companyId\": \"145c5710-3348-afcb-5c07-613277252f3a\",\n      \"name\": \"string\",\n      \"companyNumber\": \"string\",\n      \"comment\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1953-08-04T15:31:09.163Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"2008-05-31T20:59:10.339Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91d9e1fd-0e18-4afb-a4fa-e4928ced096c",
+          "name": "List Locations",
+          "request": {
+            "name": "List Locations",
+            "description": {
+              "content": "List all locations in the customer database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Location"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f1263c3-5222-43e9-9baa-b1ad014a970c",
+              "name": "A collection of locations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"locationId\": \"024402ba-b602-dcf0-fd8a-b8863bf3eeee\",\n      \"name\": \"string\",\n      \"locationNumber\": \"string\",\n      \"legalEntityId\": \"62e572c3-51e6-39c0-1a92-cb102cfb8c67\",\n      \"legalEntityNumber\": \"string\",\n      \"legalEntityName\": \"string\",\n      \"attribute1Id\": \"ae2638e7-f74f-879f-3462-2d928270a76d\",\n      \"attribute1Number\": \"string\",\n      \"attribute1Name\": \"string\",\n      \"attribute2Id\": \"34f0dcb5-bd56-d3a3-dee9-3e4cc11e3528\",\n      \"attribute2Number\": \"string\",\n      \"attribute2Name\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2017-10-15T12:48:38.973Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1953-03-16T14:39:24.455Z\"\n    },\n    {\n      \"locationId\": \"0383e88e-28d8-8867-64e9-11bae788499f\",\n      \"name\": \"string\",\n      \"locationNumber\": \"string\",\n      \"legalEntityId\": \"96220176-c45d-14fc-f1fa-6bd051cbe182\",\n      \"legalEntityNumber\": \"string\",\n      \"legalEntityName\": \"string\",\n      \"attribute1Id\": \"8ea6fa88-f57f-e4ca-58f6-140ac93ee452\",\n      \"attribute1Number\": \"string\",\n      \"attribute1Name\": \"string\",\n      \"attribute2Id\": \"eaca1371-d557-3507-9fea-32f036dd5b3b\",\n      \"attribute2Number\": \"string\",\n      \"attribute2Name\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2013-08-03T23:15:23.493Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1980-10-22T21:42:13.177Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "121207ed-84ec-4b27-974f-b598ce789e85",
+          "name": "List GL Accounts",
+          "request": {
+            "name": "List GL Accounts",
+            "description": {
+              "content": "List all general ledger accounts with details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GLAccount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fda93bac-209b-4080-b7f0-7d38a5677b3c",
+              "name": "A collection of GL accounts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GLAccount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"glAccountId\": \"c9630578-e4e9-c047-dd41-63a1e367011c\",\n      \"glAccountAutoId\": 195,\n      \"locationNumber\": \"string\",\n      \"locationName\": \"string\",\n      \"locationId\": \"6123901f-8d09-17ea-eb1b-9100674068f7\",\n      \"legalEntityNumber\": \"string\",\n      \"legalEntityName\": \"string\",\n      \"legalEntityId\": \"9946cf66-3a9a-2a07-cfe1-07ce5e75d6e9\",\n      \"attribute1Number\": \"string\",\n      \"attribute1Name\": \"string\",\n      \"attribute1Id\": \"eb0aecee-bc8e-051a-eeba-3816e358a1c0\",\n      \"attribute2Number\": \"string\",\n      \"attribute2Name\": \"string\",\n      \"attribute2Id\": \"eb1bccb7-c1ed-6717-fc3c-9c9c741f6dd0\",\n      \"name\": \"string\",\n      \"glAccountNumber\": \"string\",\n      \"glTypeClass\": 6089,\n      \"glType\": \"string\",\n      \"operationalCategory\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2005-02-19T10:07:02.513Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"2022-11-06T20:54:08.029Z\"\n    },\n    {\n      \"glAccountId\": \"c3a4d80d-1f3d-db76-8dac-a52e94906ada\",\n      \"glAccountAutoId\": 2996,\n      \"locationNumber\": \"string\",\n      \"locationName\": \"string\",\n      \"locationId\": \"1036440d-2129-801b-1c48-bc4276d8be78\",\n      \"legalEntityNumber\": \"string\",\n      \"legalEntityName\": \"string\",\n      \"legalEntityId\": \"0ff3b9dc-fca0-99b8-7a6d-55065e3c832c\",\n      \"attribute1Number\": \"string\",\n      \"attribute1Name\": \"string\",\n      \"attribute1Id\": \"81fd5350-9c92-6192-baee-1b4089874fd8\",\n      \"attribute2Number\": \"string\",\n      \"attribute2Name\": \"string\",\n      \"attribute2Id\": \"3a43759f-c3ef-23c2-44d7-c4292cae9fa7\",\n      \"name\": \"string\",\n      \"glAccountNumber\": \"string\",\n      \"glTypeClass\": 7379,\n      \"glType\": \"string\",\n      \"operationalCategory\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2010-11-24T20:45:26.756Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1972-07-04T13:04:23.662Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8476e0c-b604-410f-821e-12f31de7b7d5",
+          "name": "List Items",
+          "request": {
+            "name": "List Items",
+            "description": {
+              "content": "List all items with categorization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Item"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "674f0475-d29d-4a98-9b35-b9e76f14a008",
+              "name": "A collection of items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Item"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"itemId\": \"c0f19c6a-5e48-3413-5f7b-deca249f7c9b\",\n      \"name\": \"string\",\n      \"itemNumber\": \"string\",\n      \"category1\": \"string\",\n      \"category2\": \"string\",\n      \"category3\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1947-11-14T18:13:28.246Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1979-12-05T15:41:44.052Z\"\n    },\n    {\n      \"itemId\": \"cfa16b30-8a79-e6b8-c02c-d1f806342ecc\",\n      \"name\": \"string\",\n      \"itemNumber\": \"string\",\n      \"category1\": \"string\",\n      \"category2\": \"string\",\n      \"category3\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1984-10-04T20:57:56.156Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1996-04-18T22:45:54.913Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "55997298-8d10-40f6-8b95-ddce2c51b1db",
+          "name": "List Job Titles",
+          "request": {
+            "name": "List Job Titles",
+            "description": {
+              "content": "List all job titles with details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "JobTitle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9dcd53cd-ff3d-4767-96bc-2b9cf4ecde13",
+              "name": "A collection of job titles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "JobTitle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"jobTitleId\": \"60fa1b2a-4d45-1e20-e83f-39eb7845a941\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"jobCode\": \"string\",\n      \"payRate\": 1921.8446479690754,\n      \"payRate_Base\": 3734.1073010603964,\n      \"posid\": \"string\",\n      \"glAccount_Id\": \"a52bc53e-b7fd-2959-57cd-30a77448c7d2\",\n      \"location_Id\": \"8359085c-f89d-16cb-1d82-f9e8734fbdfd\",\n      \"rating\": 348,\n      \"excludeFromSchedule\": false,\n      \"excludeFromPOSImport\": false,\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1976-10-20T08:40:40.357Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"2015-09-09T16:02:12.963Z\"\n    },\n    {\n      \"jobTitleId\": \"7c6571dd-52e8-bacf-da5b-e147630656cf\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"jobCode\": \"string\",\n      \"payRate\": 8132.795536536786,\n      \"payRate_Base\": 453.23690264557627,\n      \"posid\": \"string\",\n      \"glAccount_Id\": \"bfcd2828-091f-0daa-7d84-780c2bba0c30\",\n      \"location_Id\": \"e00ae55a-b890-b648-da2b-eae7b8669a88\",\n      \"rating\": 8377,\n      \"excludeFromSchedule\": false,\n      \"excludeFromPOSImport\": false,\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1977-02-10T04:33:57.248Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1984-10-15T20:28:41.056Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f26e592d-531c-4b5d-a448-853964a9ad23",
+      "name": "Labor",
+      "description": {
+        "content": "Employees, labor detail, payroll, and POS employees",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "635f6687-d19b-4d5a-9fd7-0fd9d0b8a780",
+          "name": "List Employees",
+          "request": {
+            "name": "List Employees",
+            "description": {
+              "content": "List all employees with basic information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Employee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d5d800dc-a83d-4718-bb7a-e6ce6e219926",
+              "name": "A collection of employees",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Employee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"employeeId\": \"2e4273b9-0d2c-741e-02bd-4221da13f720\",\n      \"fullName\": \"string\",\n      \"firstName\": \"string\",\n      \"middleName\": \"string\",\n      \"lastName\": \"string\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"zipCode\": \"string\",\n      \"email\": \"RDcdvoBn-nONQ8@skVoAeRkROIJvwdDIApaNvDQcHEMHqZx.okub\",\n      \"phoneNumber\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"allowTextMessaging\": false,\n      \"birthday\": \"1951-02-10T14:26:46.562Z\",\n      \"birthdayDay\": 6302,\n      \"birthdayMonth\": 1003,\n      \"hireDate\": \"2011-04-02T07:21:25.555Z\",\n      \"multipleLocations\": 3199,\n      \"payrollID\": \"string\",\n      \"posid\": \"string\",\n      \"employeeLink\": \"45237b20-645a-b4b0-4211-115393643f03\",\n      \"primaryLocation_id\": \"355e8433-1ec3-876f-9f8f-c2dabbb339d9\",\n      \"inactive\": false,\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2024-04-29T07:18:32.131Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1972-02-19T18:08:54.287Z\"\n    },\n    {\n      \"employeeId\": \"47b7f7d3-29b4-45e2-9101-d92c0d137c5f\",\n      \"fullName\": \"string\",\n      \"firstName\": \"string\",\n      \"middleName\": \"string\",\n      \"lastName\": \"string\",\n      \"address1\": \"string\",\n      \"address2\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"zipCode\": \"string\",\n      \"email\": \"t3didWaitPH@yP.excp\",\n      \"phoneNumber\": \"string\",\n      \"mobilePhone\": \"string\",\n      \"allowTextMessaging\": false,\n      \"birthday\": \"1964-05-04T06:32:35.106Z\",\n      \"birthdayDay\": 4916,\n      \"birthdayMonth\": 8700,\n      \"hireDate\": \"1967-03-09T05:51:34.093Z\",\n      \"multipleLocations\": 5273,\n      \"payrollID\": \"string\",\n      \"posid\": \"string\",\n      \"employeeLink\": \"247aa46b-34a6-1c05-b376-f57eda176287\",\n      \"primaryLocation_id\": \"b10f5a67-d00a-e5a7-d6da-469220a8ef02\",\n      \"inactive\": true,\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2024-06-07T18:09:04.581Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"2019-11-11T05:04:52.079Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e35b34b3-0d75-4db4-a594-392a4cff939e",
+          "name": "List POS Employees",
+          "request": {
+            "name": "List POS Employees",
+            "description": {
+              "content": "Retrieve the data mapping between R365 and POS employee records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "POSEmployee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ba21b93c-4739-4508-9862-b93bcbf9e49b",
+              "name": "A collection of POS employee mappings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "POSEmployee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"posEmployeeId\": \"4eb7cd01-0edb-2482-8082-e8386309d8ca\",\n      \"fullName\": \"string\",\n      \"posid\": \"string\",\n      \"location_id\": \"5ae1a397-75a4-1f82-b605-fb9276a7b30f\",\n      \"employee_id\": \"27464a1c-4bb5-b43e-738c-f3a8bc6db160\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1965-09-27T03:21:02.447Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1954-04-01T01:32:53.062Z\"\n    },\n    {\n      \"posEmployeeId\": \"53e3ac62-995f-7c4d-b561-c8246dd51ab6\",\n      \"fullName\": \"string\",\n      \"posid\": \"string\",\n      \"location_id\": \"516a0a47-890f-cbfb-398e-1d8458229b1d\",\n      \"employee_id\": \"6eb493c2-d11f-6fef-80f2-80251cfab3b3\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1953-03-25T06:53:09.189Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1977-11-17T21:19:16.496Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e965655-8004-4aab-b83e-aaf01795d823",
+          "name": "List Labor Detail",
+          "request": {
+            "name": "List Labor Detail",
+            "description": {
+              "content": "Retrieve employee punch time details, including clock in and clock out.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "LaborDetail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f3d945d5-9781-4dca-b09d-dfcb1fcb3a0b",
+              "name": "A collection of labor detail records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "LaborDetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"laborId\": \"0c4eb8f7-ea6b-d7f1-ea3b-af29df584706\",\n      \"labor\": \"string\",\n      \"dateWorked\": \"1986-04-20T13:19:52.205Z\",\n      \"startTime\": \"1946-07-09T10:20:43.218Z\",\n      \"endTime\": \"1968-01-24T17:04:37.574Z\",\n      \"hours\": 2706.0015901394263,\n      \"payRate\": 6813.347781253385,\n      \"payrate_Base\": 4981.803526067845,\n      \"payrollStatus\": 8356,\n      \"total\": 933.5721573129973,\n      \"total_Base\": 8227.832413171047,\n      \"employee_ID\": \"385211ea-f99b-fde0-c1f5-f7815dcf93f3\",\n      \"r365Employee_ID\": \"d7de9274-b40d-aec5-78da-81008929a60d\",\n      \"employeeJobTitle_ID\": \"0490a1de-9cf8-b73c-b12b-aaa1ea75d0fe\",\n      \"jobTitle_ID\": \"20da07a5-aec0-035c-9649-9e70d515d966\",\n      \"location_ID\": \"6963f482-ad84-b6c0-1104-26ff59cef3d8\",\n      \"cateringEvent\": \"0ceba0f3-52e8-f75d-c58f-898afc6f74cb\",\n      \"tipDeclaredAmount\": 4823.476809467451,\n      \"employee\": \"string\",\n      \"payrollID\": \"string\",\n      \"jobTitle\": \"string\",\n      \"location\": \"string\",\n      \"dailySalesSummaryId\": \"4e7fbc58-3ce0-93fe-0ef2-85e9a7f1a21c\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1993-09-15T21:31:38.989Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1967-06-07T15:47:07.947Z\"\n    },\n    {\n      \"laborId\": \"52e8d11d-26f8-d340-2d25-f51245cec929\",\n      \"labor\": \"string\",\n      \"dateWorked\": \"1966-09-01T17:22:39.393Z\",\n      \"startTime\": \"2014-12-26T15:44:48.484Z\",\n      \"endTime\": \"2009-01-01T18:50:06.839Z\",\n      \"hours\": 8344.890526956788,\n      \"payRate\": 8152.079465622356,\n      \"payrate_Base\": 2046.660428918039,\n      \"payrollStatus\": 3431,\n      \"total\": 5056.851559751922,\n      \"total_Base\": 8187.91909853104,\n      \"employee_ID\": \"dcaaecbd-2d78-33d7-1218-6a8063e95710\",\n      \"r365Employee_ID\": \"26a338a1-89a4-e892-7b82-92a17ce6e4e1\",\n      \"employeeJobTitle_ID\": \"c6493dce-e752-3b27-37d7-7b27abc50411\",\n      \"jobTitle_ID\": \"9ea2c4a3-1bf7-8642-af92-1de50678ee69\",\n      \"location_ID\": \"6af15248-ba07-f65a-2bc5-2b639785f37f\",\n      \"cateringEvent\": \"01691171-9c8f-4889-4753-6d3b78ef0b12\",\n      \"tipDeclaredAmount\": 4551.778459843461,\n      \"employee\": \"string\",\n      \"payrollID\": \"string\",\n      \"jobTitle\": \"string\",\n      \"location\": \"string\",\n      \"dailySalesSummaryId\": \"54f4d52f-198d-058f-f223-b8c6e8f9fbf5\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2003-04-03T19:13:23.228Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1996-05-24T06:20:50.008Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e99e4aac-4d01-4ce4-aef5-05c7e2d0c89f",
+          "name": "List Payroll Summary",
+          "request": {
+            "name": "List Payroll Summary",
+            "description": {
+              "content": "Retrieve a list of labor records summarized for payroll.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "PayrollSummary"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0c395b78-9591-4f22-b547-024024c08cce",
+              "name": "A collection of payroll summary records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "PayrollSummary"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"employeeID\": \"d9e95839-67af-bb22-4d5c-138b185998b0\",\n      \"payrollID\": \"string\",\n      \"location\": \"string\",\n      \"locationNumber\": \"string\",\n      \"jobCode\": \"string\",\n      \"payRate\": 3756.5532815683523,\n      \"regularHours\": 9083.856221802207,\n      \"overtimeHours\": 6651.6677753437825,\n      \"doubleOvertime\": 8084.944019693091,\n      \"breakPenalty\": 8538.139370489276,\n      \"grossReceipts\": 9382.088148704195,\n      \"splitShiftPenalty\": 4721.408434784174,\n      \"chargeTips\": 7758.122617386274,\n      \"declaredTips\": 6287.6500879499445,\n      \"percentageOfSales\": 7053.811021614603,\n      \"percent\": 1496.0487022126379,\n      \"payrollStart\": \"1999-04-14T09:07:28.782Z\",\n      \"payrollEnd\": \"1998-11-10T22:48:03.920Z\"\n    },\n    {\n      \"employeeID\": \"21c5959b-5fa0-55e5-f169-90e28de13c35\",\n      \"payrollID\": \"string\",\n      \"location\": \"string\",\n      \"locationNumber\": \"string\",\n      \"jobCode\": \"string\",\n      \"payRate\": 4049.307278925766,\n      \"regularHours\": 8321.290712511858,\n      \"overtimeHours\": 4317.621662960608,\n      \"doubleOvertime\": 3949.072964642806,\n      \"breakPenalty\": 7892.775987928938,\n      \"grossReceipts\": 3319.70458403249,\n      \"splitShiftPenalty\": 4365.514425591783,\n      \"chargeTips\": 9296.786501577031,\n      \"declaredTips\": 2876.778292342006,\n      \"percentageOfSales\": 768.021618027882,\n      \"percent\": 6238.0468226341945,\n      \"payrollStart\": \"1955-07-30T05:54:30.201Z\",\n      \"payrollEnd\": \"1992-06-25T16:33:01.068Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "043b32e0-ca84-4d2e-aecb-fd6711336fb1",
+      "name": "Transactions",
+      "description": {
+        "content": "Financial transactions and transaction detail",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31b07b70-df24-4eac-b665-9a4e90e3f222",
+          "name": "List Transactions",
+          "request": {
+            "name": "List Transactions",
+            "description": {
+              "content": "Retrieve a list of financial transactions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Transaction"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fac0d020-9c35-4766-a197-cc1beb14f63d",
+              "name": "A collection of transactions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Transaction"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"transactionId\": \"1f6a456c-f078-4471-f9da-54b254512022\",\n      \"locationId\": \"3cff8b60-15f0-89f4-a7e6-db6102ca52cb\",\n      \"locationName\": \"string\",\n      \"date\": \"2018-01-06T18:00:08.636Z\",\n      \"transactionNumber\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"companyId\": \"9d4d8828-1e06-78d2-d687-23de0f5301ee\",\n      \"rowVersion\": 6707,\n      \"isApproved\": false,\n      \"isTemplate\": false,\n      \"createdOn\": \"1950-11-11T23:13:21.157Z\",\n      \"modifiedOn\": \"2004-03-13T01:03:45.303Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    },\n    {\n      \"transactionId\": \"e7c66aa1-2b50-ba7c-0ce4-29788b46c8b9\",\n      \"locationId\": \"26c9ab22-18f8-e13e-7792-d0698f0d1285\",\n      \"locationName\": \"string\",\n      \"date\": \"1949-11-03T04:24:28.848Z\",\n      \"transactionNumber\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"companyId\": \"2790eab9-42b0-54ee-92d3-4439406dc19a\",\n      \"rowVersion\": 6264,\n      \"isApproved\": false,\n      \"isTemplate\": false,\n      \"createdOn\": \"2012-08-22T06:15:35.287Z\",\n      \"modifiedOn\": \"1992-02-05T04:32:13.426Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62e30675-1dbc-4808-b1c9-6d93705f503f",
+          "name": "List Transaction Detail",
+          "request": {
+            "name": "List Transaction Detail",
+            "description": {
+              "content": "Retrieve financial transaction details at the item level.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "TransactionDetail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b604ba52-7687-409e-9b3f-3f4bda305953",
+              "name": "A collection of transaction detail records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "TransactionDetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"transactionDetailId\": \"841b699d-2402-66b7-66f0-49d08cb8b979\",\n      \"transactionDetailAutoId\": 6864,\n      \"transactionId\": \"ce820bee-2eae-75ed-d2a5-65edeb92ffc0\",\n      \"locationId\": \"dfde3b71-3609-3ca0-2f57-a2778af7b3ce\",\n      \"glAccountId\": \"5e9e884e-3f0e-f4da-433d-5d7f9d11c7a5\",\n      \"itemId\": \"1af3d5ea-07e4-7d78-3396-1b08ce9920f5\",\n      \"credit\": 7942.518148022721,\n      \"debit\": 6831.2495230343975,\n      \"amount\": 1852.6183048137268,\n      \"quantity\": 8264.027283292253,\n      \"previousCountTotal\": 9163.872967258594,\n      \"adjustment\": 6859.208680743256,\n      \"unitOfMeasureName\": \"string\",\n      \"bankReconciliation\": \"string\",\n      \"bankDeposit\": \"string\",\n      \"comment\": \"string\",\n      \"rowType\": \"string\",\n      \"rowVersion\": 4584,\n      \"createdOn\": \"2001-05-02T17:19:19.818Z\",\n      \"modifiedOn\": \"2019-04-08T00:07:17.555Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    },\n    {\n      \"transactionDetailId\": \"38041ea7-b621-20e5-bdca-7175f3decac7\",\n      \"transactionDetailAutoId\": 5595,\n      \"transactionId\": \"270cfe66-da32-ffb1-599b-62aa1f7197e7\",\n      \"locationId\": \"22471d01-37b9-da8a-1787-4d8950b2dd49\",\n      \"glAccountId\": \"35e1bca4-93fa-c4ec-d600-7dbef95c1b34\",\n      \"itemId\": \"3831e68a-888c-9bd2-87ae-6535725fa658\",\n      \"credit\": 1199.2654389391978,\n      \"debit\": 686.2187557405275,\n      \"amount\": 4294.844053095981,\n      \"quantity\": 824.4331921620751,\n      \"previousCountTotal\": 4846.707553175305,\n      \"adjustment\": 7073.609716935234,\n      \"unitOfMeasureName\": \"string\",\n      \"bankReconciliation\": \"string\",\n      \"bankDeposit\": \"string\",\n      \"comment\": \"string\",\n      \"rowType\": \"string\",\n      \"rowVersion\": 9115,\n      \"createdOn\": \"1990-12-09T19:26:09.365Z\",\n      \"modifiedOn\": \"1961-03-20T07:53:55.538Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0b5a3ab9-a5cd-4d48-82f4-7b6c27f837c2",
+      "name": "Sales",
+      "description": {
+        "content": "Sales ticket headers, detail, and payments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "120c3b7c-d9f1-4741-80d3-81895b250dfd",
+          "name": "List Sales Employee Tickets",
+          "request": {
+            "name": "List Sales Employee Tickets",
+            "description": {
+              "content": "Retrieve sales ticket header data. This view does not support $select or $count and is limited to a 31-day date range per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SalesEmployee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aaa58acf-afd3-4a11-9a6f-308b1e8428d7",
+              "name": "A collection of sales ticket headers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SalesEmployee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"salesId\": \"d6312668-d138-c21d-48fb-84675e17847e\",\n      \"receiptNumber\": \"string\",\n      \"checkNumber\": \"string\",\n      \"comment\": \"string\",\n      \"date\": \"1977-11-27T06:24:04.514Z\",\n      \"dayOfWeek\": \"string\",\n      \"dayPart\": \"string\",\n      \"netSales\": 9655.77194589367,\n      \"grossSales\": 8488.679641405648,\n      \"numberofGuests\": 1152,\n      \"orderHour\": 5902,\n      \"salesAmount\": 6387.920660309567,\n      \"taxAmount\": 4499.461806730494,\n      \"tipAmount\": 1786.6490555802673,\n      \"totalAmount\": 2583.592142818586,\n      \"totalPayment\": 2505.8124840409414,\n      \"void\": true,\n      \"server\": \"string\",\n      \"location\": \"f6c9b036-9820-3071-a101-3b76060ae259\",\n      \"serviceType\": \"string\",\n      \"dailySalesSummaryId\": \"91926205-fb9a-931e-6abf-b217286b549d\",\n      \"createdOn\": \"1979-08-13T17:06:18.336Z\",\n      \"modifiedOn\": \"1978-06-19T11:09:22.173Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    },\n    {\n      \"salesId\": \"13dad167-3952-95bc-329d-0bee68858a0f\",\n      \"receiptNumber\": \"string\",\n      \"checkNumber\": \"string\",\n      \"comment\": \"string\",\n      \"date\": \"2003-10-02T14:41:38.821Z\",\n      \"dayOfWeek\": \"string\",\n      \"dayPart\": \"string\",\n      \"netSales\": 4507.587113600187,\n      \"grossSales\": 7161.639999040847,\n      \"numberofGuests\": 9627,\n      \"orderHour\": 3621,\n      \"salesAmount\": 1060.3831483738625,\n      \"taxAmount\": 2348.873040341355,\n      \"tipAmount\": 7344.026261173326,\n      \"totalAmount\": 96.75568455028039,\n      \"totalPayment\": 3846.9031389523943,\n      \"void\": true,\n      \"server\": \"string\",\n      \"location\": \"3b46ec68-873e-1150-d149-41ecda5ee179\",\n      \"serviceType\": \"string\",\n      \"dailySalesSummaryId\": \"88611414-7e29-8992-ae73-c1a48aaaf444\",\n      \"createdOn\": \"1998-06-07T05:46:32.927Z\",\n      \"modifiedOn\": \"1965-11-28T00:55:56.583Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47fe8a66-6d31-4936-892e-e315261278f7",
+          "name": "List Sales Detail",
+          "request": {
+            "name": "List Sales Detail",
+            "description": {
+              "content": "Retrieve sales ticket line items. This view does not support $select or $count and is limited to a 31-day date range per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SalesDetail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "be360ed2-071e-4e2a-9921-0f653c15563c",
+              "name": "A collection of sales line items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SalesDetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"salesdetailID\": \"c10800d8-7000-a9b6-2bab-41717d0c118f\",\n      \"menuitem\": \"string\",\n      \"amount\": 1925.22319042032,\n      \"customerPOSText\": \"string\",\n      \"date\": \"2014-03-08T13:44:07.815Z\",\n      \"quantity\": 8931.838564734717,\n      \"void\": true,\n      \"company\": \"cf933040-639e-f5cd-ff66-bdc36c1f0afd\",\n      \"location\": \"2e10eeb2-91ab-e353-07c2-d0c72fcde836\",\n      \"salesID\": \"e41cf9b9-ca38-5cb0-4010-6135c819742f\",\n      \"salesAccount\": \"string\",\n      \"category\": \"string\",\n      \"houseAccountTransaction\": \"31484b21-b7c6-21d0-59d0-0fe181f5ed01\",\n      \"transactionDetailID\": \"0f519893-dc79-7af2-9d0f-41151330f96f\",\n      \"cateringEvent\": \"49d5c32e-d20c-64a2-6580-ea874ca93098\",\n      \"menuItemId\": 1340,\n      \"dailySalesSummaryId\": \"14785998-b07a-558f-607f-e32e49663d5a\",\n      \"createdOn\": \"1978-09-08T22:22:28.092Z\",\n      \"modifiedOn\": \"1991-04-15T04:47:12.008Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    },\n    {\n      \"salesdetailID\": \"8dda8b9e-7468-126d-de6f-288524897867\",\n      \"menuitem\": \"string\",\n      \"amount\": 5412.3121163053365,\n      \"customerPOSText\": \"string\",\n      \"date\": \"2012-11-05T00:26:26.918Z\",\n      \"quantity\": 3112.872295181095,\n      \"void\": true,\n      \"company\": \"379c5d63-37d7-ebec-54d4-7dfd8212be10\",\n      \"location\": \"311aa640-2f48-8e6a-6d47-19680132d22e\",\n      \"salesID\": \"f7c221a8-ce34-f1f1-1548-6b4637bc454b\",\n      \"salesAccount\": \"string\",\n      \"category\": \"string\",\n      \"houseAccountTransaction\": \"913cc9ff-dc0f-a802-8e62-5d79bd976c89\",\n      \"transactionDetailID\": \"35107594-7f48-2dfa-d37e-292409815eef\",\n      \"cateringEvent\": \"07f11f76-8e08-360e-cf20-9cead28aabb3\",\n      \"menuItemId\": 6852,\n      \"dailySalesSummaryId\": \"7f12e4eb-2df4-e61c-ad4a-95d797c7e07d\",\n      \"createdOn\": \"1961-08-28T21:49:38.373Z\",\n      \"modifiedOn\": \"2018-11-08T23:15:20.814Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf777482-a252-44f3-816f-91a139fbb554",
+          "name": "List Sales Payments",
+          "request": {
+            "name": "List Sales Payments",
+            "description": {
+              "content": "Retrieve sales payment data. This view does not support $select or $count and is limited to a 31-day date range per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SalesPayment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f94fd52b-3ae9-49b1-b971-aa2eae78317d",
+              "name": "A collection of sales payments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SalesPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"salespaymentId\": \"ddca9a19-115a-fff9-4f07-eb903a73d2ab\",\n      \"name\": \"string\",\n      \"amount\": 1778.6796797504567,\n      \"comment\": \"string\",\n      \"customerPOSText\": \"string\",\n      \"date\": \"1998-11-03T16:40:18.070Z\",\n      \"isException\": false,\n      \"missingreceipt\": true,\n      \"company\": \"afad0352-9b83-6c3e-ac40-fd87f10bde03\",\n      \"location\": \"ce483512-cd25-cc04-0887-23639a3250f9\",\n      \"paymenttype\": \"string\",\n      \"paymentGroup\": \"string\",\n      \"salesID\": \"c4d6c6ba-9419-b2ab-5d4d-dd3048cbd1a6\",\n      \"houseAccountTransaction\": \"22309636-c5b1-6218-de57-6fde01cc3c83\",\n      \"transactionDetailID\": \"95236e2b-0dd1-9dd3-1b2d-077fd1b63b89\",\n      \"cateringEvent\": \"a8b08b8c-10ea-23e8-0e37-5069c959720d\",\n      \"exclude\": true,\n      \"dailySalesSummaryId\": \"285cb286-77b5-e763-4524-3c8506923ba0\",\n      \"createdOn\": \"1972-02-07T00:08:39.107Z\",\n      \"modifiedOn\": \"1951-01-15T13:21:33.944Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    },\n    {\n      \"salespaymentId\": \"79fb4fa0-aab0-7995-a61c-ce7a2561fd12\",\n      \"name\": \"string\",\n      \"amount\": 7615.0571359993355,\n      \"comment\": \"string\",\n      \"customerPOSText\": \"string\",\n      \"date\": \"2017-03-06T19:53:51.725Z\",\n      \"isException\": false,\n      \"missingreceipt\": true,\n      \"company\": \"3392441f-59ae-7824-de0f-14aa62b39d93\",\n      \"location\": \"5e618cb1-86b9-2dc1-ddf6-5bbf60f149d1\",\n      \"paymenttype\": \"string\",\n      \"paymentGroup\": \"string\",\n      \"salesID\": \"a629f375-9be2-717c-fa44-f3c5ba050832\",\n      \"houseAccountTransaction\": \"0f507f10-b29b-41a7-feb9-7c5c1c8a17b8\",\n      \"transactionDetailID\": \"201c1473-74f9-0a6a-bf83-a80d2102b039\",\n      \"cateringEvent\": \"779d9423-1236-efd1-acbd-3e7863387d20\",\n      \"exclude\": false,\n      \"dailySalesSummaryId\": \"5ee222d0-0324-6a60-1bf6-0523c7b4b7e8\",\n      \"createdOn\": \"1983-09-07T21:59:09.418Z\",\n      \"modifiedOn\": \"2015-12-16T12:54:15.969Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a1d24459-cec4-4b6b-a6e0-3fc1f76c555e",
+      "name": "Audit",
+      "description": {
+        "content": "Deleted entity tracking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "959d4afe-7f8c-4719-9b55-0953bf312b33",
+          "name": "List Deleted Entities",
+          "request": {
+            "name": "List Deleted Entities",
+            "description": {
+              "content": "Retrieve a list of records deleted from the system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "EntityDeleted"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "57c5a666-6497-4b95-a716-be971756d8b8",
+              "name": "A collection of deleted entity records",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "EntityDeleted"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"entityDeletedId\": 550,\n      \"entityId\": \"e61b5829-4457-c7d0-d222-517477676658\",\n      \"entityName\": \"string\",\n      \"deletedOn\": \"1984-09-19T03:25:10.901Z\",\n      \"rowVersion\": 4007\n    },\n    {\n      \"entityDeletedId\": 8743,\n      \"entityId\": \"c0162d2c-ad3b-2bbb-cfb2-a160608e2b8e\",\n      \"entityName\": \"string\",\n      \"deletedOn\": \"2009-12-30T13:56:28.034Z\",\n      \"rowVersion\": 7721\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://odata.restaurant365.net/api/v2/views",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "503adf09-963e-48a1-9102-fad80b55f6d3",
+    "name": "Restaurant365 OData Connector",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and business-intelligence tools through read-only views for companies, locations, GL accounts, items, employees, labor, transactions, and sales. Authentication uses Domain\\Username (the company subdomain and R365 username) with the R365 password. Most views support the standard OData query options $filter, $orderby, $select, $skip, and $top. Sales views (SalesEmployee, SalesDetail, SalesPayment) do not support $select or $count and are limited to a 31-day date range per request.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

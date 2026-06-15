@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "R365 API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authenticate And Obtain Bearer Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{customerHost}.restaurant365.com/APIv1/Authenticate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchange an R365 username and password for a bearer token that must be sent in the Authorization header on all subsequent API requests."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AP Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create AP Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{customerHost}.restaurant365.com/APIv1/APInvoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create one or more accounts payable invoices in the customer database using vendor and product (item) level detail. Vendor name and retailer store number must match values configured in the customer's R365 database."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "General Ledger",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create AP Invoices By GL Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{customerHost}.restaurant365.com/APIv1/APInvoicesGL",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create one or more accounts payable invoices or AP credit memos using GL account level detail rather than item detail. Use this when invoices should be coded directly to general ledger accounts."
+        },
+        {
+          "info": {
+            "name": "Create Journal Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{customerHost}.restaurant365.com/APIv1/JournalEntries",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create one or more general ledger journal entries. Debits and credits must balance across the lines of each journal entry. Payroll journal entries require the payroll-specific fields."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

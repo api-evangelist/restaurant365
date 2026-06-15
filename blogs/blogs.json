@@ -1,0 +1,14 @@
+{
+  "repo": "restaurant365",
+  "feeds": [
+    {
+      "source": "https://www.restaurant365.com/blog/",
+      "feed_url": "https://www.restaurant365.com/blog/",
+      "title": "",
+      "saved": 3,
+      "method": "html"
+    }
+  ],
+  "post_count": 3,
+  "fetched": "2026-06-07T00:00:00Z"
+}
