@@ -9,7 +9,7 @@ description: >-
   provisioned per customer through R365 Support, with bearer-token authentication on the R365 API and Domain\Username
   basic authentication on the OData connector.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Restaurant
   - Accounting
