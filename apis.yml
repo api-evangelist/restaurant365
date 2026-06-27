@@ -55,13 +55,13 @@ apis:
         url: json-structure/r365-api-journal-entry-structure.json
       - type: JSONLD
         url: json-ld/restaurant365-r365-api-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/r365-api-authenticate-example.json
-      - type: Example
+      - type: Examples
         url: examples/r365-api-create-ap-invoices-example.json
-      - type: Example
+      - type: Examples
         url: examples/r365-api-create-ap-invoices-gl-example.json
-      - type: Example
+      - type: Examples
         url: examples/r365-api-create-journal-entries-example.json
   - aid: restaurant365:odata-connector
     name: Restaurant365 OData Connector
@@ -98,9 +98,9 @@ apis:
         url: json-structure/odata-connector-sales-employee-structure.json
       - type: JSONLD
         url: json-ld/restaurant365-odata-connector-context.jsonld
-      - type: Example
+      - type: Examples
         url: examples/odata-connector-list-transactions-example.json
-      - type: Example
+      - type: Examples
         url: examples/odata-connector-list-sales-employee-example.json
 common:
   - type: Website
@@ -123,7 +123,7 @@ common:
     url: https://github.com/restaurant365
   - type: LinkedIn
     url: https://www.linkedin.com/company/restaurant365-cloud-erp-for-restaurants
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.restaurant365.com/llms.txt
   - type: Features
     data:
