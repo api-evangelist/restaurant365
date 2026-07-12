@@ -103,6 +103,10 @@ apis:
       - type: Examples
         url: examples/odata-connector-list-sales-employee-example.json
 common:
+  - type: DomainSecurity
+    url: security/restaurant365-domain-security.yml
+  - type: Authentication
+    url: authentication/restaurant365-authentication.yml
   - type: Website
     url: https://www.restaurant365.com
   - type: Documentation

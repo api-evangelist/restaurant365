@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/restaurant365-odata-connector-openapi.yml, openapi/restaurant365-r365-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: Domain\Username with R365 password
+  sources:
+  - openapi/restaurant365-odata-connector-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Bearer token returned by the Authenticate operation
+  sources:
+  - openapi/restaurant365-r365-api-openapi.yml
