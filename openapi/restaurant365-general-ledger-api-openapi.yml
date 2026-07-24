@@ -1,0 +1,234 @@
+openapi: 3.1.0
+info:
+  title: Restaurant365 OData Connector AP Invoices General Ledger API
+  description: The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and business-intelligence tools through read-only views for companies, locations, GL accounts, items, employees, labor, transactions, and sales. Authentication uses Domain\Username (the company subdomain and R365 username) with the R365 password. Most views support the standard OData query options $filter, $orderby, $select, $skip, and $top. Sales views (SalesEmployee, SalesDetail, SalesPayment) do not support $select or $count and are limited to a 31-day date range per request.
+  version: v2
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: Proprietary
+servers:
+- url: https://odata.restaurant365.net/api/v2/views
+  description: Restaurant365 OData v2 views endpoint
+tags:
+- name: General Ledger
+  description: Create AP invoices by GL account and journal entries
+paths:
+  /APIv1/APInvoicesGL:
+    post:
+      operationId: createApInvoicesGl
+      summary: Create AP Invoices By GL Account
+      description: Create one or more accounts payable invoices or AP credit memos using GL account level detail rather than item detail. Use this when invoices should be coded directly to general ledger accounts.
+      tags:
+      - General Ledger
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/APInvoiceGL'
+      responses:
+        '200':
+          description: Processing result with successes and failures
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessingResult'
+        '401':
+          description: Missing or invalid bearer token
+  /APIv1/JournalEntries:
+    post:
+      operationId: createJournalEntries
+      summary: Create Journal Entries
+      description: Create one or more general ledger journal entries. Debits and credits must balance across the lines of each journal entry. Payroll journal entries require the payroll-specific fields.
+      tags:
+      - General Ledger
+      security:
+      - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/JournalEntry'
+      responses:
+        '200':
+          description: Processing result with successes and failures
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessingResult'
+        '401':
+          description: Missing or invalid bearer token
+components:
+  schemas:
+    ProcessingResult:
+      type: object
+      description: Result envelope returned by record-creation operations
+      properties:
+        errors:
+          type: array
+          description: Request-level errors
+          items:
+            type: object
+            properties:
+              reason:
+                type: string
+              solution:
+                type: string
+        success:
+          type: array
+          description: Count of records successfully processed
+          items:
+            type: object
+            properties:
+              Count:
+                type: integer
+        failures:
+          type: array
+          description: Records that failed processing
+          items:
+            type: object
+            properties:
+              record:
+                type: string
+              reason:
+                type: string
+              solution:
+                type: string
+    APInvoiceGL:
+      type: object
+      required:
+      - Type
+      - Vendor
+      - Date
+      - GL_Date
+      - Location
+      - Number
+      - Amount
+      - Detail_Account
+      - Detail_Amount
+      - Detail_Location
+      properties:
+        BatchId:
+          type: string
+          description: Optional batch identifier grouping records
+        userId:
+          type: string
+          description: Optional user identifier for the submitting user
+        Type:
+          type: string
+          description: Document type
+          enum:
+          - AP Invoice
+          - AP Credit Memo
+        Comment:
+          type: string
+          description: Header-level comment
+        Vendor:
+          type: string
+          description: Vendor name as configured in R365
+        Date:
+          type: string
+          description: Document date in MM/DD/YYYY format
+        GL_Date:
+          type: string
+          description: General ledger posting date in MM/DD/YYYY format
+        Due_Date:
+          type: string
+          description: Due date; defaults to Date if blank
+        Location:
+          type: string
+          description: Location name or number
+        Number:
+          type: string
+          description: Document number
+        Amount:
+          type: number
+          description: Total document amount
+        Payment_Terms:
+          type: string
+          description: Payment terms
+        Detail_Account:
+          type: string
+          description: GL account name or number for the detail line
+        Detail_Amount:
+          type: number
+          description: Amount for the detail line
+        Detail_Comment:
+          type: string
+          description: Comment for the detail line
+        Detail_Location:
+          type: string
+          description: Location for the detail line
+        Image_URL:
+          type: string
+          format: uri
+          description: URL of the document image
+        IsPaid:
+          type: boolean
+          description: Whether the document is already paid
+        Paid_Account:
+          type: string
+          description: GL account number used when the document is paid
+    JournalEntry:
+      type: object
+      required:
+      - Date
+      - JELocation
+      - Account
+      - Debit
+      - Credit
+      - DetailLocation
+      properties:
+        BatchId:
+          type: string
+          description: Optional batch identifier grouping records
+        userId:
+          type: string
+          description: Optional user identifier for the submitting user
+        JENumber:
+          type: string
+          description: Journal entry number; auto-generated if omitted
+        Date:
+          type: string
+          description: Journal entry date
+        JEComment:
+          type: string
+          description: Journal entry comment
+        JELocation:
+          type: string
+          description: Journal entry header location
+        Account:
+          type: string
+          description: GL account for the line
+        Debit:
+          type: number
+          description: Debit amount; debits must balance credits
+        Credit:
+          type: number
+          description: Credit amount; credits must balance debits
+        DetailLocation:
+          type: string
+          description: Location for the detail line
+        PayrollJournalEntry:
+          type: boolean
+          description: Whether this is a payroll journal entry
+        PayrollStartDate:
+          type: string
+          description: Payroll period start date; required for payroll entries
+        PayrollEndDate:
+          type: string
+          description: Payroll period end date; required for payroll entries
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Domain\Username with R365 password

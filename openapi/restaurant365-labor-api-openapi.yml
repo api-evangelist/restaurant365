@@ -1,0 +1,373 @@
+openapi: 3.1.0
+info:
+  title: Restaurant365 OData Connector AP Invoices Labor API
+  description: The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and business-intelligence tools through read-only views for companies, locations, GL accounts, items, employees, labor, transactions, and sales. Authentication uses Domain\Username (the company subdomain and R365 username) with the R365 password. Most views support the standard OData query options $filter, $orderby, $select, $skip, and $top. Sales views (SalesEmployee, SalesDetail, SalesPayment) do not support $select or $count and are limited to a 31-day date range per request.
+  version: v2
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: Proprietary
+servers:
+- url: https://odata.restaurant365.net/api/v2/views
+  description: Restaurant365 OData v2 views endpoint
+tags:
+- name: Labor
+  description: Employees, labor detail, payroll, and POS employees
+paths:
+  /Employee:
+    get:
+      operationId: listEmployees
+      summary: List Employees
+      description: List all employees with basic information.
+      tags:
+      - Labor
+      security:
+      - basicAuth: []
+      parameters:
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of employees
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Employee'
+  /POSEmployee:
+    get:
+      operationId: listPosEmployees
+      summary: List POS Employees
+      description: Retrieve the data mapping between R365 and POS employee records.
+      tags:
+      - Labor
+      security:
+      - basicAuth: []
+      parameters:
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of POS employee mappings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/POSEmployee'
+  /LaborDetail:
+    get:
+      operationId: listLaborDetail
+      summary: List Labor Detail
+      description: Retrieve employee punch time details, including clock in and clock out.
+      tags:
+      - Labor
+      security:
+      - basicAuth: []
+      parameters:
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of labor detail records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/LaborDetail'
+  /PayrollSummary:
+    get:
+      operationId: listPayrollSummary
+      summary: List Payroll Summary
+      description: Retrieve a list of labor records summarized for payroll.
+      tags:
+      - Labor
+      security:
+      - basicAuth: []
+      parameters:
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of payroll summary records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PayrollSummary'
+components:
+  schemas:
+    LaborDetail:
+      type: object
+      properties:
+        laborId:
+          type: string
+          format: uuid
+        labor:
+          type: string
+        dateWorked:
+          type: string
+          format: date-time
+        startTime:
+          type: string
+          format: date-time
+        endTime:
+          type: string
+          format: date-time
+        hours:
+          type: number
+        payRate:
+          type: number
+        payrate_Base:
+          type: number
+        payrollStatus:
+          type: integer
+        total:
+          type: number
+        total_Base:
+          type: number
+        employee_ID:
+          type: string
+          format: uuid
+        r365Employee_ID:
+          type: string
+          format: uuid
+        employeeJobTitle_ID:
+          type: string
+          format: uuid
+        jobTitle_ID:
+          type: string
+          format: uuid
+        location_ID:
+          type: string
+          format: uuid
+        cateringEvent:
+          type: string
+          format: uuid
+        tipDeclaredAmount:
+          type: number
+        employee:
+          type: string
+        payrollID:
+          type: string
+        jobTitle:
+          type: string
+        location:
+          type: string
+        dailySalesSummaryId:
+          type: string
+          format: uuid
+        createdBy:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedOn:
+          type: string
+          format: date-time
+    Employee:
+      type: object
+      properties:
+        employeeId:
+          type: string
+          format: uuid
+        fullName:
+          type: string
+        firstName:
+          type: string
+        middleName:
+          type: string
+        lastName:
+          type: string
+        address1:
+          type: string
+        address2:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+        email:
+          type: string
+          format: email
+        phoneNumber:
+          type: string
+        mobilePhone:
+          type: string
+        allowTextMessaging:
+          type: boolean
+        birthday:
+          type: string
+          format: date-time
+        birthdayDay:
+          type: integer
+        birthdayMonth:
+          type: integer
+        hireDate:
+          type: string
+          format: date-time
+        multipleLocations:
+          type: integer
+        payrollID:
+          type: string
+        posid:
+          type: string
+        employeeLink:
+          type: string
+          format: uuid
+        primaryLocation_id:
+          type: string
+          format: uuid
+        inactive:
+          type: boolean
+        createdBy:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedOn:
+          type: string
+          format: date-time
+    POSEmployee:
+      type: object
+      properties:
+        posEmployeeId:
+          type: string
+          format: uuid
+        fullName:
+          type: string
+        posid:
+          type: string
+        location_id:
+          type: string
+          format: uuid
+        employee_id:
+          type: string
+          format: uuid
+        createdBy:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedOn:
+          type: string
+          format: date-time
+    PayrollSummary:
+      type: object
+      properties:
+        employeeID:
+          type: string
+          format: uuid
+        payrollID:
+          type: string
+        location:
+          type: string
+        locationNumber:
+          type: string
+        jobCode:
+          type: string
+        payRate:
+          type: number
+        regularHours:
+          type: number
+        overtimeHours:
+          type: number
+        doubleOvertime:
+          type: number
+        breakPenalty:
+          type: number
+        grossReceipts:
+          type: number
+        splitShiftPenalty:
+          type: number
+        chargeTips:
+          type: number
+        declaredTips:
+          type: number
+        percentageOfSales:
+          type: number
+        percent:
+          type: number
+        payrollStart:
+          type: string
+          format: date-time
+        payrollEnd:
+          type: string
+          format: date-time
+  parameters:
+    select:
+      name: $select
+      in: query
+      required: false
+      description: Comma-separated list of properties to return
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      required: false
+      description: Boolean expression used to filter results
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      required: false
+      description: Number of results to skip
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      required: false
+      description: Property to sort by; append desc for descending order
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      required: false
+      description: Maximum number of results to return
+      schema:
+        type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Domain\Username with R365 password

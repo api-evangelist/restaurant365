@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: Restaurant365 OData Connector AP Invoices Audit API
+  description: The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and business-intelligence tools through read-only views for companies, locations, GL accounts, items, employees, labor, transactions, and sales. Authentication uses Domain\Username (the company subdomain and R365 username) with the R365 password. Most views support the standard OData query options $filter, $orderby, $select, $skip, and $top. Sales views (SalesEmployee, SalesDetail, SalesPayment) do not support $select or $count and are limited to a 31-day date range per request.
+  version: v2
+  contact:
+    name: Kin Lane
+    email: kin@apievangelist.com
+  license:
+    name: Proprietary
+servers:
+- url: https://odata.restaurant365.net/api/v2/views
+  description: Restaurant365 OData v2 views endpoint
+tags:
+- name: Audit
+  description: Deleted entity tracking
+paths:
+  /EntityDeleted:
+    get:
+      operationId: listEntityDeleted
+      summary: List Deleted Entities
+      description: Retrieve a list of records deleted from the system.
+      tags:
+      - Audit
+      security:
+      - basicAuth: []
+      parameters:
+      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/orderby'
+      - $ref: '#/components/parameters/select'
+      - $ref: '#/components/parameters/skip'
+      - $ref: '#/components/parameters/top'
+      responses:
+        '200':
+          description: A collection of deleted entity records
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EntityDeleted'
+components:
+  parameters:
+    select:
+      name: $select
+      in: query
+      required: false
+      description: Comma-separated list of properties to return
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      required: false
+      description: Boolean expression used to filter results
+      schema:
+        type: string
+    skip:
+      name: $skip
+      in: query
+      required: false
+      description: Number of results to skip
+      schema:
+        type: integer
+    orderby:
+      name: $orderby
+      in: query
+      required: false
+      description: Property to sort by; append desc for descending order
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      required: false
+      description: Maximum number of results to return
+      schema:
+        type: integer
+  schemas:
+    EntityDeleted:
+      type: object
+      properties:
+        entityDeletedId:
+          type: integer
+        entityId:
+          type: string
+          format: uuid
+        entityName:
+          type: string
+        deletedOn:
+          type: string
+          format: date-time
+        rowVersion:
+          type: integer
+          format: int64
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Domain\Username with R365 password
