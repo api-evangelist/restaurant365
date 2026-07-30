@@ -9,7 +9,20 @@ description: >-
   provisioned per customer through R365 Support, with bearer-token authentication on the R365 API and Domain\Username
   basic authentication on the OData connector.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/restaurant365.png
 tags:
   - Restaurant
   - Accounting
@@ -23,85 +36,510 @@ created: '2026-06-02'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: restaurant365:rest-api
-    name: R365 API
-    description: >-
-      The R365 API lets approved third-party services and vendors connect to a Restaurant365 customer database to
-      retrieve data and create or push records, including AP invoices, GL-coded AP invoices, and general ledger journal
-      entries. A username and password are first exchanged at /APIv1/Authenticate for a bearer token, which is then sent
-      on every subsequent request. Access is provisioned per customer by contacting R365 Support to enable a vendor.
-    humanURL: https://docs.restaurant365.com/docs/r365-api
-    baseURL: https://yourcompany.restaurant365.com
-    tags:
-      - Invoices
-      - General Ledger
-      - Accounting
-    properties:
-      - type: Documentation
-        url: https://docs.restaurant365.com/docs/r365-api
-      - type: Documentation
-        url: https://docs.restaurant365.com/docs/r365-api-connector
-      - type: OpenAPI
-        url: openapi/restaurant365-r365-api-openapi.yml
-      - type: Authentication
-        url: https://docs.restaurant365.com/docs/r365-api-connector
-      - type: JSONSchema
-        url: json-schema/r365-api-ap-invoice-schema.json
-      - type: JSONSchema
-        url: json-schema/r365-api-journal-entry-schema.json
-      - type: JSONStructure
-        url: json-structure/r365-api-ap-invoice-structure.json
-      - type: JSONStructure
-        url: json-structure/r365-api-journal-entry-structure.json
-      - type: JSONLD
-        url: json-ld/restaurant365-r365-api-context.jsonld
-      - type: Examples
-        url: examples/r365-api-authenticate-example.json
-      - type: Examples
-        url: examples/r365-api-create-ap-invoices-example.json
-      - type: Examples
-        url: examples/r365-api-create-ap-invoices-gl-example.json
-      - type: Examples
-        url: examples/r365-api-create-journal-entries-example.json
-  - aid: restaurant365:odata-connector
-    name: Restaurant365 OData Connector
-    description: >-
-      The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and BI tools through read-only
-      views for companies, locations, GL accounts, items, job titles, employees, POS employees, labor detail, payroll
-      summary, transactions, transaction detail, sales, and deleted entities. Most views support $filter, $orderby,
-      $select, $skip, and $top. Sales views are limited to a 31-day date range per request and do not support $select or
-      $count.
-    humanURL: https://docs.restaurant365.com/docs/restaurant365-odata-connector
-    baseURL: https://odata.restaurant365.net/api/v2/views/
-    tags:
-      - OData
-      - Reporting
-      - Sales
-    properties:
-      - type: Documentation
-        url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
-      - type: OpenAPI
-        url: openapi/restaurant365-odata-connector-openapi.yml
-      - type: Authentication
-        url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
-      - type: JSONSchema
-        url: json-schema/odata-connector-transaction-schema.json
-      - type: JSONSchema
-        url: json-schema/odata-connector-sales-employee-schema.json
-      - type: JSONSchema
-        url: json-schema/odata-connector-gl-account-schema.json
-      - type: JSONSchema
-        url: json-schema/odata-connector-employee-schema.json
-      - type: JSONStructure
-        url: json-structure/odata-connector-transaction-structure.json
-      - type: JSONStructure
-        url: json-structure/odata-connector-sales-employee-structure.json
-      - type: JSONLD
-        url: json-ld/restaurant365-odata-connector-context.jsonld
-      - type: Examples
-        url: examples/odata-connector-list-transactions-example.json
-      - type: Examples
-        url: examples/odata-connector-list-sales-employee-example.json
+- aid: restaurant365:restaurant365-ap-invoices-api
+  name: Restaurant365 AP Invoices API
+  description: Create accounts payable invoices in the customer database
+  humanURL: https://docs.restaurant365.com/docs/r365-api
+  baseURL: https://yourcompany.restaurant365.com
+  tags:
+  - AP Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/restaurant365-ap-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: JSONSchema
+    url: json-schema/r365-api-ap-invoice-schema.json
+  - type: JSONSchema
+    url: json-schema/r365-api-journal-entry-schema.json
+  - type: JSONStructure
+    url: json-structure/r365-api-ap-invoice-structure.json
+  - type: JSONStructure
+    url: json-structure/r365-api-journal-entry-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-r365-api-context.jsonld
+  - type: Examples
+    url: examples/r365-api-authenticate-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-gl-example.json
+  - type: Examples
+    url: examples/r365-api-create-journal-entries-example.json
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: JSONSchema
+    url: json-schema/odata-connector-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-sales-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-gl-account-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-employee-schema.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-transaction-structure.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-sales-employee-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-odata-connector-context.jsonld
+  - type: Examples
+    url: examples/odata-connector-list-transactions-example.json
+  - type: Examples
+    url: examples/odata-connector-list-sales-employee-example.json
+- aid: restaurant365:restaurant365-audit-api
+  name: Restaurant365 Audit API
+  description: Deleted entity tracking
+  humanURL: https://docs.restaurant365.com/docs/r365-api
+  baseURL: https://yourcompany.restaurant365.com
+  tags:
+  - Audit
+  properties:
+  - type: OpenAPI
+    url: openapi/restaurant365-audit-api-openapi.yml
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: JSONSchema
+    url: json-schema/r365-api-ap-invoice-schema.json
+  - type: JSONSchema
+    url: json-schema/r365-api-journal-entry-schema.json
+  - type: JSONStructure
+    url: json-structure/r365-api-ap-invoice-structure.json
+  - type: JSONStructure
+    url: json-structure/r365-api-journal-entry-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-r365-api-context.jsonld
+  - type: Examples
+    url: examples/r365-api-authenticate-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-gl-example.json
+  - type: Examples
+    url: examples/r365-api-create-journal-entries-example.json
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: JSONSchema
+    url: json-schema/odata-connector-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-sales-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-gl-account-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-employee-schema.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-transaction-structure.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-sales-employee-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-odata-connector-context.jsonld
+  - type: Examples
+    url: examples/odata-connector-list-transactions-example.json
+  - type: Examples
+    url: examples/odata-connector-list-sales-employee-example.json
+- aid: restaurant365:restaurant365-authentication-api
+  name: Restaurant365 Authentication API
+  description: Obtain a bearer token for subsequent requests
+  humanURL: https://docs.restaurant365.com/docs/r365-api
+  baseURL: https://yourcompany.restaurant365.com
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/restaurant365-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: JSONSchema
+    url: json-schema/r365-api-ap-invoice-schema.json
+  - type: JSONSchema
+    url: json-schema/r365-api-journal-entry-schema.json
+  - type: JSONStructure
+    url: json-structure/r365-api-ap-invoice-structure.json
+  - type: JSONStructure
+    url: json-structure/r365-api-journal-entry-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-r365-api-context.jsonld
+  - type: Examples
+    url: examples/r365-api-authenticate-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-gl-example.json
+  - type: Examples
+    url: examples/r365-api-create-journal-entries-example.json
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: JSONSchema
+    url: json-schema/odata-connector-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-sales-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-gl-account-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-employee-schema.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-transaction-structure.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-sales-employee-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-odata-connector-context.jsonld
+  - type: Examples
+    url: examples/odata-connector-list-transactions-example.json
+  - type: Examples
+    url: examples/odata-connector-list-sales-employee-example.json
+- aid: restaurant365:restaurant365-general-ledger-api
+  name: Restaurant365 General Ledger API
+  description: Create AP invoices by GL account and journal entries
+  humanURL: https://docs.restaurant365.com/docs/r365-api
+  baseURL: https://yourcompany.restaurant365.com
+  tags:
+  - General Ledger
+  properties:
+  - type: OpenAPI
+    url: openapi/restaurant365-general-ledger-api-openapi.yml
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: JSONSchema
+    url: json-schema/r365-api-ap-invoice-schema.json
+  - type: JSONSchema
+    url: json-schema/r365-api-journal-entry-schema.json
+  - type: JSONStructure
+    url: json-structure/r365-api-ap-invoice-structure.json
+  - type: JSONStructure
+    url: json-structure/r365-api-journal-entry-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-r365-api-context.jsonld
+  - type: Examples
+    url: examples/r365-api-authenticate-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-gl-example.json
+  - type: Examples
+    url: examples/r365-api-create-journal-entries-example.json
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: JSONSchema
+    url: json-schema/odata-connector-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-sales-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-gl-account-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-employee-schema.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-transaction-structure.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-sales-employee-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-odata-connector-context.jsonld
+  - type: Examples
+    url: examples/odata-connector-list-transactions-example.json
+  - type: Examples
+    url: examples/odata-connector-list-sales-employee-example.json
+- aid: restaurant365:restaurant365-labor-api
+  name: Restaurant365 Labor API
+  description: Employees, labor detail, payroll, and POS employees
+  humanURL: https://docs.restaurant365.com/docs/r365-api
+  baseURL: https://yourcompany.restaurant365.com
+  tags:
+  - Labor
+  properties:
+  - type: OpenAPI
+    url: openapi/restaurant365-labor-api-openapi.yml
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: JSONSchema
+    url: json-schema/r365-api-ap-invoice-schema.json
+  - type: JSONSchema
+    url: json-schema/r365-api-journal-entry-schema.json
+  - type: JSONStructure
+    url: json-structure/r365-api-ap-invoice-structure.json
+  - type: JSONStructure
+    url: json-structure/r365-api-journal-entry-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-r365-api-context.jsonld
+  - type: Examples
+    url: examples/r365-api-authenticate-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-gl-example.json
+  - type: Examples
+    url: examples/r365-api-create-journal-entries-example.json
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: JSONSchema
+    url: json-schema/odata-connector-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-sales-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-gl-account-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-employee-schema.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-transaction-structure.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-sales-employee-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-odata-connector-context.jsonld
+  - type: Examples
+    url: examples/odata-connector-list-transactions-example.json
+  - type: Examples
+    url: examples/odata-connector-list-sales-employee-example.json
+- aid: restaurant365:restaurant365-metadata-api
+  name: Restaurant365 Metadata API
+  description: OData service metadata
+  humanURL: https://docs.restaurant365.com/docs/r365-api
+  baseURL: https://yourcompany.restaurant365.com
+  tags:
+  - Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/restaurant365-metadata-api-openapi.yml
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: JSONSchema
+    url: json-schema/r365-api-ap-invoice-schema.json
+  - type: JSONSchema
+    url: json-schema/r365-api-journal-entry-schema.json
+  - type: JSONStructure
+    url: json-structure/r365-api-ap-invoice-structure.json
+  - type: JSONStructure
+    url: json-structure/r365-api-journal-entry-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-r365-api-context.jsonld
+  - type: Examples
+    url: examples/r365-api-authenticate-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-gl-example.json
+  - type: Examples
+    url: examples/r365-api-create-journal-entries-example.json
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: JSONSchema
+    url: json-schema/odata-connector-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-sales-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-gl-account-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-employee-schema.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-transaction-structure.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-sales-employee-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-odata-connector-context.jsonld
+  - type: Examples
+    url: examples/odata-connector-list-transactions-example.json
+  - type: Examples
+    url: examples/odata-connector-list-sales-employee-example.json
+- aid: restaurant365:restaurant365-reference-data-api
+  name: Restaurant365 Reference Data API
+  description: Companies, locations, GL accounts, items, and job titles
+  humanURL: https://docs.restaurant365.com/docs/r365-api
+  baseURL: https://yourcompany.restaurant365.com
+  tags:
+  - Reference Data
+  properties:
+  - type: OpenAPI
+    url: openapi/restaurant365-reference-data-api-openapi.yml
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: JSONSchema
+    url: json-schema/r365-api-ap-invoice-schema.json
+  - type: JSONSchema
+    url: json-schema/r365-api-journal-entry-schema.json
+  - type: JSONStructure
+    url: json-structure/r365-api-ap-invoice-structure.json
+  - type: JSONStructure
+    url: json-structure/r365-api-journal-entry-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-r365-api-context.jsonld
+  - type: Examples
+    url: examples/r365-api-authenticate-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-gl-example.json
+  - type: Examples
+    url: examples/r365-api-create-journal-entries-example.json
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: JSONSchema
+    url: json-schema/odata-connector-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-sales-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-gl-account-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-employee-schema.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-transaction-structure.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-sales-employee-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-odata-connector-context.jsonld
+  - type: Examples
+    url: examples/odata-connector-list-transactions-example.json
+  - type: Examples
+    url: examples/odata-connector-list-sales-employee-example.json
+- aid: restaurant365:restaurant365-sales-api
+  name: Restaurant365 Sales API
+  description: Sales ticket headers, detail, and payments
+  humanURL: https://docs.restaurant365.com/docs/r365-api
+  baseURL: https://yourcompany.restaurant365.com
+  tags:
+  - Sales
+  properties:
+  - type: OpenAPI
+    url: openapi/restaurant365-sales-api-openapi.yml
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: JSONSchema
+    url: json-schema/r365-api-ap-invoice-schema.json
+  - type: JSONSchema
+    url: json-schema/r365-api-journal-entry-schema.json
+  - type: JSONStructure
+    url: json-structure/r365-api-ap-invoice-structure.json
+  - type: JSONStructure
+    url: json-structure/r365-api-journal-entry-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-r365-api-context.jsonld
+  - type: Examples
+    url: examples/r365-api-authenticate-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-gl-example.json
+  - type: Examples
+    url: examples/r365-api-create-journal-entries-example.json
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: JSONSchema
+    url: json-schema/odata-connector-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-sales-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-gl-account-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-employee-schema.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-transaction-structure.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-sales-employee-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-odata-connector-context.jsonld
+  - type: Examples
+    url: examples/odata-connector-list-transactions-example.json
+  - type: Examples
+    url: examples/odata-connector-list-sales-employee-example.json
+- aid: restaurant365:restaurant365-transactions-api
+  name: Restaurant365 Transactions API
+  description: Financial transactions and transaction detail
+  humanURL: https://docs.restaurant365.com/docs/r365-api
+  baseURL: https://yourcompany.restaurant365.com
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/restaurant365-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/r365-api-connector
+  - type: JSONSchema
+    url: json-schema/r365-api-ap-invoice-schema.json
+  - type: JSONSchema
+    url: json-schema/r365-api-journal-entry-schema.json
+  - type: JSONStructure
+    url: json-structure/r365-api-ap-invoice-structure.json
+  - type: JSONStructure
+    url: json-structure/r365-api-journal-entry-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-r365-api-context.jsonld
+  - type: Examples
+    url: examples/r365-api-authenticate-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-example.json
+  - type: Examples
+    url: examples/r365-api-create-ap-invoices-gl-example.json
+  - type: Examples
+    url: examples/r365-api-create-journal-entries-example.json
+  - type: Documentation
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: Authentication
+    url: https://docs.restaurant365.com/docs/restaurant365-odata-connector
+  - type: JSONSchema
+    url: json-schema/odata-connector-transaction-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-sales-employee-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-gl-account-schema.json
+  - type: JSONSchema
+    url: json-schema/odata-connector-employee-schema.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-transaction-structure.json
+  - type: JSONStructure
+    url: json-structure/odata-connector-sales-employee-structure.json
+  - type: JSONLD
+    url: json-ld/restaurant365-odata-connector-context.jsonld
+  - type: Examples
+    url: examples/odata-connector-list-transactions-example.json
+  - type: Examples
+    url: examples/odata-connector-list-sales-employee-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/restaurant365-agentic-access.yml
