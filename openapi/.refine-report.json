@@ -1,0 +1,30 @@
+{
+  "provider": "restaurant365",
+  "sources": [
+    "restaurant365-ap-invoices-api-openapi.yml",
+    "restaurant365-audit-api-openapi.yml",
+    "restaurant365-authentication-api-openapi.yml",
+    "restaurant365-general-ledger-api-openapi.yml",
+    "restaurant365-labor-api-openapi.yml",
+    "restaurant365-metadata-api-openapi.yml",
+    "restaurant365-reference-data-api-openapi.yml",
+    "restaurant365-sales-api-openapi.yml",
+    "restaurant365-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "restaurant365-ap-invoices-api-openapi.yml",
+    "restaurant365-audit-api-openapi.yml",
+    "restaurant365-authentication-api-openapi.yml",
+    "restaurant365-general-ledger-api-openapi.yml",
+    "restaurant365-labor-api-openapi.yml",
+    "restaurant365-metadata-api-openapi.yml",
+    "restaurant365-reference-data-api-openapi.yml",
+    "restaurant365-sales-api-openapi.yml",
+    "restaurant365-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
