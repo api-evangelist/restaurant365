@@ -1,0 +1,742 @@
+{
+  "item": [
+    {
+      "id": "7e2fb45a-1e84-4b38-b72f-df8a8b6ae910",
+      "name": "Reference Data",
+      "description": {
+        "content": "Companies, locations, GL accounts, items, and job titles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75cf4e8e-4753-4a52-87b4-2e22fb2236b4",
+          "name": "List Companies",
+          "request": {
+            "name": "List Companies",
+            "description": {
+              "content": "List all companies (vendors) in the customer database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Company"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c735083c-d9af-4939-a3ca-912d0e214f62",
+              "name": "A collection of companies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Company"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"companyId\": \"e6731c8a-293b-f203-13f7-403da4eac79e\",\n      \"name\": \"string\",\n      \"companyNumber\": \"string\",\n      \"comment\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1975-12-06T10:15:13.455Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"2015-09-22T17:57:46.820Z\"\n    },\n    {\n      \"companyId\": \"6efac302-fe7b-7492-63fb-e821ed731ad4\",\n      \"name\": \"string\",\n      \"companyNumber\": \"string\",\n      \"comment\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2026-06-25T21:24:22.777Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"2002-08-27T01:58:27.436Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4eb7fed-8d43-4b7e-b02e-bb8618268a6f",
+          "name": "List Locations",
+          "request": {
+            "name": "List Locations",
+            "description": {
+              "content": "List all locations in the customer database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Location"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "826da4f9-71c7-4455-9645-ac129c1e67c6",
+              "name": "A collection of locations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Location"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"locationId\": \"ab003193-cf49-6fbc-0f8e-977c88c73f44\",\n      \"name\": \"string\",\n      \"locationNumber\": \"string\",\n      \"legalEntityId\": \"865d2dc4-395c-5f0a-2663-00a1e2b54cd2\",\n      \"legalEntityNumber\": \"string\",\n      \"legalEntityName\": \"string\",\n      \"attribute1Id\": \"7ab4b275-a088-fcdc-4ab7-7f6f5a4cd49a\",\n      \"attribute1Number\": \"string\",\n      \"attribute1Name\": \"string\",\n      \"attribute2Id\": \"134cda34-6dcc-db08-a900-164734c973da\",\n      \"attribute2Number\": \"string\",\n      \"attribute2Name\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2016-10-06T18:53:33.316Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1989-07-08T01:56:08.098Z\"\n    },\n    {\n      \"locationId\": \"2948b12a-3719-de83-9543-fec72ec905d6\",\n      \"name\": \"string\",\n      \"locationNumber\": \"string\",\n      \"legalEntityId\": \"47915a1a-bf27-77db-784f-db7aa1fd1aa4\",\n      \"legalEntityNumber\": \"string\",\n      \"legalEntityName\": \"string\",\n      \"attribute1Id\": \"e3af7872-d914-e088-96bb-e39066bc4e72\",\n      \"attribute1Number\": \"string\",\n      \"attribute1Name\": \"string\",\n      \"attribute2Id\": \"68eb8a35-0a09-cd38-8ad5-1fe1b1e3cb5a\",\n      \"attribute2Number\": \"string\",\n      \"attribute2Name\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1985-05-31T00:35:34.930Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1995-03-16T12:04:40.859Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8019a322-e2ea-441d-b72e-9fb94f7ede80",
+          "name": "List GL Accounts",
+          "request": {
+            "name": "List GL Accounts",
+            "description": {
+              "content": "List all general ledger accounts with details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "GLAccount"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "824e1ead-94cd-4fbd-bae2-3985f4f581d3",
+              "name": "A collection of GL accounts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "GLAccount"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"glAccountId\": \"4caab7d4-98a9-a85b-e0ae-80fcc4224f24\",\n      \"glAccountAutoId\": 5211,\n      \"locationNumber\": \"string\",\n      \"locationName\": \"string\",\n      \"locationId\": \"068d723a-d051-512c-0a91-6f4d4800159e\",\n      \"legalEntityNumber\": \"string\",\n      \"legalEntityName\": \"string\",\n      \"legalEntityId\": \"a3f28051-28c9-9eeb-f1da-fa3fd38f4fd7\",\n      \"attribute1Number\": \"string\",\n      \"attribute1Name\": \"string\",\n      \"attribute1Id\": \"df877756-56db-7395-885d-dea8d30764df\",\n      \"attribute2Number\": \"string\",\n      \"attribute2Name\": \"string\",\n      \"attribute2Id\": \"13fc1051-b5a5-f99d-ed5b-47edfc415d0d\",\n      \"name\": \"string\",\n      \"glAccountNumber\": \"string\",\n      \"glTypeClass\": 4365,\n      \"glType\": \"string\",\n      \"operationalCategory\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2014-04-03T14:53:28.187Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1959-04-28T16:26:58.836Z\"\n    },\n    {\n      \"glAccountId\": \"14f39803-9a9b-c988-fc8d-35e3397cb534\",\n      \"glAccountAutoId\": 651,\n      \"locationNumber\": \"string\",\n      \"locationName\": \"string\",\n      \"locationId\": \"2e3a2671-1b72-1ca2-4850-71dce656fa8e\",\n      \"legalEntityNumber\": \"string\",\n      \"legalEntityName\": \"string\",\n      \"legalEntityId\": \"bb94cf53-ae1c-5b46-8b4f-954e140b41ae\",\n      \"attribute1Number\": \"string\",\n      \"attribute1Name\": \"string\",\n      \"attribute1Id\": \"193b377d-8889-1d91-2f00-5f67d139576c\",\n      \"attribute2Number\": \"string\",\n      \"attribute2Name\": \"string\",\n      \"attribute2Id\": \"31f53ce5-1ebe-faec-2d30-1d5c74628d36\",\n      \"name\": \"string\",\n      \"glAccountNumber\": \"string\",\n      \"glTypeClass\": 7283,\n      \"glType\": \"string\",\n      \"operationalCategory\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1953-03-24T12:09:42.702Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1995-03-26T02:43:55.844Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1fa81ecb-79a2-4599-9fc0-02ea93d52c90",
+          "name": "List Items",
+          "request": {
+            "name": "List Items",
+            "description": {
+              "content": "List all items with categorization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Item"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "00c60864-cf21-4379-9d45-0359902d7276",
+              "name": "A collection of items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Item"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"itemId\": \"8eafba31-7cad-e1f5-af3a-4752c77f22d7\",\n      \"name\": \"string\",\n      \"itemNumber\": \"string\",\n      \"category1\": \"string\",\n      \"category2\": \"string\",\n      \"category3\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1975-12-23T19:47:14.716Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1955-10-09T07:38:21.330Z\"\n    },\n    {\n      \"itemId\": \"368ea8d7-f8fc-7f26-f6d7-ecae40f9d3b8\",\n      \"name\": \"string\",\n      \"itemNumber\": \"string\",\n      \"category1\": \"string\",\n      \"category2\": \"string\",\n      \"category3\": \"string\",\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2015-06-14T02:55:22.636Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1967-07-27T23:19:10.760Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61125086-fd5b-40e6-8db3-bcbeb5772ec3",
+          "name": "List Job Titles",
+          "request": {
+            "name": "List Job Titles",
+            "description": {
+              "content": "List all job titles with details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "JobTitle"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Comma-separated list of properties to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "83990c2c-83f0-4b5d-8454-66cf46bee8a5",
+              "name": "A collection of job titles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "JobTitle"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"jobTitleId\": \"f56ea693-01fd-5550-9f03-59da26a7f4a3\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"jobCode\": \"string\",\n      \"payRate\": 8223.700509119224,\n      \"payRate_Base\": 1214.7226668610244,\n      \"posid\": \"string\",\n      \"glAccount_Id\": \"0598e68a-9632-9988-970f-cf59503b9d9e\",\n      \"location_Id\": \"54c3c6bd-4e11-bcb9-37a3-205202e10b6f\",\n      \"rating\": 7958,\n      \"excludeFromSchedule\": false,\n      \"excludeFromPOSImport\": false,\n      \"createdBy\": \"string\",\n      \"createdOn\": \"2008-10-19T07:51:42.668Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"2003-09-28T09:19:27.197Z\"\n    },\n    {\n      \"jobTitleId\": \"6a8398f6-9836-9715-7fdf-fb5adc912d35\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"jobCode\": \"string\",\n      \"payRate\": 1415.5367661066698,\n      \"payRate_Base\": 6187.48340809162,\n      \"posid\": \"string\",\n      \"glAccount_Id\": \"bd36c02d-3159-071e-7ec8-ec495f1813c1\",\n      \"location_Id\": \"b5adf8d7-9df2-0a5f-126b-634ca157c8be\",\n      \"rating\": 8996,\n      \"excludeFromSchedule\": true,\n      \"excludeFromPOSImport\": true,\n      \"createdBy\": \"string\",\n      \"createdOn\": \"1951-01-18T21:32:05.297Z\",\n      \"modifiedBy\": \"string\",\n      \"modifiedOn\": \"1973-09-12T16:39:39.536Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://odata.restaurant365.net/api/v2/views",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9d35d730-955b-4e3d-8358-f9bd24de02de",
+    "name": "Restaurant365 OData Connector AP Invoices Reference Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and business-intelligence tools through read-only views for companies, locations, GL accounts, items, employees, labor, transactions, and sales. Authentication uses Domain\\Username (the company subdomain and R365 username) with the R365 password. Most views support the standard OData query options $filter, $orderby, $select, $skip, and $top. Sales views (SalesEmployee, SalesDetail, SalesPayment) do not support $select or $count and are limited to a 31-day date range per request.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

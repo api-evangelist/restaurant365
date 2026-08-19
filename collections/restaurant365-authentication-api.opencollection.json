@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Restaurant365 OData Connector AP Invoices Authentication API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Authenticate And Obtain Bearer Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://odata.restaurant365.net/api/v2/views/APIv1/Authenticate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchange an R365 username and password for a bearer token that must be sent in the Authorization header on all subsequent API requests."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Restaurant365 OData Connector AP Invoices API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AP Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create AP Invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://odata.restaurant365.net/api/v2/views/APIv1/APInvoices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create one or more accounts payable invoices in the customer database using vendor and product (item) level detail. Vendor name and retailer store number must match values configured in the customer's R365 database."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

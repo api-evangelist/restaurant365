@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Restaurant365 OData Connector AP Invoices General Ledger API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "General Ledger",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create AP Invoices By GL Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://odata.restaurant365.net/api/v2/views/APIv1/APInvoicesGL",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create one or more accounts payable invoices or AP credit memos using GL account level detail rather than item detail. Use this when invoices should be coded directly to general ledger accounts."
+        },
+        {
+          "info": {
+            "name": "Create Journal Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://odata.restaurant365.net/api/v2/views/APIv1/JournalEntries",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create one or more general ledger journal entries. Debits and credits must balance across the lines of each journal entry. Payroll journal entries require the payroll-specific fields."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

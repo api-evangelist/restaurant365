@@ -1,0 +1,428 @@
+{
+  "item": [
+    {
+      "id": "444122d6-dc21-4de4-b7bd-cd960297f9e8",
+      "name": "Sales",
+      "description": {
+        "content": "Sales ticket headers, detail, and payments",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b17fb6c2-aec0-414e-a6ee-cacd5765291a",
+          "name": "List Sales Employee Tickets",
+          "request": {
+            "name": "List Sales Employee Tickets",
+            "description": {
+              "content": "Retrieve sales ticket header data. This view does not support $select or $count and is limited to a 31-day date range per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SalesEmployee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "82bda180-b8a8-45fc-a036-828cc38efd59",
+              "name": "A collection of sales ticket headers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SalesEmployee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"salesId\": \"6c53515e-3c0d-6b1c-3fac-17fa12e2cb21\",\n      \"receiptNumber\": \"string\",\n      \"checkNumber\": \"string\",\n      \"comment\": \"string\",\n      \"date\": \"1977-08-28T00:33:50.759Z\",\n      \"dayOfWeek\": \"string\",\n      \"dayPart\": \"string\",\n      \"netSales\": 4152.666280317995,\n      \"grossSales\": 3416.116663033225,\n      \"numberofGuests\": 4379,\n      \"orderHour\": 7068,\n      \"salesAmount\": 5024.370551777154,\n      \"taxAmount\": 542.4715165111882,\n      \"tipAmount\": 4705.3624720677735,\n      \"totalAmount\": 4498.1193737185895,\n      \"totalPayment\": 9926.7652621142,\n      \"void\": false,\n      \"server\": \"string\",\n      \"location\": \"b5f1dba7-c070-e13d-f126-c8ac73f1134a\",\n      \"serviceType\": \"string\",\n      \"dailySalesSummaryId\": \"c9967591-d990-d5b2-9289-16b3f218033d\",\n      \"createdOn\": \"2025-02-25T17:17:28.513Z\",\n      \"modifiedOn\": \"2008-03-26T20:37:00.454Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    },\n    {\n      \"salesId\": \"8ea872a8-d985-8cc6-833d-bc2f63a1b1c2\",\n      \"receiptNumber\": \"string\",\n      \"checkNumber\": \"string\",\n      \"comment\": \"string\",\n      \"date\": \"2023-11-26T07:42:13.635Z\",\n      \"dayOfWeek\": \"string\",\n      \"dayPart\": \"string\",\n      \"netSales\": 8316.467586518405,\n      \"grossSales\": 6727.642392031542,\n      \"numberofGuests\": 9319,\n      \"orderHour\": 2711,\n      \"salesAmount\": 9638.469755635575,\n      \"taxAmount\": 2489.2496545552035,\n      \"tipAmount\": 1332.5357209844967,\n      \"totalAmount\": 7729.940134308794,\n      \"totalPayment\": 4079.2939697594443,\n      \"void\": false,\n      \"server\": \"string\",\n      \"location\": \"53515970-ea67-9a01-8de2-d60d5731d5cd\",\n      \"serviceType\": \"string\",\n      \"dailySalesSummaryId\": \"0e39676b-711c-c7d2-317d-49ccfdb12fa0\",\n      \"createdOn\": \"1965-10-30T19:22:32.451Z\",\n      \"modifiedOn\": \"2013-12-01T09:56:40.532Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "156f44ec-0916-42a0-ad90-f6e26140bc54",
+          "name": "List Sales Detail",
+          "request": {
+            "name": "List Sales Detail",
+            "description": {
+              "content": "Retrieve sales ticket line items. This view does not support $select or $count and is limited to a 31-day date range per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SalesDetail"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fe470507-c017-4bd3-9460-35aa7efad16f",
+              "name": "A collection of sales line items",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SalesDetail"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"salesdetailID\": \"07d521be-5043-2bd4-bb5c-4897aaba1971\",\n      \"menuitem\": \"string\",\n      \"amount\": 3748.0663904461676,\n      \"customerPOSText\": \"string\",\n      \"date\": \"2008-11-08T06:30:12.569Z\",\n      \"quantity\": 6870.352571353491,\n      \"void\": false,\n      \"company\": \"d25ca95a-c55d-5b9a-869e-34ba0cd7b6b2\",\n      \"location\": \"1d3212c4-3c49-742a-5219-985709186d02\",\n      \"salesID\": \"c3a6b46a-dea2-1258-5c3c-eb81d9c98ade\",\n      \"salesAccount\": \"string\",\n      \"category\": \"string\",\n      \"houseAccountTransaction\": \"9417dfc1-4b19-8938-ab07-5d1e9508ad46\",\n      \"transactionDetailID\": \"d971949e-6075-4bb7-e28f-3713ca41e32f\",\n      \"cateringEvent\": \"b5696636-17d5-dcc6-8ac9-e06af30ec4f8\",\n      \"menuItemId\": 2045,\n      \"dailySalesSummaryId\": \"8bc7d548-331f-a613-6da4-a6cdfe5767d8\",\n      \"createdOn\": \"2002-10-29T07:37:34.591Z\",\n      \"modifiedOn\": \"1997-07-18T19:09:54.207Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    },\n    {\n      \"salesdetailID\": \"16fb1cbb-9831-5627-64db-baf3d9098afc\",\n      \"menuitem\": \"string\",\n      \"amount\": 8930.250503229328,\n      \"customerPOSText\": \"string\",\n      \"date\": \"1951-01-15T12:07:17.259Z\",\n      \"quantity\": 9267.78530743512,\n      \"void\": true,\n      \"company\": \"b8cc48d4-1eb9-a48d-03dd-fea5f873d563\",\n      \"location\": \"0657579c-bf6e-2a9b-68d7-f8f3c9158293\",\n      \"salesID\": \"15793f0e-8c98-8336-9c9f-f69b4c91ee92\",\n      \"salesAccount\": \"string\",\n      \"category\": \"string\",\n      \"houseAccountTransaction\": \"f5ece24b-47b6-288b-e93a-c799cbdad4ea\",\n      \"transactionDetailID\": \"847b1f14-1644-203f-267b-7c34b3760260\",\n      \"cateringEvent\": \"6a0dda97-9541-43e9-c155-a111a91fa140\",\n      \"menuItemId\": 5733,\n      \"dailySalesSummaryId\": \"559a0f17-cd12-6826-4cbf-13bab5cdf2c0\",\n      \"createdOn\": \"1966-03-29T02:29:18.219Z\",\n      \"modifiedOn\": \"1961-06-25T21:39:57.523Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f2018ba-9754-4a7b-af50-5583a60628e2",
+          "name": "List Sales Payments",
+          "request": {
+            "name": "List Sales Payments",
+            "description": {
+              "content": "Retrieve sales payment data. This view does not support $select or $count and is limited to a 31-day date range per request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "SalesPayment"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$filter",
+                  "value": "<string>",
+                  "description": "Boolean expression used to filter results"
+                },
+                {
+                  "disabled": false,
+                  "key": "$orderby",
+                  "value": "<string>",
+                  "description": "Property to sort by; append desc for descending order"
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "<integer>",
+                  "description": "Number of results to skip"
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "<integer>",
+                  "description": "Maximum number of results to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{basicAuthUsername}}"
+                },
+                {
+                  "key": "password",
+                  "value": "{{basicAuthPassword}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9372f74c-c7ba-46bd-9bd6-a3b2ac8b52df",
+              "name": "A collection of sales payments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "SalesPayment"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$orderby",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"salespaymentId\": \"a38cde88-1c52-cb3d-26c6-911c59ddf262\",\n      \"name\": \"string\",\n      \"amount\": 6531.6591310348285,\n      \"comment\": \"string\",\n      \"customerPOSText\": \"string\",\n      \"date\": \"1978-02-16T11:26:46.895Z\",\n      \"isException\": true,\n      \"missingreceipt\": true,\n      \"company\": \"4ee0d488-9eba-04ab-adb1-1cd08955f7b4\",\n      \"location\": \"dc544429-6db3-cfbd-5e1e-6d8b758e47b5\",\n      \"paymenttype\": \"string\",\n      \"paymentGroup\": \"string\",\n      \"salesID\": \"3757326c-8ef9-55e5-6d0a-6ad1654afc7e\",\n      \"houseAccountTransaction\": \"7430993a-4f3e-a48e-dcd3-49407745c49b\",\n      \"transactionDetailID\": \"4029fc9d-2d1d-83b1-9595-5b5fff049683\",\n      \"cateringEvent\": \"9cd99168-3045-5b08-46c3-fa1e2b76ff95\",\n      \"exclude\": true,\n      \"dailySalesSummaryId\": \"d87e626f-0878-e5ed-198d-ccece392d485\",\n      \"createdOn\": \"1965-03-18T11:53:35.245Z\",\n      \"modifiedOn\": \"2011-11-12T05:34:33.339Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    },\n    {\n      \"salespaymentId\": \"73206885-be5b-2a48-5af1-25079b37559f\",\n      \"name\": \"string\",\n      \"amount\": 3582.776574569443,\n      \"comment\": \"string\",\n      \"customerPOSText\": \"string\",\n      \"date\": \"1957-06-25T22:13:18.415Z\",\n      \"isException\": false,\n      \"missingreceipt\": false,\n      \"company\": \"9fcfa2da-3ed7-85d0-6eb6-58117c439a25\",\n      \"location\": \"761215f1-b0d1-e670-a625-3b6fa2ff8383\",\n      \"paymenttype\": \"string\",\n      \"paymentGroup\": \"string\",\n      \"salesID\": \"125c2554-4fcb-0e24-45ee-2c6cf9266a16\",\n      \"houseAccountTransaction\": \"39f6ecba-4c78-e64d-087c-703837ace2a2\",\n      \"transactionDetailID\": \"ab567e4f-c2a0-f5ab-db51-c3062e675464\",\n      \"cateringEvent\": \"1d04ff5c-0b5d-a51b-1d44-2fe8f3d32f7b\",\n      \"exclude\": false,\n      \"dailySalesSummaryId\": \"edd93124-0dd1-09c1-426e-b656e9179c43\",\n      \"createdOn\": \"1961-08-06T01:16:34.892Z\",\n      \"modifiedOn\": \"1963-05-04T10:27:16.209Z\",\n      \"createdBy\": \"string\",\n      \"modifiedBy\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://odata.restaurant365.net/api/v2/views",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4cbd9e81-82c2-4a5c-939c-7fc1a91d603a",
+    "name": "Restaurant365 OData Connector AP Invoices Sales API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and business-intelligence tools through read-only views for companies, locations, GL accounts, items, employees, labor, transactions, and sales. Authentication uses Domain\\Username (the company subdomain and R365 username) with the R365 password. Most views support the standard OData query options $filter, $orderby, $select, $skip, and $top. Sales views (SalesEmployee, SalesDetail, SalesPayment) do not support $select or $count and are limited to a 31-day date range per request.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

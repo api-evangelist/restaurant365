@@ -1,0 +1,292 @@
+{
+  "item": [
+    {
+      "id": "8ab8a0f9-87a3-4715-8961-f46a1f1b133c",
+      "name": "General Ledger",
+      "description": {
+        "content": "Create AP invoices by GL account and journal entries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0fbe61c-53a1-48a1-b0fb-e10a251a33db",
+          "name": "Create AP Invoices By GL Account",
+          "request": {
+            "name": "Create AP Invoices By GL Account",
+            "description": {
+              "content": "Create one or more accounts payable invoices or AP credit memos using GL account level detail rather than item detail. Use this when invoices should be coded directly to general ledger accounts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "APIv1",
+                "APInvoicesGL"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"Type\": \"<string>\",\n    \"Vendor\": \"<string>\",\n    \"Date\": \"<string>\",\n    \"GL_Date\": \"<string>\",\n    \"Location\": \"<string>\",\n    \"Number\": \"<string>\",\n    \"Amount\": \"<number>\",\n    \"Detail_Account\": \"<string>\",\n    \"Detail_Amount\": \"<number>\",\n    \"Detail_Location\": \"<string>\",\n    \"BatchId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"Comment\": \"<string>\",\n    \"Due_Date\": \"<string>\",\n    \"Payment_Terms\": \"<string>\",\n    \"Detail_Comment\": \"<string>\",\n    \"Image_URL\": \"<uri>\",\n    \"IsPaid\": \"<boolean>\",\n    \"Paid_Account\": \"<string>\"\n  },\n  {\n    \"Type\": \"<string>\",\n    \"Vendor\": \"<string>\",\n    \"Date\": \"<string>\",\n    \"GL_Date\": \"<string>\",\n    \"Location\": \"<string>\",\n    \"Number\": \"<string>\",\n    \"Amount\": \"<number>\",\n    \"Detail_Account\": \"<string>\",\n    \"Detail_Amount\": \"<number>\",\n    \"Detail_Location\": \"<string>\",\n    \"BatchId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"Comment\": \"<string>\",\n    \"Due_Date\": \"<string>\",\n    \"Payment_Terms\": \"<string>\",\n    \"Detail_Comment\": \"<string>\",\n    \"Image_URL\": \"<uri>\",\n    \"IsPaid\": \"<boolean>\",\n    \"Paid_Account\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8ae31e71-c390-462b-abb6-04b2d4357555",
+              "name": "Processing result with successes and failures",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "APInvoicesGL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"Type\": \"AP Credit Memo\",\n    \"Vendor\": \"string\",\n    \"Date\": \"string\",\n    \"GL_Date\": \"string\",\n    \"Location\": \"string\",\n    \"Number\": \"string\",\n    \"Amount\": 3907.9864838806798,\n    \"Detail_Account\": \"string\",\n    \"Detail_Amount\": 1480.013984347358,\n    \"Detail_Location\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Comment\": \"string\",\n    \"Due_Date\": \"string\",\n    \"Payment_Terms\": \"string\",\n    \"Detail_Comment\": \"string\",\n    \"Image_URL\": \"http://XmAZk.agydvliisHjQMzB7cdXqao8+plveRQIbcjuSW\",\n    \"IsPaid\": false,\n    \"Paid_Account\": \"string\"\n  },\n  {\n    \"Type\": \"AP Invoice\",\n    \"Vendor\": \"string\",\n    \"Date\": \"string\",\n    \"GL_Date\": \"string\",\n    \"Location\": \"string\",\n    \"Number\": \"string\",\n    \"Amount\": 8603.092724540256,\n    \"Detail_Account\": \"string\",\n    \"Detail_Amount\": 535.8550911591886,\n    \"Detail_Location\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Comment\": \"string\",\n    \"Due_Date\": \"string\",\n    \"Payment_Terms\": \"string\",\n    \"Detail_Comment\": \"string\",\n    \"Image_URL\": \"https://cEfRWelluPGXGYUrvJOj.zvbtcbQjWg72i-ftjCZVrqdWxvpqUIErAXSot1VRH1Z,yH\",\n    \"IsPaid\": false,\n    \"Paid_Account\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    },\n    {\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    }\n  ],\n  \"success\": [\n    {\n      \"Count\": 557\n    },\n    {\n      \"Count\": 3459\n    }\n  ],\n  \"failures\": [\n    {\n      \"record\": \"string\",\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    },\n    {\n      \"record\": \"string\",\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37d38e7a-17ee-4d76-9a1b-a5cc61aa98d2",
+              "name": "Missing or invalid bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "APInvoicesGL"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"Type\": \"AP Credit Memo\",\n    \"Vendor\": \"string\",\n    \"Date\": \"string\",\n    \"GL_Date\": \"string\",\n    \"Location\": \"string\",\n    \"Number\": \"string\",\n    \"Amount\": 3907.9864838806798,\n    \"Detail_Account\": \"string\",\n    \"Detail_Amount\": 1480.013984347358,\n    \"Detail_Location\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Comment\": \"string\",\n    \"Due_Date\": \"string\",\n    \"Payment_Terms\": \"string\",\n    \"Detail_Comment\": \"string\",\n    \"Image_URL\": \"http://XmAZk.agydvliisHjQMzB7cdXqao8+plveRQIbcjuSW\",\n    \"IsPaid\": false,\n    \"Paid_Account\": \"string\"\n  },\n  {\n    \"Type\": \"AP Invoice\",\n    \"Vendor\": \"string\",\n    \"Date\": \"string\",\n    \"GL_Date\": \"string\",\n    \"Location\": \"string\",\n    \"Number\": \"string\",\n    \"Amount\": 8603.092724540256,\n    \"Detail_Account\": \"string\",\n    \"Detail_Amount\": 535.8550911591886,\n    \"Detail_Location\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"Comment\": \"string\",\n    \"Due_Date\": \"string\",\n    \"Payment_Terms\": \"string\",\n    \"Detail_Comment\": \"string\",\n    \"Image_URL\": \"https://cEfRWelluPGXGYUrvJOj.zvbtcbQjWg72i-ftjCZVrqdWxvpqUIErAXSot1VRH1Z,yH\",\n    \"IsPaid\": false,\n    \"Paid_Account\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ed2e41e-6ba8-4148-878f-5f01e3ff8bb9",
+          "name": "Create Journal Entries",
+          "request": {
+            "name": "Create Journal Entries",
+            "description": {
+              "content": "Create one or more general ledger journal entries. Debits and credits must balance across the lines of each journal entry. Payroll journal entries require the payroll-specific fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "APIv1",
+                "JournalEntries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"Date\": \"<string>\",\n    \"JELocation\": \"<string>\",\n    \"Account\": \"<string>\",\n    \"Debit\": \"<number>\",\n    \"Credit\": \"<number>\",\n    \"DetailLocation\": \"<string>\",\n    \"BatchId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"JENumber\": \"<string>\",\n    \"JEComment\": \"<string>\",\n    \"PayrollJournalEntry\": \"<boolean>\",\n    \"PayrollStartDate\": \"<string>\",\n    \"PayrollEndDate\": \"<string>\"\n  },\n  {\n    \"Date\": \"<string>\",\n    \"JELocation\": \"<string>\",\n    \"Account\": \"<string>\",\n    \"Debit\": \"<number>\",\n    \"Credit\": \"<number>\",\n    \"DetailLocation\": \"<string>\",\n    \"BatchId\": \"<string>\",\n    \"userId\": \"<string>\",\n    \"JENumber\": \"<string>\",\n    \"JEComment\": \"<string>\",\n    \"PayrollJournalEntry\": \"<boolean>\",\n    \"PayrollStartDate\": \"<string>\",\n    \"PayrollEndDate\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "339aceb7-b193-4376-b748-ccb8f8fa5240",
+              "name": "Processing result with successes and failures",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "JournalEntries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"Date\": \"string\",\n    \"JELocation\": \"string\",\n    \"Account\": \"string\",\n    \"Debit\": 9978.218171519451,\n    \"Credit\": 9292.812995340399,\n    \"DetailLocation\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"JENumber\": \"string\",\n    \"JEComment\": \"string\",\n    \"PayrollJournalEntry\": false,\n    \"PayrollStartDate\": \"string\",\n    \"PayrollEndDate\": \"string\"\n  },\n  {\n    \"Date\": \"string\",\n    \"JELocation\": \"string\",\n    \"Account\": \"string\",\n    \"Debit\": 8612.731158897477,\n    \"Credit\": 1137.0380751417108,\n    \"DetailLocation\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"JENumber\": \"string\",\n    \"JEComment\": \"string\",\n    \"PayrollJournalEntry\": true,\n    \"PayrollStartDate\": \"string\",\n    \"PayrollEndDate\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    },\n    {\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    }\n  ],\n  \"success\": [\n    {\n      \"Count\": 557\n    },\n    {\n      \"Count\": 3459\n    }\n  ],\n  \"failures\": [\n    {\n      \"record\": \"string\",\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    },\n    {\n      \"record\": \"string\",\n      \"reason\": \"string\",\n      \"solution\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6dab672e-1554-46ca-b405-6f8ff1285eb3",
+              "name": "Missing or invalid bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "APIv1",
+                    "JournalEntries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"Date\": \"string\",\n    \"JELocation\": \"string\",\n    \"Account\": \"string\",\n    \"Debit\": 9978.218171519451,\n    \"Credit\": 9292.812995340399,\n    \"DetailLocation\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"JENumber\": \"string\",\n    \"JEComment\": \"string\",\n    \"PayrollJournalEntry\": false,\n    \"PayrollStartDate\": \"string\",\n    \"PayrollEndDate\": \"string\"\n  },\n  {\n    \"Date\": \"string\",\n    \"JELocation\": \"string\",\n    \"Account\": \"string\",\n    \"Debit\": 8612.731158897477,\n    \"Credit\": 1137.0380751417108,\n    \"DetailLocation\": \"string\",\n    \"BatchId\": \"string\",\n    \"userId\": \"string\",\n    \"JENumber\": \"string\",\n    \"JEComment\": \"string\",\n    \"PayrollJournalEntry\": true,\n    \"PayrollStartDate\": \"string\",\n    \"PayrollEndDate\": \"string\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://odata.restaurant365.net/api/v2/views",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5c928c61-9ecd-435a-a92c-cee2967a3921",
+    "name": "Restaurant365 OData Connector AP Invoices General Ledger API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and business-intelligence tools through read-only views for companies, locations, GL accounts, items, employees, labor, transactions, and sales. Authentication uses Domain\\Username (the company subdomain and R365 username) with the R365 password. Most views support the standard OData query options $filter, $orderby, $select, $skip, and $top. Sales views (SalesEmployee, SalesDetail, SalesPayment) do not support $select or $count and are limited to a 31-day date range per request.\n\nContact Support:\n Name: Kin Lane\n Email: kin@apievangelist.com",
+      "type": "text/plain"
+    }
+  }
+}

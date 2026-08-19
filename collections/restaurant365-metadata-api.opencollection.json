@@ -1,0 +1,34 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Restaurant365 OData Connector AP Invoices Metadata API",
+    "version": "v2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get OData Service Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://odata.restaurant365.net/api/v2/views/$metadata",
+            "auth": {
+              "type": "basic",
+              "username": "{{username}}",
+              "password": "{{password}}"
+            }
+          },
+          "docs": "Retrieve the OData EDMX metadata document describing all views and their properties."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
