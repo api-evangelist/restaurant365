@@ -27,6 +27,13 @@ tags:
   - Restaurant
   - Accounting
   - Inventory
+  - Invoices
+  - Reporting
+  - OData
+tags_raw:
+  - Restaurant
+  - Accounting
+  - Inventory
   - Operations
   - Invoices
   - Reporting
@@ -490,6 +497,8 @@ apis:
   humanURL: https://docs.restaurant365.com/docs/r365-api
   baseURL: https://yourcompany.restaurant365.com
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
