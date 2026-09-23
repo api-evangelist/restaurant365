@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
   title: Restaurant365 OData Connector Transactions API
-  description: The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and business-intelligence tools through read-only views for companies, locations, GL accounts, items, employees, labor, transactions, and sales. Authentication uses Domain\Username (the company subdomain and R365 username) with the R365 password. Most views support the standard OData query options $filter, $orderby, $select, $skip, and $top. Sales views (SalesEmployee, SalesDetail, SalesPayment) do not support $select or $count and are limited to a 31-day date range per request.
+  description: The Restaurant365 OData connector exposes R365 data to OData-compatible reporting and business-intelligence tools through read-only views for companies, locations, GL accounts, items, employees, labor, transactions, and sales.
   version: v2
   contact:
     name: Kin Lane
@@ -71,6 +71,20 @@ paths:
                       $ref: '#/components/schemas/TransactionDetail'
 components:
   parameters:
+    orderby:
+      name: $orderby
+      in: query
+      required: false
+      description: Property to sort by; append desc for descending order
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      required: false
+      description: Comma-separated list of properties to return
+      schema:
+        type: string
     filter:
       name: $filter
       in: query
@@ -85,13 +99,6 @@ components:
       description: Maximum number of results to return
       schema:
         type: integer
-    orderby:
-      name: $orderby
-      in: query
-      required: false
-      description: Property to sort by; append desc for descending order
-      schema:
-        type: string
     skip:
       name: $skip
       in: query
@@ -99,13 +106,6 @@ components:
       description: Number of results to skip
       schema:
         type: integer
-    select:
-      name: $select
-      in: query
-      required: false
-      description: Comma-separated list of properties to return
-      schema:
-        type: string
   schemas:
     TransactionDetail:
       type: object
