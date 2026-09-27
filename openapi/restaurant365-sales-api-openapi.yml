@@ -153,6 +153,63 @@ components:
           type: string
         modifiedBy:
           type: string
+    SalesDetail:
+      type: object
+      properties:
+        salesdetailID:
+          type: string
+          format: uuid
+        menuitem:
+          type: string
+        amount:
+          type: number
+        customerPOSText:
+          type: string
+        date:
+          type: string
+          format: date-time
+        quantity:
+          type: number
+        void:
+          type: boolean
+        company:
+          type: string
+          format: uuid
+        location:
+          type: string
+          format: uuid
+        salesID:
+          type: string
+          format: uuid
+        salesAccount:
+          type: string
+        category:
+          type: string
+        houseAccountTransaction:
+          type: string
+          format: uuid
+        transactionDetailID:
+          type: string
+          format: uuid
+        cateringEvent:
+          type: string
+          format: uuid
+        menuItemId:
+          type: integer
+          format: int64
+        dailySalesSummaryId:
+          type: string
+          format: uuid
+        createdOn:
+          type: string
+          format: date-time
+        modifiedOn:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        modifiedBy:
+          type: string
     SalesEmployee:
       type: object
       properties:
@@ -199,63 +256,6 @@ components:
           format: uuid
         serviceType:
           type: string
-        dailySalesSummaryId:
-          type: string
-          format: uuid
-        createdOn:
-          type: string
-          format: date-time
-        modifiedOn:
-          type: string
-          format: date-time
-        createdBy:
-          type: string
-        modifiedBy:
-          type: string
-    SalesDetail:
-      type: object
-      properties:
-        salesdetailID:
-          type: string
-          format: uuid
-        menuitem:
-          type: string
-        amount:
-          type: number
-        customerPOSText:
-          type: string
-        date:
-          type: string
-          format: date-time
-        quantity:
-          type: number
-        void:
-          type: boolean
-        company:
-          type: string
-          format: uuid
-        location:
-          type: string
-          format: uuid
-        salesID:
-          type: string
-          format: uuid
-        salesAccount:
-          type: string
-        category:
-          type: string
-        houseAccountTransaction:
-          type: string
-          format: uuid
-        transactionDetailID:
-          type: string
-          format: uuid
-        cateringEvent:
-          type: string
-          format: uuid
-        menuItemId:
-          type: integer
-          format: int64
         dailySalesSummaryId:
           type: string
           format: uuid

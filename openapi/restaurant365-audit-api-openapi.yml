@@ -43,36 +43,19 @@ paths:
                     items:
                       $ref: '#/components/schemas/EntityDeleted'
 components:
-  schemas:
-    EntityDeleted:
-      type: object
-      properties:
-        entityDeletedId:
-          type: integer
-        entityId:
-          type: string
-          format: uuid
-        entityName:
-          type: string
-        deletedOn:
-          type: string
-          format: date-time
-        rowVersion:
-          type: integer
-          format: int64
   parameters:
-    orderby:
-      name: $orderby
-      in: query
-      required: false
-      description: Property to sort by; append desc for descending order
-      schema:
-        type: string
     select:
       name: $select
       in: query
       required: false
       description: Comma-separated list of properties to return
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      required: false
+      description: Property to sort by; append desc for descending order
       schema:
         type: string
     filter:
@@ -96,6 +79,23 @@ components:
       description: Number of results to skip
       schema:
         type: integer
+  schemas:
+    EntityDeleted:
+      type: object
+      properties:
+        entityDeletedId:
+          type: integer
+        entityId:
+          type: string
+          format: uuid
+        entityName:
+          type: string
+        deletedOn:
+          type: string
+          format: date-time
+        rowVersion:
+          type: integer
+          format: int64
   securitySchemes:
     basicAuth:
       type: http

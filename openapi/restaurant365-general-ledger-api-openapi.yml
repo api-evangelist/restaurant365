@@ -73,6 +73,81 @@ paths:
           description: Missing or invalid bearer token
 components:
   schemas:
+    APInvoiceGL:
+      type: object
+      required:
+      - Type
+      - Vendor
+      - Date
+      - GL_Date
+      - Location
+      - Number
+      - Amount
+      - Detail_Account
+      - Detail_Amount
+      - Detail_Location
+      properties:
+        BatchId:
+          type: string
+          description: Optional batch identifier grouping records
+        userId:
+          type: string
+          description: Optional user identifier for the submitting user
+        Type:
+          type: string
+          description: Document type
+          enum:
+          - AP Invoice
+          - AP Credit Memo
+        Comment:
+          type: string
+          description: Header-level comment
+        Vendor:
+          type: string
+          description: Vendor name as configured in R365
+        Date:
+          type: string
+          description: Document date in MM/DD/YYYY format
+        GL_Date:
+          type: string
+          description: General ledger posting date in MM/DD/YYYY format
+        Due_Date:
+          type: string
+          description: Due date; defaults to Date if blank
+        Location:
+          type: string
+          description: Location name or number
+        Number:
+          type: string
+          description: Document number
+        Amount:
+          type: number
+          description: Total document amount
+        Payment_Terms:
+          type: string
+          description: Payment terms
+        Detail_Account:
+          type: string
+          description: GL account name or number for the detail line
+        Detail_Amount:
+          type: number
+          description: Amount for the detail line
+        Detail_Comment:
+          type: string
+          description: Comment for the detail line
+        Detail_Location:
+          type: string
+          description: Location for the detail line
+        Image_URL:
+          type: string
+          format: uri
+          description: URL of the document image
+        IsPaid:
+          type: boolean
+          description: Whether the document is already paid
+        Paid_Account:
+          type: string
+          description: GL account number used when the document is paid
     JournalEntry:
       type: object
       required:
@@ -156,81 +231,6 @@ components:
                 type: string
               solution:
                 type: string
-    APInvoiceGL:
-      type: object
-      required:
-      - Type
-      - Vendor
-      - Date
-      - GL_Date
-      - Location
-      - Number
-      - Amount
-      - Detail_Account
-      - Detail_Amount
-      - Detail_Location
-      properties:
-        BatchId:
-          type: string
-          description: Optional batch identifier grouping records
-        userId:
-          type: string
-          description: Optional user identifier for the submitting user
-        Type:
-          type: string
-          description: Document type
-          enum:
-          - AP Invoice
-          - AP Credit Memo
-        Comment:
-          type: string
-          description: Header-level comment
-        Vendor:
-          type: string
-          description: Vendor name as configured in R365
-        Date:
-          type: string
-          description: Document date in MM/DD/YYYY format
-        GL_Date:
-          type: string
-          description: General ledger posting date in MM/DD/YYYY format
-        Due_Date:
-          type: string
-          description: Due date; defaults to Date if blank
-        Location:
-          type: string
-          description: Location name or number
-        Number:
-          type: string
-          description: Document number
-        Amount:
-          type: number
-          description: Total document amount
-        Payment_Terms:
-          type: string
-          description: Payment terms
-        Detail_Account:
-          type: string
-          description: GL account name or number for the detail line
-        Detail_Amount:
-          type: number
-          description: Amount for the detail line
-        Detail_Comment:
-          type: string
-          description: Comment for the detail line
-        Detail_Location:
-          type: string
-          description: Location for the detail line
-        Image_URL:
-          type: string
-          format: uri
-          description: URL of the document image
-        IsPaid:
-          type: boolean
-          description: Whether the document is already paid
-        Paid_Account:
-          type: string
-          description: GL account number used when the document is paid
   securitySchemes:
     bearerAuth:
       type: http

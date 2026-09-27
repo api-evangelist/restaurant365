@@ -151,42 +151,6 @@ paths:
                     items:
                       $ref: '#/components/schemas/JobTitle'
 components:
-  parameters:
-    orderby:
-      name: $orderby
-      in: query
-      required: false
-      description: Property to sort by; append desc for descending order
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      required: false
-      description: Comma-separated list of properties to return
-      schema:
-        type: string
-    filter:
-      name: $filter
-      in: query
-      required: false
-      description: Boolean expression used to filter results
-      schema:
-        type: string
-    top:
-      name: $top
-      in: query
-      required: false
-      description: Maximum number of results to return
-      schema:
-        type: integer
-    skip:
-      name: $skip
-      in: query
-      required: false
-      description: Number of results to skip
-      schema:
-        type: integer
   schemas:
     JobTitle:
       type: object
@@ -228,32 +192,6 @@ components:
         modifiedOn:
           type: string
           format: date-time
-    Item:
-      type: object
-      properties:
-        itemId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        itemNumber:
-          type: string
-        category1:
-          type: string
-        category2:
-          type: string
-        category3:
-          type: string
-        createdBy:
-          type: string
-        createdOn:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-        modifiedOn:
-          type: string
-          format: date-time
     Location:
       type: object
       properties:
@@ -284,6 +222,54 @@ components:
         attribute2Number:
           type: string
         attribute2Name:
+          type: string
+        createdBy:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedOn:
+          type: string
+          format: date-time
+    Item:
+      type: object
+      properties:
+        itemId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        itemNumber:
+          type: string
+        category1:
+          type: string
+        category2:
+          type: string
+        category3:
+          type: string
+        createdBy:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedOn:
+          type: string
+          format: date-time
+    Company:
+      type: object
+      properties:
+        companyId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        companyNumber:
+          type: string
+        comment:
           type: string
         createdBy:
           type: string
@@ -352,28 +338,42 @@ components:
         modifiedOn:
           type: string
           format: date-time
-    Company:
-      type: object
-      properties:
-        companyId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        companyNumber:
-          type: string
-        comment:
-          type: string
-        createdBy:
-          type: string
-        createdOn:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-        modifiedOn:
-          type: string
-          format: date-time
+  parameters:
+    select:
+      name: $select
+      in: query
+      required: false
+      description: Comma-separated list of properties to return
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      required: false
+      description: Property to sort by; append desc for descending order
+      schema:
+        type: string
+    filter:
+      name: $filter
+      in: query
+      required: false
+      description: Boolean expression used to filter results
+      schema:
+        type: string
+    top:
+      name: $top
+      in: query
+      required: false
+      description: Maximum number of results to return
+      schema:
+        type: integer
+    skip:
+      name: $skip
+      in: query
+      required: false
+      description: Number of results to skip
+      schema:
+        type: integer
   securitySchemes:
     basicAuth:
       type: http

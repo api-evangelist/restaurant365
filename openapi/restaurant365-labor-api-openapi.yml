@@ -125,18 +125,18 @@ paths:
                       $ref: '#/components/schemas/PayrollSummary'
 components:
   parameters:
-    orderby:
-      name: $orderby
-      in: query
-      required: false
-      description: Property to sort by; append desc for descending order
-      schema:
-        type: string
     select:
       name: $select
       in: query
       required: false
       description: Comma-separated list of properties to return
+      schema:
+        type: string
+    orderby:
+      name: $orderby
+      in: query
+      required: false
+      description: Property to sort by; append desc for descending order
       schema:
         type: string
     filter:
@@ -161,32 +161,6 @@ components:
       schema:
         type: integer
   schemas:
-    POSEmployee:
-      type: object
-      properties:
-        posEmployeeId:
-          type: string
-          format: uuid
-        fullName:
-          type: string
-        posid:
-          type: string
-        location_id:
-          type: string
-          format: uuid
-        employee_id:
-          type: string
-          format: uuid
-        createdBy:
-          type: string
-        createdOn:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-        modifiedOn:
-          type: string
-          format: date-time
     LaborDetail:
       type: object
       properties:
@@ -257,6 +231,74 @@ components:
         modifiedOn:
           type: string
           format: date-time
+    POSEmployee:
+      type: object
+      properties:
+        posEmployeeId:
+          type: string
+          format: uuid
+        fullName:
+          type: string
+        posid:
+          type: string
+        location_id:
+          type: string
+          format: uuid
+        employee_id:
+          type: string
+          format: uuid
+        createdBy:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedOn:
+          type: string
+          format: date-time
+    PayrollSummary:
+      type: object
+      properties:
+        employeeID:
+          type: string
+          format: uuid
+        payrollID:
+          type: string
+        location:
+          type: string
+        locationNumber:
+          type: string
+        jobCode:
+          type: string
+        payRate:
+          type: number
+        regularHours:
+          type: number
+        overtimeHours:
+          type: number
+        doubleOvertime:
+          type: number
+        breakPenalty:
+          type: number
+        grossReceipts:
+          type: number
+        splitShiftPenalty:
+          type: number
+        chargeTips:
+          type: number
+        declaredTips:
+          type: number
+        percentageOfSales:
+          type: number
+        percent:
+          type: number
+        payrollStart:
+          type: string
+          format: date-time
+        payrollEnd:
+          type: string
+          format: date-time
     Employee:
       type: object
       properties:
@@ -322,48 +364,6 @@ components:
         modifiedBy:
           type: string
         modifiedOn:
-          type: string
-          format: date-time
-    PayrollSummary:
-      type: object
-      properties:
-        employeeID:
-          type: string
-          format: uuid
-        payrollID:
-          type: string
-        location:
-          type: string
-        locationNumber:
-          type: string
-        jobCode:
-          type: string
-        payRate:
-          type: number
-        regularHours:
-          type: number
-        overtimeHours:
-          type: number
-        doubleOvertime:
-          type: number
-        breakPenalty:
-          type: number
-        grossReceipts:
-          type: number
-        splitShiftPenalty:
-          type: number
-        chargeTips:
-          type: number
-        declaredTips:
-          type: number
-        percentageOfSales:
-          type: number
-        percent:
-          type: number
-        payrollStart:
-          type: string
-          format: date-time
-        payrollEnd:
           type: string
           format: date-time
   securitySchemes:
