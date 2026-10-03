@@ -85,13 +85,6 @@ components:
       description: Property to sort by; append desc for descending order
       schema:
         type: string
-    filter:
-      name: $filter
-      in: query
-      required: false
-      description: Boolean expression used to filter results
-      schema:
-        type: string
     top:
       name: $top
       in: query
@@ -99,6 +92,13 @@ components:
       description: Maximum number of results to return
       schema:
         type: integer
+    filter:
+      name: $filter
+      in: query
+      required: false
+      description: Boolean expression used to filter results
+      schema:
+        type: string
     skip:
       name: $skip
       in: query

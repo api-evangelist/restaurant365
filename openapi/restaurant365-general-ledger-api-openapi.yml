@@ -148,6 +148,40 @@ components:
         Paid_Account:
           type: string
           description: GL account number used when the document is paid
+    ProcessingResult:
+      type: object
+      description: Result envelope returned by record-creation operations
+      properties:
+        errors:
+          type: array
+          description: Request-level errors
+          items:
+            type: object
+            properties:
+              reason:
+                type: string
+              solution:
+                type: string
+        success:
+          type: array
+          description: Count of records successfully processed
+          items:
+            type: object
+            properties:
+              Count:
+                type: integer
+        failures:
+          type: array
+          description: Records that failed processing
+          items:
+            type: object
+            properties:
+              record:
+                type: string
+              reason:
+                type: string
+              solution:
+                type: string
     JournalEntry:
       type: object
       required:
@@ -197,40 +231,6 @@ components:
         PayrollEndDate:
           type: string
           description: Payroll period end date; required for payroll entries
-    ProcessingResult:
-      type: object
-      description: Result envelope returned by record-creation operations
-      properties:
-        errors:
-          type: array
-          description: Request-level errors
-          items:
-            type: object
-            properties:
-              reason:
-                type: string
-              solution:
-                type: string
-        success:
-          type: array
-          description: Count of records successfully processed
-          items:
-            type: object
-            properties:
-              Count:
-                type: integer
-        failures:
-          type: array
-          description: Records that failed processing
-          items:
-            type: object
-            properties:
-              record:
-                type: string
-              reason:
-                type: string
-              solution:
-                type: string
   securitySchemes:
     bearerAuth:
       type: http

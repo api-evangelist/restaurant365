@@ -152,6 +152,28 @@ paths:
                       $ref: '#/components/schemas/JobTitle'
 components:
   schemas:
+    Company:
+      type: object
+      properties:
+        companyId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        companyNumber:
+          type: string
+        comment:
+          type: string
+        createdBy:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedOn:
+          type: string
+          format: date-time
     JobTitle:
       type: object
       properties:
@@ -233,54 +255,6 @@ components:
         modifiedOn:
           type: string
           format: date-time
-    Item:
-      type: object
-      properties:
-        itemId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        itemNumber:
-          type: string
-        category1:
-          type: string
-        category2:
-          type: string
-        category3:
-          type: string
-        createdBy:
-          type: string
-        createdOn:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-        modifiedOn:
-          type: string
-          format: date-time
-    Company:
-      type: object
-      properties:
-        companyId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        companyNumber:
-          type: string
-        comment:
-          type: string
-        createdBy:
-          type: string
-        createdOn:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-        modifiedOn:
-          type: string
-          format: date-time
     GLAccount:
       type: object
       properties:
@@ -338,6 +312,32 @@ components:
         modifiedOn:
           type: string
           format: date-time
+    Item:
+      type: object
+      properties:
+        itemId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        itemNumber:
+          type: string
+        category1:
+          type: string
+        category2:
+          type: string
+        category3:
+          type: string
+        createdBy:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedOn:
+          type: string
+          format: date-time
   parameters:
     select:
       name: $select
@@ -353,13 +353,6 @@ components:
       description: Property to sort by; append desc for descending order
       schema:
         type: string
-    filter:
-      name: $filter
-      in: query
-      required: false
-      description: Boolean expression used to filter results
-      schema:
-        type: string
     top:
       name: $top
       in: query
@@ -367,6 +360,13 @@ components:
       description: Maximum number of results to return
       schema:
         type: integer
+    filter:
+      name: $filter
+      in: query
+      required: false
+      description: Boolean expression used to filter results
+      schema:
+        type: string
     skip:
       name: $skip
       in: query
