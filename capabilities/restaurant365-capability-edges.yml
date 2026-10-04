@@ -1,0 +1,42 @@
+slug: restaurant365
+provider: Restaurant365
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: AP Invoices
+  spec_file: restaurant365-ap-invoices-api-openapi.yml
+  capability_id: BC-200.20
+  capability_id_l1: BC-200
+  capability_name: Accounts Payable Management
+  confidence: 0.92
+  evidence: POST /APIv1/APInvoices  createApInvoices  Create AP Invoices; schema APInvoice
+  reason: Operations create accounts payable invoices in the customer's accounting database — squarely
+    Accounts Payable Management.
+- tag: General Ledger
+  spec_file: restaurant365-general-ledger-api-openapi.yml
+  capability_id: BC-200.10
+  capability_id_l1: BC-200
+  capability_name: General Ledger Management
+  confidence: 0.9
+  evidence: POST /APIv1/JournalEntries  createJournalEntries  Create Journal Entries
+  reason: Creating journal entries and GL-coded AP invoices is General Ledger Management within Financial
+    Management.
+- tag: Labor
+  spec_file: restaurant365-labor-api-openapi.yml
+  capability_id: BC-300.70
+  capability_id_l1: BC-300
+  capability_name: HR Operations Management
+  confidence: 0.75
+  evidence: GET /Employee  listEmployees; GET /LaborDetail  listLaborDetail; GET /PayrollSummary  listPayrollSummary
+  reason: Read views over employee records, labor detail and payroll summary correspond to HR operations/payroll
+    administration data, though exposed for reporting purposes.
