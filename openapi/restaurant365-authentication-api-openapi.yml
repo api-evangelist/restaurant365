@@ -43,6 +43,18 @@ paths:
           description: Invalid credentials
 components:
   schemas:
+    AuthenticationRequest:
+      type: object
+      required:
+      - UserName
+      - Password
+      properties:
+        UserName:
+          type: string
+          description: R365 username
+        Password:
+          type: string
+          description: R365 password
     AuthenticationResponse:
       type: object
       properties:
@@ -58,18 +70,6 @@ components:
         ResponseStatus:
           type: object
           description: Response status object; empty on success
-    AuthenticationRequest:
-      type: object
-      required:
-      - UserName
-      - Password
-      properties:
-        UserName:
-          type: string
-          description: R365 username
-        Password:
-          type: string
-          description: R365 password
   securitySchemes:
     bearerAuth:
       type: http

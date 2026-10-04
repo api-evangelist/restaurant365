@@ -71,11 +71,11 @@ paths:
                       $ref: '#/components/schemas/TransactionDetail'
 components:
   parameters:
-    select:
-      name: $select
+    filter:
+      name: $filter
       in: query
       required: false
-      description: Comma-separated list of properties to return
+      description: Boolean expression used to filter results
       schema:
         type: string
     orderby:
@@ -85,18 +85,11 @@ components:
       description: Property to sort by; append desc for descending order
       schema:
         type: string
-    top:
-      name: $top
+    select:
+      name: $select
       in: query
       required: false
-      description: Maximum number of results to return
-      schema:
-        type: integer
-    filter:
-      name: $filter
-      in: query
-      required: false
-      description: Boolean expression used to filter results
+      description: Comma-separated list of properties to return
       schema:
         type: string
     skip:
@@ -104,6 +97,13 @@ components:
       in: query
       required: false
       description: Number of results to skip
+      schema:
+        type: integer
+    top:
+      name: $top
+      in: query
+      required: false
+      description: Maximum number of results to return
       schema:
         type: integer
   schemas:

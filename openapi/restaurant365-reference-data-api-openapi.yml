@@ -214,47 +214,6 @@ components:
         modifiedOn:
           type: string
           format: date-time
-    Location:
-      type: object
-      properties:
-        locationId:
-          type: string
-          format: uuid
-        name:
-          type: string
-        locationNumber:
-          type: string
-        legalEntityId:
-          type: string
-          format: uuid
-        legalEntityNumber:
-          type: string
-        legalEntityName:
-          type: string
-        attribute1Id:
-          type: string
-          format: uuid
-        attribute1Number:
-          type: string
-        attribute1Name:
-          type: string
-        attribute2Id:
-          type: string
-          format: uuid
-        attribute2Number:
-          type: string
-        attribute2Name:
-          type: string
-        createdBy:
-          type: string
-        createdOn:
-          type: string
-          format: date-time
-        modifiedBy:
-          type: string
-        modifiedOn:
-          type: string
-          format: date-time
     GLAccount:
       type: object
       properties:
@@ -312,6 +271,47 @@ components:
         modifiedOn:
           type: string
           format: date-time
+    Location:
+      type: object
+      properties:
+        locationId:
+          type: string
+          format: uuid
+        name:
+          type: string
+        locationNumber:
+          type: string
+        legalEntityId:
+          type: string
+          format: uuid
+        legalEntityNumber:
+          type: string
+        legalEntityName:
+          type: string
+        attribute1Id:
+          type: string
+          format: uuid
+        attribute1Number:
+          type: string
+        attribute1Name:
+          type: string
+        attribute2Id:
+          type: string
+          format: uuid
+        attribute2Number:
+          type: string
+        attribute2Name:
+          type: string
+        createdBy:
+          type: string
+        createdOn:
+          type: string
+          format: date-time
+        modifiedBy:
+          type: string
+        modifiedOn:
+          type: string
+          format: date-time
     Item:
       type: object
       properties:
@@ -339,11 +339,11 @@ components:
           type: string
           format: date-time
   parameters:
-    select:
-      name: $select
+    filter:
+      name: $filter
       in: query
       required: false
-      description: Comma-separated list of properties to return
+      description: Boolean expression used to filter results
       schema:
         type: string
     orderby:
@@ -353,18 +353,11 @@ components:
       description: Property to sort by; append desc for descending order
       schema:
         type: string
-    top:
-      name: $top
+    select:
+      name: $select
       in: query
       required: false
-      description: Maximum number of results to return
-      schema:
-        type: integer
-    filter:
-      name: $filter
-      in: query
-      required: false
-      description: Boolean expression used to filter results
+      description: Comma-separated list of properties to return
       schema:
         type: string
     skip:
@@ -372,6 +365,13 @@ components:
       in: query
       required: false
       description: Number of results to skip
+      schema:
+        type: integer
+    top:
+      name: $top
+      in: query
+      required: false
+      description: Maximum number of results to return
       schema:
         type: integer
   securitySchemes:
