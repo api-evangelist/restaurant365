@@ -53,7 +53,7 @@ tags_raw:
   - OData
 url: https://raw.githubusercontent.com/api-evangelist/restaurant365/refs/heads/main/apis.yml
 created: '2026-06-02'
-modified: '2026-06-03'
+modified: '2026-10-06'
 specificationVersion: '0.23'
 apis:
 - aid: restaurant365:restaurant365-ap-invoices-api
@@ -563,6 +563,10 @@ apis:
   - type: Examples
     url: examples/odata-connector-list-sales-employee-example.json
 common:
+  - url: https://www.restaurant365.com/resource-category/blog/
+    type: Blog
+  - url: https://www.restaurant365.com/resource-category/blog/feed/
+    type: BlogRSS
   - type: CapabilityMap
     url: capabilities/restaurant365-capability-edges.yml
     name: Restaurant365 Business Capability Map
