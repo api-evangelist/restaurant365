@@ -110,3 +110,44 @@ plans:
       - name: Workforce And Payroll Add-On
       - name: Supply Chain Add-On
       - name: Dedicated Implementation
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units:
+  - negotiated
+  - period
+  plans:
+  - name: Core
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    periods:
+    - month
+  - name: Essential
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    periods:
+    - month
+  - name: Professional
+    access: other
+    model: subscription
+    model_how: stated
+    units:
+    - period
+    periods:
+    - month
+  - name: Enterprise / Custom
+    access: enterprise
+    model: subscription
+    model_how: derived
+    units:
+    - negotiated
+    periods:
+    - month
