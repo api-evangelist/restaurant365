@@ -44,25 +44,11 @@ paths:
                       $ref: '#/components/schemas/EntityDeleted'
 components:
   parameters:
-    filter:
-      name: $filter
-      in: query
-      required: false
-      description: Boolean expression used to filter results
-      schema:
-        type: string
     orderby:
       name: $orderby
       in: query
       required: false
       description: Property to sort by; append desc for descending order
-      schema:
-        type: string
-    select:
-      name: $select
-      in: query
-      required: false
-      description: Comma-separated list of properties to return
       schema:
         type: string
     skip:
@@ -79,6 +65,20 @@ components:
       description: Maximum number of results to return
       schema:
         type: integer
+    filter:
+      name: $filter
+      in: query
+      required: false
+      description: Boolean expression used to filter results
+      schema:
+        type: string
+    select:
+      name: $select
+      in: query
+      required: false
+      description: Comma-separated list of properties to return
+      schema:
+        type: string
   schemas:
     EntityDeleted:
       type: object
